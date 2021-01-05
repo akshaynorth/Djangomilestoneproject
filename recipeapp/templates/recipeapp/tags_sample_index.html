@@ -1,0 +1,19 @@
+
+<html>
+    <head>
+        <title>Recipe listing example</title>
+
+    </head>
+
+    <body>
+        <h1>List of Recipes</h1>
+        {% for recipe in recipes %}
+            <h1>Recipe name: {{recipe.recipe_name}}</h1>
+            <ul>
+            {% for recipe_ingredient in recipe.recipe_ingredients %}
+                <li>{{recipe_ingredient.description}}</li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    </body>
+</html>

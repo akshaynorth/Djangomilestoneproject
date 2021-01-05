@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<meta charset="utf-8">
+<title>ComeChop</title>
+
+<!-- Mobile Specific Metas
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/colors/customized_blue.css" id="colors">
+
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</head>
+
+<body class="overflow-reset">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+
+<!-- Header
+================================================== -->
+<header id="header">
+
+<!-- Container -->
+<div class="container">
+
+	<!-- Logo / Mobile Menu -->
+	<div class="three columns">
+		<div id="logo">
+			<h1><a href="/pages/index.html">ComeChop</a></h1>
+		</div>
+	</div>
+
+
+<!-- Navigation
+================================================== -->
+<div class="thirteen columns navigation">
+	
+	<nav id="navigation" class="menu nav-collapse">
+		<ul>
+			<li><a href="/pages/index.html">Home</a></li>
+
+			<li><a href="#">Cooking Directions</a>
+				<ul>
+					<li><a href="/pages/browse-recipes.html">Browse Recipes</a></li>
+					<li><a href="/pages/recipe-page-1.html">Recipe Page #1</a></li>
+					<li><a href="/pages/recipe-page-2.html">Recipe Page #2</a></li>
+				</ul>
+			</li>
+
+			<li><a href="#">Pages</a>
+				<ul>
+					<li><a href="/pages/shortcodes.html">Shortcodes</a></li>
+					<li><a href="/pages/typography.html">Typography</a></li>
+					<li><a href="/pages/contact.html">Contact</a></li>
+				</ul>
+			</li>
+
+			<li><a href="#">Outlet</a>
+				<ul>
+					<li><a href="/pages/shop.html">Outlet</a></li>
+					<li><a href="/pages/product-page.html">Product Page</a></li>
+				</ul>
+			</li>
+
+			<li><a href="/pages/submit-recipe.html" id="current">Generate Cooking Directions</a></li>
+		</ul>
+	</nav>
+
+</div>
+
+</div>
+<!-- Container / End -->
+</header>
+
+
+<!-- Titlebar
+================================================== -->
+<section id="titlebar">
+	<!-- Container -->
+	<div class="container">
+
+		<div class="eight columns">
+			<h2>Generate Cooking Directions</h2>
+		</div>
+
+		<div class="eight columns">
+			<nav id="breadcrumbs">
+				<ul>
+					<li>You are here:</li>
+					<li><a href="#">Home</a></li>
+					<li>Generate Cooking Directions</li>
+				</ul>
+			</nav>
+		</div>
+
+	</div>
+	<!-- Container / End -->
+</section>
+
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="sixteen columns">
+		<div class="submit-recipe-form">
+
+
+			<!-- Recipe Label -->
+			<h4>Recipe Label</h4>
+			<nav class="title">
+				<input id="recipe_label" class="search-field" type="text" placeholder="" value=""/>
+			</nav>
+			<div class="clearfix"></div>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Recipe Type -->
+			<div class="select">
+				<h4>Recipe Type</h4>
+				<select id="recipe_type" data-placeholder="Choose Category" class="chosen-select-no-single">
+					<option value="All">All</option>
+					<option value="Breakfast">Breakfast</option>
+					<option value="Lunch">Lunch</option>
+					<option value="Beverages">Beverages</option>
+					<option value="Appetizers">Appetizers</option>
+					<option value="Soups">Soups</option>
+					<option value="Salads">Salads</option>
+					<option value="Beef">Beef</option>
+					<option value="Poultry">Poultry</option>
+					<option value="Pork">Pork</option>
+					<option value="Seafood">Seafood</option>
+					<option value="Vegetarian">Vegetarian</option>
+					<option value="Vegetables">Vegetables</option>
+					<option value="Desserts">Desserts</option>
+					<option value="Canning">Canning / Freezing</option>
+					<option value="Breads">Breads</option>
+					<option value="Holidays">Holidays</option>
+				</select>
+			</div>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Recipe Short Description -->
+			<h4>Recipe Short Description</h4>
+			<textarea
+					id="recipe_desc"
+					class="WYSIWYG"
+					name="summary" cols="40" rows="3" id="summary" spellcheck="true"></textarea>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Recipe Picture -->
+			<h4>Upload Recipe Picture</h4>
+
+			<ul  class="recipe-gallery">
+				<li id="upload_picture_filename">No picture uploaded yet</li>
+			</ul>
+
+			<label class="upload-btn">
+			    <input type="file" />
+			    <i class="fa fa-upload"></i> Upload
+			</label>
+
+
+			<div class="clearfxix"></div>
+			<div class="margin-top-15"></div>
+
+
+			<!-- Ingredient List -->
+			<fieldset class="addrecipe-cont" name="ingredients">
+				<h4>Ingredient List:</h4>
+
+				<table id="ingredients-sort">
+
+					<tr class="ingredients-cont ing">
+						<td class="icon"><i class="fa fa-arrows"></i></td>
+						<td><input name="ingredient_name" tabindex="5" type="text" placeholder="Name of ingredient" /> </td>
+						<td class="action"><a title="Delete" class="delete" href="#"><i class="fa fa-remove"></i></a> </td>
+					</tr>
+
+				</table>
+
+				<a href="#" class="button color add_ingredient">Add new ingredient</a>
+				<a href="#" class="button add_separator">Add separator</a>
+			</fieldset>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Preparation Instructions -->
+			<h4>Preparation Instructions</h4>
+
+<!--			<textarea class="WYSIWYG" name="directions" cols="40" rows="3" id="directions" spellcheck="true"></textarea>-->
+
+			<fieldset class="addrecipe-cont" name="instructions">
+				<h4>Instructions List:</h4>
+
+				<table id="instructions-sort">
+
+					<tr class="ingredients-cont ing">
+						<td class="icon"><i class="fa fa-arrows"></i></td>
+						<td><input name="instruction_desc" tabindex="7" type="text" placeholder="Recipe instruction" /> </td>
+						<td class="action"><a title="Delete" class="delete" href="#"><i class="fa fa-remove"></i></a> </td>
+					</tr>
+				</table>
+
+				<a href="#" class="button color add_ingredient">Add new ingredient</a>
+				<a href="#" class="button add_separator">Add separator</a>
+			</fieldset>
+
+
+			<div class="margin-top-25 clearfix"></div>
+
+
+			<!-- Additional Cooking Information -->
+			<h4>Additional Cooking Information</h4>
+
+			<fieldset class="additional-info">
+				<table>
+				<tr class="ingredients-cont">
+					<td class="label"><label for="prep_time">Preparation Time</label></td>
+					<td><input id="prep_time" type="text" /></td>
+				</tr>
+
+				<tr class="ingredients-cont">
+					<td class="label"><label for="cook_time">Cooking Time</label></td>
+					<td><input id="cook_time" type="text" /></td>
+				</tr>
+				<tr class="ingredients-cont">
+					<td class="label"><label for="portions">Portions</label></td>
+					<td><input id="portions" type="text" /></td>
+				</tr>
+				</table>
+			</fieldset>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Nutrition Facts -->
+			<h4>Nutrition Facts</h4>
+
+			<fieldset class="additional-info">
+				<table>
+
+				<tr class="ingredients-cont">
+					<td class="label"><label for="5">Calories</label></td>
+					<td><input id="calories" type="text" /></td>
+				</tr>
+				</table>
+			</fieldset>
+
+			<div class="margin-top-30"></div>
+			<a href="" id="create_recipe_btn" class="button color big">Generate Cooking Directions</a>
+		</div>
+	</div>
+</div>
+<!-- Container / End -->
+
+
+<div class="margin-top-50"></div>
+
+</div>
+<!-- Wrapper / End -->
+
+
+<!-- Footer
+================================================== -->
+<div id="footer">
+
+	<!-- Container -->
+	<div class="container">
+
+		<div class="five columns">
+			<!-- Headline -->
+			<h3 class="headline footer">About</h3>
+			<span class="line"></span>
+			<div class="clearfix"></div>
+			<p>Cras at ultrices erat, sed vulputate eros. Nunc at augue gravida est fermentum vulputate. Pellentesque et ipsum in dui malesuada tempus.</p>
+		</div>
+
+		<div class="three columns">
+
+			<!-- Headline -->
+			<h3 class="headline footer">Archives</h3>
+			<span class="line"></span>
+			<div class="clearfix"></div>
+
+			<ul class="footer-links">
+				<li><a href="#">June 2014</a></li>
+				<li><a href="#">July 2014</a></li>
+				<li><a href="#">August 2014</a></li>
+				<li><a href="#">September 2014</a></li>
+				<li><a href="#">November 2014</a></li>
+			</ul>
+
+		</div>
+
+		<div class="three columns">
+
+			<!-- Headline -->
+			<h3 class="headline footer">Recipes</h3>
+			<span class="line"></span>
+			<div class="clearfix"></div>
+
+			<ul class="footer-links">
+				<li><a href="/pages/browse-recipes.html">Browse Recipes</a></li>
+				<li><a href="/pages/recipe-page-1.html">Recipe Page</a></li>
+				<li><a href="/pages/submit-recipe.html">Generate Cooking Directions</a></li>
+			</ul>
+
+		</div>
+
+		<div class="five columns">
+
+			<!-- Headline -->
+			<h3 class="headline footer">Newsletter</h3>
+			<span class="line"></span>
+			<div class="clearfix"></div>
+			<p>Sign up to receive email updates on new product announcements, gift ideas, sales and more.</p>
+
+			<form action="#" method="get">
+				<input class="newsletter" type="text" placeholder="mail@example.com" value=""/>
+				<button class="newsletter-btn" type="submit">Subscribe</button>
+
+			</form>
+		</div>
+
+	</div>
+	<!-- Container / End -->
+
+</div>
+<!-- Footer / End -->
+
+<!-- Footer Bottom / Start -->
+<div id="footer-bottom">
+
+	<!-- Container -->
+	<div class="container">
+
+		<div class="eight columns">© Copyright 2014 by <a href="#">ComeChop</a>. All Rights Reserved.</div>
+
+	</div>
+	<!-- Container / End -->
+
+</div>
+<!-- Footer Bottom / End -->
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
+
+
+<!-- Java Script
+================================================== -->
+<script src="/static/scripts/jquery-1.11.0.min.js"></script>
+<script src="/static/scripts/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/scripts/jquery.superfish.js"></script>
+<script src="/static/scripts/jquery.royalslider.min.js"></script>
+<script src="/static/scripts/responsive-nav.js"></script>
+<script src="/static/scripts/hoverIntent.js"></script>
+<script src="/static/scripts/isotope.pkgd.min.js"></script>
+<script src="/static/scripts/chosen.jquery.min.js"></script>
+<script src="/static/scripts/jquery.tooltips.min.js"></script>
+<script src="/static/scripts/jquery.magnific-popup.min.js"></script>
+<script src="/static/scripts/jquery.pricefilter.js"></script>
+<script src="/static/scripts/jquery-ui.min.js"></script>
+<script src="/static/scripts/custom.js"></script>
+
+
+<!-- WYSIWYG Editor -->
+<script type="text/javascript" src="/static/scripts/jquery.sceditor.bbcode.min.js"></script>
+<script type="text/javascript" src="/static/scripts/jquery.sceditor.js"></script>
+
+<!-- Recipe CRUD RESTFul -->
+<script type="text/javascript" src="/static/scripts/recipe_rest.js"></script>
+
+<!-- Style Switcher
+================================================== -->
+<script src="/static/scripts/switcher.js"></script>
+
+<div id="style-switcher">
+	<h2>Style Switcher <a href="#"></a></h2>
+	
+	<div>
+		<h3>Predefined Colors</h3>
+		<ul class="colors" id="color1">
+			<li><a href="#" class="green" title="Green"></a></li>
+			<li><a href="#" class="blue" title="Blue"></a></li>
+			<li><a href="#" class="orange" title="Orange"></a></li>
+			<li><a href="#" class="navy" title="Navy"></a></li>
+			<li><a href="#" class="yellow" title="Yellow"></a></li>
+			<li><a href="#" class="peach" title="Peach"></a></li>
+			<li><a href="#" class="beige" title="Beige"></a></li>
+			<li><a href="#" class="purple" title="Purple"></a></li>
+			<li><a href="#" class="celadon" title="Celadon"></a></li>
+			<li><a href="#" class="pink" title="Pink"></a></li>
+			<li><a href="#" class="red" title="Red"></a></li>
+			<li><a href="#" class="brown" title="Brown"></a></li>
+			<li><a href="#" class="cherry" title="Cherry"></a></li>
+			<li><a href="#" class="cyan" title="Cyan"></a></li>
+			<li><a href="#" class="gray" title="Gray"></a></li>
+			<li><a href="#" class="darkcol" title="Dark"></a></li>
+		</ul>
+		
+	</div>
+	
+	<div id="reset"><a href="#" class="button color">Reset</a></div>
+		
+</div>
+
+
+</body>
+</html>
