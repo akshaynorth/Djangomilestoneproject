@@ -1,0 +1,197 @@
+
+{% extends "base.html" %}
+
+{% block precontent %}
+<!-- Titlebar
+================================================== -->
+<section id="titlebar">
+	<!-- Container -->
+	<div class="container">
+
+		<div class="eight columns">
+			<h2>Generate Cooking Directions</h2>
+		</div>
+
+		<div class="eight columns">
+			<nav id="breadcrumbs">
+				<ul>
+					<li>You are here:</li>
+					<li><a href="#">Home</a></li>
+					<li>Generate Cooking Directions</li>
+				</ul>
+			</nav>
+		</div>
+
+	</div>
+	<!-- Container / End -->
+</section>
+{% endblock precontent %}
+
+{% block pagecontent %}
+<div class="container">
+	<div class="sixteen columns">
+		<div class="submit-recipe-form">
+
+
+			<!-- Recipe Label -->
+			<h4>Recipe Label</h4>
+			<nav class="title">
+				<input id="recipe_label" class="search-field" type="text" placeholder="" value=""/>
+			</nav>
+			<div class="clearfix"></div>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Recipe Type -->
+			<div class="select">
+				<h4>Recipe Type</h4>
+				<select id="recipe_type" data-placeholder="Choose Category" class="chosen-select-no-single">
+					<option value="All">All</option>
+					<option value="Breakfast">Breakfast</option>
+					<option value="Lunch">Lunch</option>
+					<option value="Beverages">Beverages</option>
+					<option value="Appetizers">Appetizers</option>
+					<option value="Soups">Soups</option>
+					<option value="Salads">Salads</option>
+					<option value="Beef">Beef</option>
+					<option value="Poultry">Poultry</option>
+					<option value="Pork">Pork</option>
+					<option value="Seafood">Seafood</option>
+					<option value="Vegetarian">Vegetarian</option>
+					<option value="Vegetables">Vegetables</option>
+					<option value="Desserts">Desserts</option>
+					<option value="Canning">Canning / Freezing</option>
+					<option value="Breads">Breads</option>
+					<option value="Holidays">Holidays</option>
+				</select>
+			</div>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Recipe Short Description -->
+			<h4>Recipe Short Description</h4>
+			<textarea
+					id="recipe_desc"
+					class="WYSIWYG"
+					name="summary" cols="40" rows="3" spellcheck="true"></textarea>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Recipe Picture -->
+			<h4>Upload Recipe Picture</h4>
+
+			<ul  class="recipe-gallery">
+				<li id="upload_picture_filename">No picture uploaded yet</li>
+			</ul>
+
+			<label class="upload-btn">
+			    <input type="file" />
+			    <i class="fa fa-upload"></i> Upload
+			</label>
+
+
+			<div class="clearfxix"></div>
+			<div class="margin-top-15"></div>
+
+
+			<!-- Ingredient List -->
+			<fieldset class="addrecipe-cont" name="ingredients">
+				<h4>Ingredient List:</h4>
+
+				<table id="ingredients-sort">
+
+					<tr class="ingredients-cont ing">
+						<td class="icon"><i class="fa fa-arrows"></i></td>
+						<td><input name="ingredient_name" tabindex="5" type="text" placeholder="Name of ingredient" /> </td>
+						<td class="action"><a title="Delete" class="delete" href="#"><i class="fa fa-remove"></i></a> </td>
+					</tr>
+
+				</table>
+
+				<a href="#" class="button color add_ingredient">Add new ingredient</a>
+			</fieldset>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Preparation Instructions -->
+			<h4>Preparation Instructions</h4>
+			<fieldset class="addrecipe-cont" name="instructions">
+				<h4>Instructions List:</h4>
+
+				<table id="instructions-sort">
+
+					<tr class="ingredients-cont ing">
+						<td class="icon"><i class="fa fa-arrows"></i></td>
+						<td><input name="instruction_desc" tabindex="7" type="text" placeholder="Recipe instruction" /> </td>
+						<td class="action"><a title="Delete" class="delete" href="#"><i class="fa fa-remove"></i></a> </td>
+					</tr>
+				</table>
+
+				<a href="#" class="button color add_ingredient">Add new instruction</a>
+			</fieldset>
+
+
+			<div class="margin-top-25 clearfix"></div>
+
+
+			<!-- Additional Cooking Information -->
+			<h4>Additional Cooking Information</h4>
+
+			<fieldset class="additional-info">
+				<table>
+				<tr class="ingredients-cont">
+					<td class="label"><label for="prep_time">Preparation Time</label></td>
+					<td><input id="prep_time" type="text" /></td>
+				</tr>
+
+				<tr class="ingredients-cont">
+					<td class="label"><label for="cook_time">Cooking Time</label></td>
+					<td><input id="cook_time" type="text" /></td>
+				</tr>
+				<tr class="ingredients-cont">
+					<td class="label"><label for="portions">Portions</label></td>
+					<td><input id="portions" type="text" /></td>
+				</tr>
+				</table>
+			</fieldset>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Nutrition Facts -->
+			<h4>Nutrition Facts</h4>
+
+			<fieldset class="additional-info">
+				<table>
+
+				<tr class="ingredients-cont">
+					<td class="label"><label for="calories">Calories</label></td>
+					<td><input id="calories" type="text" /></td>
+				</tr>
+				</table>
+			</fieldset>
+
+			<div class="margin-top-30"></div>
+			<a href="" id="create_recipe_btn" class="button color big">Generate Cooking Directions</a>
+		</div>
+	</div>
+</div>
+{% endblock pagecontent %}
+
+{% block extra_javascript %}
+<!-- WYSIWYG Editor -->
+<script src="/static/scripts/jquery.sceditor.bbcode.min.js"></script>
+<script src="/static/scripts/jquery.sceditor.js"></script>
+
+<!-- Recipe CRUD RESTFul -->
+<script src="/static/scripts/recipe_rest.js"></script>
+{% endblock extra_javascript %}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<meta charset="utf-8">
+<title>ComeChop</title>
+
+<!-- Mobile Specific Metas
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/colors/customized_blue.css" id="colors">
+
+<!--[if lt IE 9]>
+	<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+
+<!-- Header
+================================================== -->
+<header id="header">
+
+<!-- Container -->
+<div class="container">
+
+	<!-- Logo / Mobile Menu -->
+	<div class="three columns">
+		<div id="logo">
+			<h1><a href="/pages/index.html">ComeChop</a></h1>
+		</div>
+	</div>
+
+
+<!-- Navigation
+================================================== -->
+<div class="thirteen columns navigation">
+
+	<nav id="navigation" class="menu nav-collapse">
+		<ul>
+			<li><a href="/pages/index.html" id="current">Home</a></li>
+			<li><a href="/pages/browse-recipes.html">Browse Recipes</a></li>
+			<li><a href="/pages/submit-recipe.html">Generate Cooking Directions</a></li>
+		</ul>
+	</nav>
+
+</div>
+
+</div>
+<!-- Container / End -->
+</header>
+
+
+<!-- Slider
+================================================== -->
+
+{% block precontent %}{% endblock precontent %}
+
+<!-- Content
+================================================== -->
+{% block pagecontent %}{% endblock pagecontent %}
+
+<!-- Container / End -->
+
+<div class="margin-top-5"></div>
+
+
+</div>
+<!-- Wrapper / End -->
+
+
+<!-- Footer
+================================================== -->
+<div id="footer">
+
+	<!-- Container -->
+	<div class="container">
+
+		<div class="five columns">
+			<!-- Headline -->
+			<h3 class="headline footer">About</h3>
+			<span class="line"></span>
+			<div class="clearfix"></div>
+			<p>This culinary site was developed for foodies in mind. Anyone can generate food directions for their
+				favorite cuisine for anyone who is interested in making that particular dish.</p>
+		</div>
+
+		<div class="three columns">
+
+			<!-- Headline -->
+			<h3 class="headline footer">Recipes</h3>
+			<span class="line"></span>
+			<div class="clearfix"></div>
+
+			<ul class="footer-links">
+				<li><a href="/pages/browse-recipes.html">Browse Recipes</a></li>
+				<li><a href="/pages/submit-recipe.html">Generate Cooking Directions</a></li>
+			</ul>
+
+		</div>
+
+	</div>
+	<!-- Container / End -->
+
+</div>
+<!-- Footer / End -->
+
+<!-- Footer Bottom / Start -->
+<div id="footer-bottom">
+
+	<!-- Container -->
+	<div class="container">
+
+		<div class="eight columns">© Copyright 2020 by <a href="/pages/index.html">ComeChop</a>. All Rights Reserved.</div>
+
+	</div>
+	<!-- Container / End -->
+
+</div>
+<!-- Footer Bottom / End -->
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
+
+
+<!-- Java Script
+================================================== -->
+<script src="/static/scripts/jquery-1.11.0.min.js"></script>
+<script src="/static/scripts/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/scripts/jquery.superfish.js"></script>
+<script src="/static/scripts/jquery.royalslider.min.js"></script>
+<script src="/static/scripts/responsive-nav.js"></script>
+<script src="/static/scripts/hoverIntent.js"></script>
+<script src="/static/scripts/isotope.pkgd.min.js"></script>
+<script src="/static/scripts/chosen.jquery.min.js"></script>
+<script src="/static/scripts/jquery.tooltips.min.js"></script>
+<script src="/static/scripts/jquery.magnific-popup.min.js"></script>
+<script src="/static/scripts/jquery.pricefilter.js"></script>
+<script src="/static/scripts/jquery-ui.min.js"></script>
+<script src="/static/scripts/custom.js"></script>
+
+{% block extra_javascript %}{% endblock extra_javascript %}
+
+
+</body>
+</html>

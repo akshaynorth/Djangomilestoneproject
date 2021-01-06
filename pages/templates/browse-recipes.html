@@ -1,0 +1,217 @@
+
+{% extends "base.html" %}
+
+
+{% block precontent %}
+<!-- Titlebar
+================================================== -->
+<section id="titlebar" class="browse-all">
+	<!-- Container -->
+	<div class="container">
+
+		<div class="eight columns">
+			<h2>Browse Recipes</h2>
+		</div>
+
+	</div>
+	<!-- Container / End -->
+</section>
+{% endblock precontent %}
+
+{% block pagecontent %}
+<!-- Container -->
+<div class="advanced-search-container">
+	<div class="container">
+		<div class="sixteen columns">
+			<div id="advanced-search">
+
+				<!-- Choose Category -->
+				<div class="select">
+					<label>Choose category</label>
+					<select id="recipe_category" data-placeholder="Choose Category" class="chosen-select-no-single">
+						<option value="All">All</option>
+						<option value="Breakfast">Breakfast</option>
+						<option value="Lunch">Lunch</option>
+						<option value="Beverages">Beverages</option>
+						<option value="Appetizers">Appetizers</option>
+						<option value="Soups">Soups</option>
+						<option value="Salads">Salads</option>
+						<option value="Beef">Beef</option>
+						<option value="Poultry">Poultry</option>
+						<option value="Pork">Pork</option>
+						<option value="Seafood">Seafood</option>
+						<option value="Vegetarian">Vegetarian</option>
+						<option value="Vegetables">Vegetables</option>
+						<option value="Desserts">Desserts</option>
+						<option value="Canning">Canning / Freezing</option>
+						<option value="Breads">Breads</option>
+						<option value="Holidays">Holidays</option>
+					</select>
+				</div>
+
+				<!-- Choose ingredients -->
+				<div class="select included-ingredients">
+					<label>Select one or more ingredients that should be included in recipe</label>
+					<select id="ingredient_list" data-placeholder="Included Ingredients" class="chosen-select" multiple>
+						<option value="sugar">sugar</option>
+						<option value="wheat-flour">wheat flour</option>
+						<option value="baking-powder">baking powder</option>
+						<option value="eggs">eggs</option><option value="salt">salt</option>
+						<option value="brown-sugar">brown sugar</option>
+						<option value="chicken-breast">chicken breast</option>
+						<option value="garlic">garlic</option>
+						<option value="milk">milk</option>
+						<option value="oil">oil</option>
+						<option value="sesame-oil">sesame oil</option>
+						<option value="soy-sauce">soy sauce</option>
+						<option value="butter">butter</option>
+						<option value="carrots">carrots</option>
+						<option value="coconut-flakes">coconut flakes</option>
+						<option value="honey">honey</option>
+						<option value="mung-bean-sprouts">mung bean sprouts</option>
+						<option value="noodles">noodles</option>
+						<option value="onion">onion</option>
+						<option value="potato-starch">potato starch</option>
+						<option value="red-bell-pepper">red bell pepper</option>
+						<option value="walnuts">walnuts</option>
+						<option value="water">water</option>
+						<option value="almonds">almonds</option>
+						<option value="baking-soda">baking soda</option>
+						<option value="beef-brisket">beef brisket</option>
+						<option value="beef-sirloin">beef sirloin</option>
+						<option value="bell-pepper">bell pepper</option>
+						<option value="broth">broth</option>
+						<option value="carrot">carrot</option>
+						<option value="cherries">cherries</option>
+						<option value="chocolate">chocolate</option>
+						<option value="cinnamon">cinnamon</option>
+						<option value="cinnamon-stick">cinnamon stick</option>
+						<option value="cocoa-powder">cocoa powder</option>
+						<option value="coconut">coconut</option>
+						<option value="corn-tortillas">corn tortillas</option>
+						<option value="dark-chocolate">dark chocolate</option>
+						<option value="dried-black-mushrooms">dried black mushrooms</option>
+						<option value="dried-soba">dried soba</option>
+						<option value="egg">egg</option>
+						<option value="five-spice-powder">five spice powder</option>
+						<option value="flour">flour</option>
+						<option value="ginger">ginger</option>
+						<option value="guilin-chili-sauce">guilin chili sauce</option>
+						<option value="leek">leek</option>
+						<option value="lettuce">lettuce</option>
+						<option value="olive-oil">olive oil</option>
+						<option value="oyster-sauce">oyster sauce</option>
+						<option value="pear-juice">pear juice</option>
+						<option value="pepper">pepper</option>
+						<option value="pineapple">pineapple</option>
+						<option value="red-onion">red onion</option>
+						<option value="redcurrant">redcurrant</option>
+						<option value="ribs-of-celery">ribs of celery</option>
+						<option value="sichuan-pepper">Sichuan pepper</option>
+						<option value="spring-onions">spring onions</option>
+						<option value="strawberries">strawberries</option>
+						<option value="taiwanese-golden-mushrooms">Taiwanese golden mushrooms</option>
+						<option value="yeast">yeast</option>
+						<option value="yellow-bell-pepper">yellow bell pepper</option>
+					</select>
+				</div>
+
+				<!-- Choose -->
+				<div class="select">
+					<label>Recipe needs to have</label>
+					<select id="ingredient_search_type" data-placeholder="Choose Category" class="chosen-select">
+						<option value="All">All of selected ingredients </option>
+						<option value="Any">Any of selected ingredients</option>
+					</select>
+				</div>
+				
+				<div class="clearfix"></div>
+				<!-- Search Input -->
+				<nav class="search-by-keyword">
+					<form action="#" method="get">
+						<button id="search_recipe_btn">
+							<span>Search for Recipes</span><i class="fa fa-search"></i>
+						</button>
+					</form>
+				</nav>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<div class="margin-top-35"></div>
+	<!--
+		Display the list of recipes found. The recipe_list variable is passed in the context with the list of recipes
+	-->
+{% comment %}
+{% if recipe_list %}
+<!-- Container -->
+<div class="container">
+
+	<!-- Headline -->
+	<div class="sixteen columns">
+ 		<h3 class="headline">All Recipes</h3>
+		<span class="line margin-bottom-35"></span>
+		<div class="clearfix"></div>
+	</div>
+	<div class="clearfix"></div>
+
+		<!-- Isotope -->
+		<div class="isotope">
+			<!--
+				Iterate through the list of recipes and display their information
+			-->
+			{% for recipe in recipe_list %}
+			<!-- Recipe #{{loop.index}} -->
+			<div class="four isotope-box columns">
+
+				<!-- Thumbnail -->
+				<div class="thumbnail-holder">
+					<a href="/recipe/view/{{recipe._id}}">
+						<img src="/recipe/image/{{recipe._id}}" alt=""/>
+						<div class="hover-cover"></div>
+						<div class="hover-icon">View Recipe</div>
+					</a>
+				</div>
+
+				<!-- Content -->
+				<div class="recipe-box-content">
+					<h3><a href="/pages/recipe-page-1.html">{{recipe.name}}</a></h3>
+					<div class="recipe-meta">
+						<i class="fa fa-clock-o"></i>{{recipe.prep_time}}</div>
+					<div class="clearfix"></div>
+					<div class="recipe-meta">
+						<a id="edit_recipe_{{loop.index}}" href="/recipe/edit/{{recipe._id}}">
+							<img src="/static/images/pencil.svg" alt="Edit recipe icon" />
+						</a>
+					</div>
+					<div class="recipe-meta">
+						<a id="delete_recipe_{{loop.index}}" href="/recipe/delete/{{recipe._id}}">
+							<img src="/static/images/trash.svg" alt="Delete recipe icon"/>
+						</a>
+					</div>
+
+				</div>
+			</div>
+			{% endfor %}
+
+		</div>
+		<div class="clearfix"></div>
+
+
+</div>
+
+{% endif %}
+
+{% endcomment %}
+
+{% endblock pagecontent %}
+
+{% block extra_javascript %}
+<!--
+Recipe Browse RESTFul. This JavaScript was added to enable the submission of search data to the server.
+-->
+<script src="/static/scripts/browse_recipe_rest.js"></script>
+{% endblock extra_javascript %}

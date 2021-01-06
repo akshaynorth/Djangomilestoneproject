@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block precontent %}
+<div class="recipeBackground">
+	<img src="/static/images/recipeBackground-02.jpg" alt="" />
+</div>
+{% endblock precontent %}
+
+
+{% block pagecontent %}
+<div class="container" itemscope itemtype="http://schema.org/Recipe">
+
+	<!-- Recipe -->
+	<div class="twelve columns">
+	<div class="alignment">
+
+		<!-- Header -->
+		<section class="recipe-header">
+			<div class="title-alignment">
+				<h2>Edikanikong</h2>
+			</div>
+		</section>
+		
+
+		<!-- Slider -->
+		<div class="recipeSlider rsDefault">
+		    <img itemprop="image" class="rsImg" src="/static/images/edikanikong.jpg" alt="Edikanikong Soup" />
+		</div>
+
+
+		<!-- Details -->
+		<section class="recipe-details" itemprop="nutrition">
+			<ul>
+				<li>Serves: <strong itemprop="recipeYield">2 people</strong></li>
+				<li>Prep Time: <strong itemprop="prepTime">30 min</strong></li>
+				<li>Calories: <strong itemprop="calories">102 kcal</strong></li>
+			</ul>
+			<div class="clearfix"></div>
+		</section>
+
+
+		<!-- Text -->
+		<p itemprop="description">Mixed vegetables and assorted meat, chicken, beef or fried fish</p>
+
+
+		<div class="recipe-container">  
+
+			<div class="ingredients-container">
+
+				<!-- Ingredients -->
+				<h3>Ingredients</h3>
+				<ul class="ingredients">
+					<li>
+						<input id="check-1" type="checkbox" name="check" value="check-1">
+						<label itemprop="ingredients" for="check-1">3cups of Ugwu (pumpkin leaves)</label>
+					</li>
+
+					<li>
+						<input id="check-2" type="checkbox" name="check" value="check-2">
+						<label itemprop="ingredients" for="check-2">5cups of Waterleaf</label>
+					</li>
+
+					<li>
+						<input id="check-3" type="checkbox" name="check" value="check-3">
+						<label itemprop="ingredients" for="check-3">Rodo (preferably Yellow pepper)</label>
+					</li>
+
+					<li>
+						<input id="check-4" type="checkbox" name="check" value="check-4">
+						<label itemprop="ingredients" for="check-4">500g Meats</label>
+					</li>
+
+					<li>
+						<input id="check-5" type="checkbox" name="check" value="check-5">
+						<label itemprop="ingredients" for="check-5">150g Periwinkle</label>
+					</li>
+
+					<li>
+						<input id="check-6" type="checkbox" name="check" value="check-6">
+						<label itemprop="ingredients" for="check-6">100g Pomo – cow skin</label>
+					</li>	
+
+					<li>
+						<input id="check-7" type="checkbox" name="check" value="check-7">
+						<label itemprop="ingredients" for="check-7">100g Stockfish – I use Eja Osan</label>
+					</li>
+					<li>
+						<input id="check-8" type="checkbox" name="check" value="check-8">
+						<label itemprop="ingredients" for="check-8">1 medium size Smoked Fish</label>
+					</li>
+					<li>
+						<input id="check-9" type="checkbox" name="check" value="check-9">
+						<label itemprop="ingredients" for="check-9">1 cup of whole Crayfish</label>
+					</li>
+				</ul>
+
+			</div> 
+
+			<div class="directions-container">
+				<!-- Directions -->
+				<h3>Directions</h3>
+				<ol class="directions" itemprop="recipeInstructions">
+					<li>Season and boil your meats with stockfish. I use beef, goat meat, saki (cow stomach), and cow
+						leg. Add just enough water to cover the meat, and bring to a boil. Depending on how tough the
+						meats are, this volume of water should be enough. Watch it closely though.
+					</li>
+					<li>Just before the meats are tender, add shredded smoked fish and pomo. This is to soften the fish
+						and infuse some of that smokey flavour into the stock. Adding the pomo too will allow it to
+						soften, making it easier to chew.
+					</li>
+					<li>Add a cooking spoon or two of Palm oil into your pot of meat, let it boil till the Palm Oil
+						dissolves into the stock then add the blended Rodo and let it dissolve too. The Yoruba part of
+						me loves this soup hot, so I tend to add 2 cooking spoons of pepper.
+					</li>
+					<li>Add the periwinkle and waterleaf, and stir. Cover the pot, lower the heat and let this steam for
+						5 minutes.
+					</li>
+					<li>Add blended crayfish. Dooney’s Kitchen Tip: I rinse my crayfish in water to remove the dirt and
+						I blend with about 1- 2 tablespoons of water. Let this cook for another 2 – 3 minutes, then
+						taste the difference in the liquid left in the pot. Crayfish amps up the flavour immensely, you
+						may not need seasoning cubes
+					</li>
+					<li>Add the Ugwu, give it a stir, and let it cook for another 5 minutes. Stir and taste for salt.
+						If you need more add a little. If you are itching to add a seasoning cube, you can, but why
+						don’t you try adding more crayfish instead. Trust me, seasoning cubes have nothing on crayfish.
+						Add a little more crayfish, stir, cover the pot and just wait an extra 2 minutes or so.
+					</li>
+				</ol>
+			</div>
+
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="margin-bottom-40"></div>
+
+		<span class="line margin-bottom-35"></span>
+		<div class="clearfix"></div>
+
+		<div class="margin-top-15"></div>
+			<div class="clearfix"></div>
+			<br>
+
+	</div>
+	</div>
+
+
+<!-- Sidebar
+================================================== -->
+<div class="four columns">
+	<!-- Author Box -->
+	<div class="widget">
+		<div class="author-box">
+			<span class="title">Author</span>
+			<span class="name">Dunni <br> Obata</span>
+			<span class="contact"><a href="mailto:dunni_obata@comeshop.com">dunni_obata@comeshop.com</a></span>
+			<img src="/static/images/dunni_obata.jpg" alt="Dunni Obata Image">
+			<p>Hi, my name is Dunni Obata, and I am what you would call the poster child for redefining Nigerian food.
+				Welcome to Dooney's Kitchen, the home of Nigerian centric food, detailed recipes and sharing personal
+				stories.</p>
+		</div>
+	</div>
+</div>
+
+
+</div>
+{% endblock pagecontent %}

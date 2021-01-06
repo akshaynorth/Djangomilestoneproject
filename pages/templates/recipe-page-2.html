@@ -1,0 +1,144 @@
+
+{% extends "base.html" %}
+
+{% block precontent %}
+<!-- Recipe Background -->
+<div class="recipeBackground">
+	<img src="/static/images/recipeBackground-02.jpg" alt="" />
+</div>
+{% endblock precontent %}
+
+{% block pagecontent %}
+<div class="container" itemscope itemtype="http://schema.org/Recipe">
+
+	<!-- Recipe -->
+	<div class="twelve columns">
+	<div class="alignment">
+
+		<!-- Header -->
+		<section class="recipe-header">
+			<div class="title-alignment">
+				<h2>Grilled Tiger Prawns with Chilli and garlic sauce</h2>
+			</div>
+		</section>
+
+
+		<!-- Slider -->
+		<div class="recipeSlider rsDefault">
+		    <img itemprop="image" class="rsImg" src="/static/images/grilled_prawns.jpg" alt="Grilled Prawns Plate" />
+		</div>
+
+
+		<!-- Details -->
+		<section class="recipe-details" itemprop="nutrition">
+			<ul>
+				<li>Serves: <strong itemprop="recipeYield">4 people</strong></li>
+				<li>Prep Time: <strong itemprop="prepTime">4 hr</strong></li>
+				<li>Calories: <strong itemprop="calories">30 cal</strong></li>
+			</ul>
+			<div class="clearfix"></div>
+		</section>
+
+
+		<!-- Text -->
+		<p itemprop="description">Served with Jollof rice, fried or white rice.</p>
+
+
+		<div class="recipe-container">
+
+			<div class="ingredients-container">
+
+				<!-- Ingredients -->
+				<h3>Ingredients</h3>
+				<ul class="ingredients">
+					<li>
+						<input id="check-1" type="checkbox" name="check" value="check-1">
+						<label itemprop="ingredients" for="check-1">1 small onion finely chopped</label>
+					</li>
+
+					<li>
+						<input id="check-2" type="checkbox" name="check" value="check-2">
+						<label itemprop="ingredients" for="check-2">1 clv garlic, finely chopped</label>
+					</li>
+
+					<li>
+						<input id="check-3" type="checkbox" name="check" value="check-3">
+						<label itemprop="ingredients" for="check-3">1 teaspoon vegetable oil</label>
+					</li>
+
+					<li>
+						<input id="check-4" type="checkbox" name="check" value="check-4">
+						<label itemprop="ingredients" for="check-4">1 pound raw tiger prawns, peeled &amp; deveined</label>
+					</li>
+
+					<li>
+						<input id="check-5" type="checkbox" name="check" value="check-5">
+						<label itemprop="ingredients" for="check-5">1 teaspoon sea salt</label>
+					</li>
+
+					<li>
+						<input id="check-6" type="checkbox" name="check" value="check-6">
+						<label itemprop="ingredients" for="check-6">1 teaspoon black pepper</label>
+					</li>
+
+					<li>
+						<input id="check-7" type="checkbox" name="check" value="check-7">
+						<label itemprop="ingredients" for="check-7">1 lime</label>
+					</li>
+				</ul>
+
+			</div>
+
+			<div class="directions-container">
+				<!-- Directions -->
+				<h3>Directions</h3>
+				<ol class="directions" itemprop="recipeInstructions">
+					<li>Mix the garlic and onion with the vegetable oil.</li>
+					<li>Add the prawns and toss.</li>
+					<li>Marinate in the refrigerator (at least 3 hrs).</li>
+					<li>Grill the prawns on a barbecue or griddle for about 5 minutes, turning once.</li>
+					<li>Mix together the salt, pepper and the juice from the lime to make a dip for the prawns.</li>
+				</ol>
+			</div>
+
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="margin-bottom-40"></div>
+
+		<span class="line margin-bottom-35"></span>
+		<div class="clearfix"></div>
+
+		<div class="clearfix"></div>
+
+		<div class="margin-top-15"></div>
+
+			<div class="clearfix"></div>
+			<br>
+
+
+	</div>
+	</div>
+
+
+<!-- Sidebar
+================================================== -->
+<div class="four columns">
+	<!-- Author Box -->
+	<div class="widget">
+		<div class="author-box">
+			<span class="title">Author</span>
+			<span class="name">Grown  <br> Batista</span>
+			<span class="contact"><a href="mailto:grown_batista@comeshop.com">grown_batista@comeshop.com</a></span>
+			<!-- Obtained image of author from: http://www.joaoalberto.com/2019/03/12/chef-paraibano-batista-e-destaque-no-festival-gastro-bom-de-mesa-desta-terca/ -->
+			<img src="/static/images/paraibano_batista.jpg" alt="Grown Batista Image">
+			<p>Hi there !, one of my favorite dishes on the Grill. Hope you enjoy this recipe as much as I
+			enjoyed sharing it with you.</p>
+		</div>
+	</div>
+
+</div>
+
+
+</div>
+{% endblock pagecontent %}

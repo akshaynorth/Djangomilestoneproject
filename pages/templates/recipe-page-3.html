@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block precontent %}
+<div class="recipeBackground">
+	<img src="/static/images/recipeBackground-02.jpg" alt="" />
+</div>
+{% endblock precontent %}
+
+
+{% block pagecontent %}
+<div class="container" itemscope itemtype="http://schema.org/Recipe">
+
+	<!-- Recipe -->
+	<div class="twelve columns">
+	<div class="alignment">
+
+		<!-- Header -->
+		<section class="recipe-header">
+			<div class="title-alignment">
+				<h2>Nigerian Egusi Soup</h2>
+			</div>
+		</section>
+		
+
+		<!-- Slider -->
+		<div class="recipeSlider rsDefault">
+		    <img itemprop="image" class="rsImg" src="/static/images/egusi_soup.jpg" alt="Egusi Soup" />
+		</div>
+
+
+		<!-- Details -->
+		<section class="recipe-details" itemprop="nutrition">
+			<ul>
+				<li>Serves: <strong itemprop="recipeYield">6 people</strong></li>
+				<li>Prep Time: <strong itemprop="prepTime">30 min</strong></li>
+				<li>Calories: <strong itemprop="calories">302 kcal</strong></li>
+			</ul>
+			<div class="clearfix"></div>
+		</section>
+
+
+		<!-- Text -->
+		<p itemprop="description">Egusi soup made the Nigerian way with red palm oil and different kinds of meats.
+			Enjoy with pounded yam, garri or other kids of fufu.</p>
+
+
+		<div class="recipe-container">  
+
+			<div class="ingredients-container">
+
+				<!-- Ingredients -->
+				<h3>Ingredients</h3>
+				<ul class="ingredients">
+					<li>
+						<input id="check-1" type="checkbox" name="check" value="check-1">
+						<label itemprop="ingredients" for="check-1"> 2 cups egusi (not ground)</label>
+					</li>
+
+					<li>
+						<input id="check-2" type="checkbox" name="check" value="check-2">
+						<label itemprop="ingredients" for="check-2">3/4 cup palm oil </label>
+					</li>
+
+					<li>
+						<input id="check-3" type="checkbox" name="check" value="check-3">
+						<label itemprop="ingredients" for="check-3">1/4 cup crayfish</label>
+					</li>
+
+					<li>
+						<input id="check-4" type="checkbox" name="check" value="check-4">
+						<label itemprop="ingredients" for="check-4">1 shrimp seasoning cube also known as Maggi Crayfish
+							or Maggi Crevette</label>
+					</li>
+
+					<li>
+						<input id="check-5" type="checkbox" name="check" value="check-5">
+						<label itemprop="ingredients" for="check-5">2 pounds meats and fish I used a variety of goat
+							meat, stock fish and chicken </label>
+					</li>
+
+					<li>
+						<input id="check-6" type="checkbox" name="check" value="check-6">
+						<label itemprop="ingredients" for="check-6">1/2 cup onion - chopped </label>
+					</li>	
+
+					<li>
+						<input id="check-7" type="checkbox" name="check" value="check-7">
+						<label itemprop="ingredients" for="check-7">1 habanero (or scotch bonnet) pepper </label>
+					</li>
+					<li>
+						<input id="check-8" type="checkbox" name="check" value="check-8">
+						<label itemprop="ingredients" for="check-8">1/2 -1 cup chopped greens (you could use bitterleaf
+							for an authentic taste or substitute with spinach or kale) I used chopped spinach</label>
+					</li>
+				</ul>
+
+			</div> 
+
+			<div class="directions-container">
+				<!-- Directions -->
+				<h3>Directions</h3>
+				<ol class="directions" itemprop="recipeInstructions">
+					<li><b>Boil the meats and fish.</b> Preferably do this the day before so that cooking is easier
+						the next day. Start by boiling the tougher meats then add the less tough ones. Add salt halfway
+						through	the cooking process (about a teaspoon of salt). Reserve the stock of the meat. Also, if
+						using stockfish, be sure to soak it for some hours first and rinse thoroughly before cooking
+						(cook it separately from the other meats/fish and discard of the stock). Stockfish has a very
+						pungent smell so if you aren't used to it you might be shocked at how much it smells. But the
+						taste is amazing in Egusi Soup!
+					</li>
+					<li><b>Grind the egusi.</b> Grind the egusi using the small cup of a blender, coffee grinder or
+						whatever grinding machine you have on hand. Be sure to remove any bad seeds from the egusi
+						before grinding.
+					</li>
+					<li>Place palm oil in a pot and heat up on high for about 3 minutes (do not bleach). Add the onions
+						to the palm oil and saute until fragrant.
+					</li>
+					<li>Add the ground egusi to the palm oil and let it cook in it, while you stir from time to time
+						until the egusi shrinks and starts sticking to the bottom of the pot. About 7 minutes.
+					</li>
+					<li>Add a teaspoon of crayfish and stir then add the cooked meats and their stock. Add the remaining
+						crayfish, crayfish seasoning cube, habanero or scotch bonnet pepper then add water if needed
+						according to desired thickness. Stir well and taste to ensure that seasoning is perfect. Let all
+						the ingredients simmer together for about 5 minutes.
+					</li>
+					<li>Add the greens and let them cook in for about 2 minutes. Turn off the heat - your egusi soup is
+						ready!
+					</li>
+				</ol>
+			</div>
+
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="margin-bottom-40"></div>
+
+		<span class="line margin-bottom-35"></span>
+		<div class="clearfix"></div>
+
+		<div class="margin-top-15"></div>
+			<div class="clearfix"></div>
+			<br>
+
+	</div>
+	</div>
+
+
+<!-- Sidebar
+================================================== -->
+<div class="four columns">
+	<!-- Author Box -->
+	<div class="widget">
+		<div class="author-box">
+			<span class="title">Author</span>
+			<span class="name">Precious <br> Nkeih</span>
+			<span class="contact"><a href="mailto:precious_nkeih@comeshop.com">precious_nkeih@comeshop.com</a></span>
+			<!-- Obtained Precious Nkeih author image from: https://www.preciouscore.com/egusi-soup/ -->
+			<img src="/static/images/precious_nkeih.jpg" alt="Precious Nkeih Image">
+			<!-- Obtained introductory message from: https://www.preciouscore.com/egusi-soup/ -->
+			<p>I am a mama with many mouths to feed. I develop recipes and share real-life stories. Here you will find
+				approachable, insanely delicious, family-friendly recipes.</p>
+		</div>
+	</div>
+
+</div>
+
+
+</div>
+{% endblock pagecontent %}}
+

@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block precontent %}
+<!-- Recipe Background -->
+<div class="recipeBackground">
+	<img src="/static/images/recipeBackground.jpg" alt="" />
+</div>
+{% endblock precontent %}
+
+{% block pagecontent %}
+<!-- Content
+================================================== -->
+<div class="container" itemscope itemtype="http://schema.org/Recipe">
+
+	<!-- Recipe -->
+	<div class="twelve columns">
+	<div class="alignment">
+
+		<!-- Header -->
+		<section class="recipe-header">
+			<div class="title-alignment">
+				<h2>Jollof Fried Rice</h2>
+			</div>
+		</section>
+
+
+		<!-- Slider -->
+		<div class="recipeSlider rsDefault">
+		    <img itemprop="image" class="rsImg" src="/static/images/jollof_fried_rice.jpg" alt="African Cuisine, Jollof fried rice" />
+		</div>
+
+
+		<!-- Details -->
+		<section class="recipe-details" itemprop="nutrition">
+			<ul>
+				<li>Serves: <strong itemprop="recipeYield">6 people</strong></li>
+				<li>Prep Time: <strong itemprop="prepTime">10 minutes</strong></li>
+				<li>Cooking: <strong itemprop="cookTime">1 hours</strong></li>
+				<li>Calories: <strong itemprop="calories">284 cal</strong></li>
+			</ul>
+			<div class="clearfix"></div>
+		</section>
+
+		<!-- Text -->
+		<!-- Description obtained from https://cheflolaskitchen.com/jollof-rice/ -->
+		<p itemprop="description">Jollof rice is a rich and incredibly tasty west African one-pot Meal. It is a very versatile dish, and it is usually made from scratch using Rice, Tomatoes, Pimento peppers, Tomato paste, Scotch bonnet, Onions, Salt, and other spices.</p>
+
+		<!-- Ingredients -->
+		<h3>Ingredients</h3>
+		<!-- Ingredients obtained from http://www.nigerianlazychef.com/2016/12/atadindin-fried-rice-jollof-fried-ricelazychef-christmas/ -->
+		<ul class="ingredients">
+			<li>
+				<input id="check-1" type="checkbox" name="check" value="check-1">
+				<label itemprop="ingredients" for="check-1">A handful chopped or shredded beef</label>
+			</li>
+
+			<li>
+				<input id="check-2" type="checkbox" name="check" value="check-2">
+				<label itemprop="ingredients" for="check-2">1/4 tsp peanut or olive oil</label>
+			</li>
+
+			<li>
+				<input id="check-3" type="checkbox" name="check" value="check-3">
+				<label itemprop="ingredients" for="check-3">1/2 tbsp peanut or olive oil</label>
+			</li>
+
+			<li>
+				<input id="check-4" type="checkbox" name="check" value="check-4">
+				<label itemprop="ingredients" for="check-4">1/4 tsp garlic powder</label>
+			</li>
+
+			<li>
+				<input id="check-5" type="checkbox" name="check" value="check-5">
+				<label itemprop="ingredients" for="check-5">salt to taste, for beef</label>
+			</li>
+
+			<li>
+				<input id="check-6" type="checkbox" name="check" value="check-6">
+				<label itemprop="ingredients" for="check-6">2 tsp butter</label>
+			</li>
+
+			<li>
+				<input id="check-7" type="checkbox" name="check" value="check-7">
+				<label itemprop="ingredients" for="check-7">1/4 tsp black pepper</label>
+			</li>
+
+			<li>
+				<input id="check-8" type="checkbox" name="check" value="check-8">
+				<label itemprop="ingredients" for="check-8">2 1/2 cups cooked rice</label>
+			</li>
+
+			<li>
+				<input id="check-9" type="checkbox" name="check" value="check-9">
+				<label itemprop="ingredients" for="check-9">1 very small onion</label>
+			</li>
+			<li>
+				<input id="check-10" type="checkbox" name="check" value="check-10">
+				<label itemprop="ingredients" for="check-10">3 sprigs thyme(chopped)</label>
+			</li>
+			<li>
+				<input id="check-11" type="checkbox" name="check" value="check-11">
+				<label itemprop="ingredients" for="check-11">2 sprigs green onion</label>
+			</li>
+			<li>
+				<input id="check-12" type="checkbox" name="check" value="check-12">
+				<label itemprop="ingredients" for="check-12">½ cup good quality atadindin sauce(drain oil)(Any spicy Nigerian stew will work)</label>
+			</li>
+			<li>
+				<input id="check-13" type="checkbox" name="check" value="check-13">
+				<label itemprop="ingredients" for="check-13">1-2tbsps peanut or olive oil, for rice</label>
+			</li>
+			<li>
+				<input id="check-14" type="checkbox" name="check" value="check-14">
+				<label itemprop="ingredients" for="check-14">1 cup mixed veggies(chopped green beans, chopped carrots and shredded cabbage)</label>
+			</li>
+			<li>
+				<input id="check-15" type="checkbox" name="check" value="check-15">
+				<label itemprop="ingredients" for="check-15">1/4 tsp freshly grated ginger(optional)</label>
+			</li>
+			<li>
+				<input id="check-16" type="checkbox" name="check" value="check-16">
+				<label itemprop="ingredients" for="check-16">1 handful chopped basil(substitute with scent leaves)</label>
+			</li>
+		</ul>
+
+		<!-- Directions -->
+		<!-- Directions obtained from http://www.nigerianlazychef.com/2016/12/atadindin-fried-rice-jollof-fried-ricelazychef-christmas/ -->
+		<h3>Directions</h3>
+		<ol class="directions" itemprop="recipeInstructions">
+			<li>Season the beef with salt, garlic powder and ¼ tsp oil. Let it marinate for about 10 minutes.</li>
+			<li>Heat a wok with 1/2 tbsp oil. Add the beef and brown. Once brown, remove from the work and set aside. Season the shrimp with black pepper and salt. Add the butter into the same wok used for the beef. Once the butter is melted, add the shrimp and stir fry until pink. Remove and set aside.</li>
+			<li>Add 1tbsp of oil to the wok, chop in the onions and add the thyme and cook until the onion translucent. Add the veggies and stir fry for about 3 minutes.</li>
+			<li>Add the ginger and the atadindin sauce(if the sauce is too thick, loosen with 1tbsp water or stock). Stir fry for about 1-2 minutes; then add the rice, shrimp and beef. Stir fry for about 3-5 minutes. </li>
+			<li>Check for seasonings add the basil or scent leaves and enjoy...</li>
+		</ol>
+
+		<div class="clearfix"></div>
+
+		<div class="margin-bottom-40"></div>
+
+		<div class="clearfix"></div>
+
+		<div class="margin-top-15"></div>
+	</div>
+	</div>
+
+
+<!-- Sidebar
+================================================== -->
+<div class="four columns">
+	<!-- Author Box -->
+	<div class="widget">
+		<div class="author-box">
+			<span class="title">Author</span>
+			<span class="name">Nma <br> Okpara</span>
+			<span class="contact"><a href="mailto:nma_okpara@comeshop.com">nma_okpara@comeshop.com</a></span>
+			<!-- Image for NMA Okapara obtained from: http://www.nigerianlazychef.com/author/nma/ -->
+			<img src="/static/images/nma_okapara.jpg" alt="NMA Okapara Image">
+			<p>This is one of my favorite recipes this year! It’s like a redo of my Jollof fried rice recipe; only with
+				the use of Atadindin. The  beauty of this recipe is that, you can make it with any spicy Nigerian stew.
+				The beauty also lies in the combination of the spicy stew with basil. Ordinarily, if you have had
+				Efirin/basil stew, you will know the deliciousness that it carries with it.</p>
+		</div>
+	</div>
+
+
+</div>
+
+
+</div>
+<!-- Container / End -->
+{% endblock pagecontent %}

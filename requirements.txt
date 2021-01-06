@@ -1,6 +1,3 @@
 gunicorn
 pipenv
-dnspython
-pymongo
-flask
-Jinja2
+django-heroku
