@@ -2,9 +2,48 @@ from django.shortcuts import render
 
 # Create your views here.
 
+import json
+from django.http import JsonResponse
+from .models import Recipe, RecipeIngredient, RecipeInstruction
+
 
 def create(requests):
-    return None
+    try:
+        if requests.method == 'POST':
+            form_data = requests.POST
+            recipe = Recipe.objects.create(
+                name=form_data.get('name', ''),
+                type=form_data.get('type', ''),
+                short_description=form_data.get('recipe_desc', ''),
+                prep_time=form_data.get('prep_time', ''),
+                cook_time=form_data.get('cook_time', ''),
+                calories=form_data.get('calories', ''),
+                portions=form_data.get('portions', ''),
+            )
+
+            for ingredient in json.loads(form_data.get('ingredients'), '[]'):
+                RecipeIngredient.objects.create(
+                    description=ingredient,
+                    recipe=recipe
+                )
+
+            for instruction in json.loads(form_data.get('instructions', ''), '[]'):
+                RecipeInstruction.objects.create(
+                    description=instruction,
+                    recipe=recipe
+                )
+        else:
+            raise ValueError('Invalid HTTP method GET for recipe create')
+
+    except Exception as e:
+        JsonResponse(
+            dict(error=str(e)),
+            status=404
+        )
+
+    return JsonResponse(
+        dict()
+    )
 
 
 def search_recipe(requests):

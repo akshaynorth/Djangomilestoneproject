@@ -1,14 +1,6 @@
 from django.db import models
 
 
-class RecipeIngredient(models.Model):
-    description = models.CharField(max_length=1024)
-
-
-class RecipeInstruction(models.Model):
-    description = models.CharField(max_length=1024)
-
-
 class Recipe(models.Model):
     creation_time = models.DateTimeField()
     name = models.CharField(max_length=255)
@@ -28,6 +20,18 @@ class Recipe(models.Model):
 
     portions = models.CharField(max_length=80)
 
-    ingredients = models.ForeignKey(RecipeIngredient, on_delete=models.CASCADE)
 
-    instructions = models.ForeignKey(RecipeInstruction, on_delete=models.CASCADE)
+class RecipeIngredient(models.Model):
+    recipe = models.ForeignKey(Recipe,
+                               related_name='ingredients',
+                               related_query_name='ingredient',
+                               on_delete=models.CASCADE)
+    description = models.CharField(max_length=1024)
+
+
+class RecipeInstruction(models.Model):
+    recipe = models.ForeignKey(Recipe,
+                               related_name='instructions',
+                               related_query_name='instruction',
+                               on_delete=models.CASCADE)
+    description = models.CharField(max_length=1024)
