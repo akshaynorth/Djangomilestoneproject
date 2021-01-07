@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 import json
 import logging
+import datetime
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
@@ -18,6 +19,7 @@ def create(requests):
         if requests.method == 'POST':
             form_data = requests.POST
             recipe = Recipe.objects.create(
+                creation_time=datetime.datetime.now(),
                 name=form_data.get('name', ''),
                 type=form_data.get('type', ''),
                 short_description=form_data.get('recipe_desc', ''),
