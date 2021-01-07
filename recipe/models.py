@@ -17,7 +17,7 @@ class Recipe(models.Model):
     # TODO: look into putting images into their own model
     picture = models.BinaryField()
 
-    prep_time = models.CharField(max_lenth=80)
+    prep_time = models.CharField(max_length=80)
 
     # TODO: check that the description length is large enough
     short_description = models.TextField(max_length=1024)
