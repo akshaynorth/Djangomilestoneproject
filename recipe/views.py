@@ -6,11 +6,13 @@ import json
 import logging
 
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_protect
 from .models import Recipe, RecipeIngredient, RecipeInstruction
 
 logger = logging.getLogger(__name__)
 
 
+@csrf_protect
 def create(requests):
     try:
         if requests.method == 'POST':
