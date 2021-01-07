@@ -78,9 +78,17 @@ WSGI_APPLICATION = 'recipesite.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': 'jhdjjtqo9w5bzq2t.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        'USER': 'jtndpoeraliq8dzb',
+        'PASSWORD': 'w4lwbecj2g9ctcjo',
+        'NAME': 'h4ld2wfgfq8v9oi4'
     }
 }
 
