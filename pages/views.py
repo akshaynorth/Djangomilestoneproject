@@ -1,8 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-
-from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_protect
 
 
 def index(requests):
@@ -35,6 +34,7 @@ def recipe5(requests):
                   'recipe-page-5.html')
 
 
+@csrf_protect
 def submit_recipe(requests):
     return render(requests,
                   'submit-recipe.html')
