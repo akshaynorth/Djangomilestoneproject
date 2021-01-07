@@ -3,8 +3,12 @@ from django.shortcuts import render
 # Create your views here.
 
 import json
+import logging
+
 from django.http import JsonResponse
 from .models import Recipe, RecipeIngredient, RecipeInstruction
+
+logger = logging.getLogger(__name__)
 
 
 def create(requests):
@@ -36,6 +40,7 @@ def create(requests):
             raise ValueError('Invalid HTTP method GET for recipe create')
 
     except Exception as e:
+        logger.exception('Could not create recipe')
         JsonResponse(
             dict(error=str(e)),
             status=404
