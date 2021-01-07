@@ -28,6 +28,6 @@ class Recipe(models.Model):
 
     portions = models.CharField(max_length=80)
 
-    ingredients = models.ManyToOneRel(RecipeIngredient)
+    ingredients = models.ForeignKey(RecipeIngredient, on_delete=models.CASCADE)
 
-    instructions = models.ManyToOneRel(RecipeInstruction)
+    instructions = models.ForeignKey(RecipeInstruction, on_delete=models.CASCADE)
