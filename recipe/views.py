@@ -43,7 +43,7 @@ def create(requests):
 
     except Exception as e:
         logger.exception('Could not create recipe')
-        JsonResponse(
+        return JsonResponse(
             dict(error=str(e)),
             status=404
         )
