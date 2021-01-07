@@ -29,13 +29,13 @@ def create(requests):
                 portions=form_data.get('portions', ''),
             )
 
-            for ingredient in json.loads(form_data.get('ingredients'), '[]'):
+            for ingredient in json.loads(form_data.get('ingredients', '[]')):
                 RecipeIngredient.objects.create(
                     description=ingredient,
                     recipe=recipe
                 )
 
-            for instruction in json.loads(form_data.get('instructions', ''), '[]'):
+            for instruction in json.loads(form_data.get('instructions', '[]')):
                 RecipeInstruction.objects.create(
                     description=instruction,
                     recipe=recipe
