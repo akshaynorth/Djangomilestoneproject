@@ -1,4 +1,4 @@
 gunicorn
 pipenv
-MySQLdb
+mysqlclient
 django-heroku
