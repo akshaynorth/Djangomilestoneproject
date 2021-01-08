@@ -79,6 +79,9 @@
                 contentType: false,
                 cache: false,
                 success: function(response) {
+                    let newDoc = document.open("text/html", "replace")
+                    newDoc.write(response)
+                    newDoc.close()
                     console.log('Recipe edit succeeded')
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
