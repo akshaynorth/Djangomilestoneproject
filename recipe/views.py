@@ -113,7 +113,7 @@ def search_recipe(requests):
 
             return render(
                 'pages/submit-recipe.html',
-                recipe_list=recipes
+                context=dict(recipe_list=recipes)
             )
 
         else:
