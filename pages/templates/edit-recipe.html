@@ -53,7 +53,8 @@
 			<div class="select">
 				<h4>Recipe Type</h4>
 				<select id="recipe_type" data-placeholder="Choose Category" class="chosen-select-no-single">
-					{% for recipe_type in ['All', 'Breakfast', 'Lunch', 'Beverages', 'Appetizers', 'Soups', 'Salads', 'Beef', 'Poultry', 'Pork', 'Seafood', 'Vegetarian', 'Vegetables', 'Desserts', 'Canning', 'Breads', 'Holidays'] %}
+					{% with recipe_type_list=['All', 'Breakfast', 'Lunch', 'Beverages', 'Appetizers', 'Soups', 'Salads', 'Beef', 'Poultry', 'Pork', 'Seafood', 'Vegetarian', 'Vegetables', 'Desserts', 'Canning', 'Breads', 'Holidays'] %}
+					{% for recipe_type in recipe_type_list %}
 						{% if recipe.type == recipe_type %}
 							<!-- Have the recipe type for the recipe be displayed as the selected value -->
 							<option value="{{recipe_type}}" selected>{{recipe_type}}</option>
@@ -61,6 +62,7 @@
 							<option value="{{recipe_type}}">{{recipe_type}}</option>
 						{% endif %}
 					{% endfor %}
+					{% endwith %}
 				</select>
 			</div>
 
