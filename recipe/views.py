@@ -104,9 +104,12 @@ def search_recipe(requests):
                             )
 
             if ingredient_query_args:
-                recipes = Recipe.objects.filter(ingredient_query_args, query_dict)
+                recipes = Recipe.objects.filter(
+                    *ingredient_query_args,
+                    **query_dict
+                )
             else:
-                recipes = Recipe.objects.filter(query_dict)
+                recipes = Recipe.objects.filter(**query_dict)
 
             return render(
                 'pages/submit-recipe.html',
