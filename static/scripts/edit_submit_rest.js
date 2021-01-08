@@ -116,6 +116,7 @@
             $.ajax(
             {
                 type: 'POST',
+                headers: {'X-CSRFToken': getCookie('csrftoken')},
                 url: '/recipe/edit_submit/' + $('#obj_id').val(),
                 data: form_data,
                 processData: false,
