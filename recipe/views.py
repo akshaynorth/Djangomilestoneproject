@@ -190,7 +190,7 @@ def edit_recipe(request, recipe_id):
 def view_recipe(requests, recipe_id):
     return None
 
-
+@csrf_protect
 def submit_edit_recipe(request, recipe_id):
     try:
         if request.method == 'POST':
@@ -200,7 +200,7 @@ def submit_edit_recipe(request, recipe_id):
 
             recipe.name = form_data.get('name', recipe.name)
             recipe.type = form_data.get('type', recipe.type)
-            recipe.short_description = form_data.get('short_description', recipe.short_description)
+            recipe.short_description = form_data.get('recipe_desc', recipe.short_description)
             recipe.prep_time = form_data.get('prep_time', recipe.prep_time)
             recipe.cook_time = form_data.get('cook_time', recipe.cook_time)
             recipe.calories = form_data.get('calories', recipe.calories)
