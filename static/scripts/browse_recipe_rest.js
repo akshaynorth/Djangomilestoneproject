@@ -37,6 +37,7 @@
             $.ajax(
             {
                 type: 'POST',
+                headers: {'X-CSRFToken': getCookie('csrftoken')},
                 url: '/recipe/search',
                 data: form_data,
                 processData: false,
