@@ -103,15 +103,15 @@ def search_recipe(requests):
                                 Q(ingredient__icontains=ingredient),
                             )
 
-                if ingredient_query_args:
-                    recipes = Recipe.objects.filter(ingredient_query_args, query_dict)
-                else:
-                    recipes = Recipe.objects.filter(query_dict)
+            if ingredient_query_args:
+                recipes = Recipe.objects.filter(ingredient_query_args, query_dict)
+            else:
+                recipes = Recipe.objects.filter(query_dict)
 
-                return render(
-                    'pages/submit-recipe.html',
-                    recipe_list=recipes
-                )
+            return render(
+                'pages/submit-recipe.html',
+                recipe_list=recipes
+            )
 
         else:
             raise ValueError('Only HTTP POST supported for search recipes')
