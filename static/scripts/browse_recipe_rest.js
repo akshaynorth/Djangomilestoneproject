@@ -102,6 +102,7 @@
             $.ajax(
             {
                 type: 'POST',
+                headers: {'X-CSRFToken': getCookie('csrftoken')},
                 // Obtain the href value that contains the endpoint to the recipe object to be deleted
                 // (e.g. /recipe/delete/<obj_id>
                 url: $(delete_link_obj).attr('href'),
