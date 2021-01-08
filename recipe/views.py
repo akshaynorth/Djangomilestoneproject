@@ -187,8 +187,40 @@ def edit_recipe(request, recipe_id):
     raise Http404('An unexpected error has occurred')
 
 
-def view_recipe(requests, recipe_id):
-    return None
+@csrf_protect
+def view_recipe(request, recipe_id):
+    try:
+        if request.method == 'GET':
+            recipe = Recipe.objects.get(id=recipe_id)
+
+            recipe_dict = {
+                'id': recipe.id,
+                'name': recipe.name,
+                'type': recipe.type,
+                'prep_time': recipe.prep_time,
+                'cook_time': recipe.cook_time,
+                'calories': recipe.calories,
+                'portions': recipe.portions,
+                'short_description': recipe.short_description,
+                'ingredients': list(recipe.ingredients.values_list('description', flat=True)),
+                'instructions': list(recipe.instructions.values_list('description', flat=True)),
+            }
+            return render(
+                request,
+                'recipe-view.html',
+                context=dict(
+                    recipe=recipe_dict,
+                )
+            )
+        else:
+            raise ValueError('Unsupported HTTP method for edit recipe: {}'.format(request.method))
+    except Exception as e:
+        logger.exception('Could not retrieve recipe information')
+        raise Http404('Could not retrieve recipe information: {}'.format(str(e)))
+
+    logger.error('Edit recipe does not return a response')
+    raise Http404('An unexpected error has occurred in viewing recipe')
+
 
 @csrf_protect
 def submit_edit_recipe(request, recipe_id):
