@@ -184,7 +184,7 @@ def edit_recipe(request, recipe_id):
         raise Http404('Could not retrieve recipe information: {}'.format(str(e)))
 
     logger.error('Edit recipe does not return a response')
-    raise Http404('Am unexpected error has occurred')
+    raise Http404('An unexpected error has occurred')
 
 
 def view_recipe(requests, recipe_id):
@@ -231,6 +231,8 @@ def submit_edit_recipe(request, recipe_id):
                 )
 
             recipe.save()
+
+            return JsonResponse(dict())
 
         else:
             raise ValueError('Request method not supported for submit edit recipe: {}'.format(request.method))
