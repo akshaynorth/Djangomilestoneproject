@@ -190,8 +190,56 @@ def view_recipe(requests, recipe_id):
     return None
 
 
-def submit_recipe(requests, recipe_id):
-    return None
+def submit_edit_recipe(request, recipe_id):
+    try:
+        if request.method == 'POST':
+            recipe = Recipe.objects.get(id=recipe_id)
+
+            form_data = request.POST
+
+            recipe.name = form_data.get('name', recipe.name)
+            recipe.type = form_data.get('type', recipe.type)
+            recipe.short_description = form_data.get('short_description', recipe.short_description)
+            recipe.prep_time = form_data.get('prep_time', recipe.prep_time)
+            recipe.cook_time = form_data.get('cook_time', recipe.cook_time)
+            recipe.calories = form_data.get('calories', recipe.calories)
+            recipe.portions = form_data.get('portions', recipe.portions)
+
+            if request.FILES.get('files', None):
+                uploaded_file = request.FILES.get('file')
+
+                image_buffer = bytearray()
+                for file_chunk in uploaded_file.chunks(2**20):
+                    image_buffer += file_chunk
+
+                recipe.picture = image_buffer
+
+            recipe.ingredients.all().delete()
+            recipe.instructions.all().delete()
+
+            for ingredient in json.loads(form_data.get('ingredients', '[]')):
+                RecipeIngredient.objects.create(
+                    description=ingredient,
+                    recipe=recipe
+                )
+
+            for instruction in json.loads(form_data.get('instructions', '[]')):
+                RecipeInstruction.objects.create(
+                    description=instruction,
+                    recipe=recipe
+                )
+
+            recipe.save()
+
+        else:
+            raise ValueError('Request method not supported for submit edit recipe: {}'.format(request.method))
+
+    except Exception as e:
+        logger.exception('Could not submit edits to recipe: {}'.format(str(e)))
+        raise Http404('Could not submit edit to recipe')
+
+    logger.error('The edit recipe view does not return a value')
+    raise Http404('An unexpected error encountered in submit edit recipe action')
 
 
 def delete_recipe(requests, recipe_id):
