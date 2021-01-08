@@ -117,9 +117,9 @@ def search_recipe(requests):
             raise ValueError('Only HTTP POST supported for search recipes')
     except Exception as e:
         logger.exception('Could not complete search for recipe')
-        return Http404('Could not search recipe: {}'.format(str(e)))
+        raise Http404('Could not search recipe: {}'.format(str(e)))
 
-    return Http404('Unexpected error has occurred while searching for recipe')
+    raise Http404('Unexpected error has occurred while searching for recipe')
 
 
 def download_recipe_image(requests, recipe_id):
