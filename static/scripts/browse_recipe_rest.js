@@ -61,6 +61,35 @@
 	    }
 
         /**
+        * Issues an edit recipe RESTFul request
+        *
+        * @param {Object} edit_link_obj: the DOM object that refers to the edit link on the recipe page
+        */
+        function edit_recipe(edit_link_obj) {
+            // Send the delete POST request to the serer
+            $.ajax(
+            {
+                type: 'GET',
+                headers: {'X-CSRFToken': getCookie('csrftoken')},
+                // Obtain the href value that contains the endpoint to the recipe object to be edited
+                // (e.g. /recipe/edit/<obj_id>)
+                url: $(edit_link_obj).attr('href'),
+                data: {},
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(response) {
+                    console.log('Recipe edit succeeded')
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('Recipe edit failed: ' + errorThrown + ' textStatus = ' + textStatus)
+                    alert('Could not edit recipe. Try again later.')
+                }
+            }
+            )
+        }
+
+        /**
         * Issues a delete recipe RESTFul request
         * @param {Object} delete_link_obj: the DOM object that refers to the delete link on the recipe page
         */
@@ -95,6 +124,12 @@
         $('#search_recipe_btn').click(function (e) {
             e.preventDefault()
             submit_recipe_search()
+        })
+
+        // Attach the edit recipe function to the edit link of each recipe
+        $('[id^=edit_recipe]').click(function(e) {
+            e.preventDefault()
+            edit_recipe(this)
         })
 
         // Attach the delete recipe function to the delete link of each recipe

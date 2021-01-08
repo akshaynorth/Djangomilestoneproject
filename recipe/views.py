@@ -152,7 +152,7 @@ def download_recipe_image(request, recipe_id):
 @csrf_protect
 def edit_recipe(request, recipe_id):
     try:
-        if request.method == 'POST':
+        if request.method == 'GET':
             recipe = Recipe.objects.get(id=recipe_id)
 
             recipe_dict = {
