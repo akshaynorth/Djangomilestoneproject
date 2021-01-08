@@ -6,7 +6,6 @@ class Recipe(models.Model):
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=80)
 
-    # TODO: look into putting images into their own model
     picture = models.BinaryField()
 
     prep_time = models.CharField(max_length=80)

@@ -29,6 +29,18 @@ def create(requests):
                 portions=form_data.get('portions', ''),
             )
 
+            if requests.FILES.get('file', None):
+                uploaded_file = requests.FILES.get('file')
+
+                # Upload file in 1 MB chunks
+                image_buffer = bytearray()
+                for file_chunk in uploaded_file.chunks(2**20):
+                    image_buffer.append(file_chunk)
+
+                recipe.picture = image_buffer
+
+                recipe.save()
+
             for ingredient in json.loads(form_data.get('ingredients', '[]')):
                 RecipeIngredient.objects.create(
                     description=ingredient,
