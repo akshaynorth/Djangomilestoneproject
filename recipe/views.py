@@ -5,9 +5,10 @@ from django.shortcuts import render
 import json
 import logging
 import datetime
+import io
 
-from django.http import JsonResponse, Http404
-from django.views.decorators.csrf import csrf_protect
+from django.http import JsonResponse, Http404, FileResponse
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.db.models import Q
 from .models import Recipe, RecipeIngredient, RecipeInstruction
 
@@ -126,8 +127,26 @@ def search_recipe(request):
     raise Http404('Unexpected error has occurred while searching for recipe')
 
 
-def download_recipe_image(requests, recipe_id):
-    return None
+@csrf_exempt
+def download_recipe_image(request, recipe_id):
+    try:
+        if request.method == 'GET':
+            # Obtain the image from the database
+            recipe = Recipe.objects.get(id=recipe_id)
+
+            image_data = recipe.picture
+
+            return FileResponse(
+                io.BytesIO(image_data)
+            )
+        else:
+            raise ValueError('HTTP method POST not supported for image download')
+
+    except Exception as e:
+        logger.exception('Could not download recipe image')
+        raise Http404('Could not download image for recipe: {}'.format(e))
+
+    raise Http404('Unexpected error has occurred')
 
 
 def edit_recipe(requests, recipe_id):
