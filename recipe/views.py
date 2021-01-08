@@ -174,7 +174,7 @@ def edit_recipe(request, recipe_id):
         else:
             raise ValueError('Unsupported HTTP method for edit recipe: {}'.format(request.method))
     except Exception as e:
-        logger.execption('Could not retrieve recipe information')
+        logger.exception('Could not retrieve recipe information')
         raise Http404('Could not retrieve recipe information: {}'.format(str(e)))
 
     logger.error('Edit recipe does not return a response')
