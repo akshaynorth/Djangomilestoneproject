@@ -40,6 +40,7 @@ def submit_recipe(requests):
                   'submit-recipe.html')
 
 
+@csrf_protect
 def search(requests):
     return render(requests,
                   'browse-recipes.html')

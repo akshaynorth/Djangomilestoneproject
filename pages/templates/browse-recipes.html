@@ -145,7 +145,9 @@
 	<!--
 		Display the list of recipes found. The recipe_list variable is passed in the context with the list of recipes
 	-->
-{% comment %}
+
+{% csrf_token %}
+
 {% if recipe_list %}
 <!-- Container -->
 <div class="container">
@@ -169,8 +171,8 @@
 
 				<!-- Thumbnail -->
 				<div class="thumbnail-holder">
-					<a href="/recipe/view/{{recipe._id}}">
-						<img src="/recipe/image/{{recipe._id}}" alt=""/>
+					<a href="/recipe/view/{{recipe.id}}">
+						<img src="/recipe/image/{{recipe.id}}" alt=""/>
 						<div class="hover-cover"></div>
 						<div class="hover-icon">View Recipe</div>
 					</a>
@@ -183,12 +185,12 @@
 						<i class="fa fa-clock-o"></i>{{recipe.prep_time}}</div>
 					<div class="clearfix"></div>
 					<div class="recipe-meta">
-						<a id="edit_recipe_{{loop.index}}" href="/recipe/edit/{{recipe._id}}">
+						<a id="edit_recipe_{{loop.index}}" href="/recipe/edit/{{recipe.id}}">
 							<img src="/static/images/pencil.svg" alt="Edit recipe icon" />
 						</a>
 					</div>
 					<div class="recipe-meta">
-						<a id="delete_recipe_{{loop.index}}" href="/recipe/delete/{{recipe._id}}">
+						<a id="delete_recipe_{{loop.index}}" href="/recipe/delete/{{recipe.id}}">
 							<img src="/static/images/trash.svg" alt="Delete recipe icon"/>
 						</a>
 					</div>
@@ -204,8 +206,6 @@
 </div>
 
 {% endif %}
-
-{% endcomment %}
 
 {% endblock pagecontent %}
 

@@ -68,6 +68,7 @@ def create(requests):
     )
 
 
+@csrf_protect
 def search_recipe(requests):
     try:
         if requests.method == 'POST':
@@ -109,7 +110,7 @@ def search_recipe(requests):
 
                 return render(
                     'pages/submit-recipe.html',
-                    recipes_list=recipes
+                    recipe_list=recipes
                 )
 
         else:
