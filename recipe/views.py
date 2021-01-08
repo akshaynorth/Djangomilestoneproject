@@ -35,7 +35,7 @@ def create(requests):
                 # Upload file in 1 MB chunks
                 image_buffer = bytearray()
                 for file_chunk in uploaded_file.chunks(2**20):
-                    image_buffer.append(file_chunk)
+                    image_buffer += file_chunk
 
                 recipe.picture = image_buffer
 
