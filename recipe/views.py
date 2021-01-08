@@ -156,6 +156,7 @@ def edit_recipe(request, recipe_id):
             recipe = Recipe.objects.get(id=recipe_id)
 
             recipe_dict = {
+                'id': recipe.id,
                 'name': recipe.name,
                 'type': recipe.type,
                 'prep_time': recipe.prep_time,
