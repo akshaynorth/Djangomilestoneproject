@@ -1,0 +1,221 @@
+
+
+{% extends "base.html" %}
+
+{% block precontent %}
+<section id="titlebar">
+	<!-- Container -->
+	<div class="container">
+
+		<div class="eight columns">
+			<h2>Edit Recipe</h2>
+		</div>
+
+		<div class="eight columns">
+			<nav id="breadcrumbs">
+				<ul>
+					<li>You are here:</li>
+					<li><a href="#">Home</a></li>
+					<li>Edit Recipe</li>
+				</ul>
+			</nav>
+		</div>
+
+	</div>
+	<!-- Container / End -->
+</section>
+{% endblock precontent %}
+
+
+{% block pagecontent %}
+{% csrf_token %}
+<div class="container">
+	<!--
+	This section was altered from the initial site template to have recipe fields populated with data. The data is
+	obtained from the database and is passed in the context via the recipe variable
+	-->
+	<div class="sixteen columns">
+		<div class="submit-recipe-form">
+
+			<input type="hidden" id="obj_id" name="obj_id" value="{{recipe.id}}">
+			<!-- Recipe Label -->
+			<h4>Recipe Label</h4>
+			<nav class="title">
+				<input id="recipe_label" class="search-field" type="text" placeholder="" value="{{recipe.name}}"/>
+			</nav>
+			<div class="clearfix"></div>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Recipe Type -->
+			<div class="select">
+				<h4>Recipe Type</h4>
+				<select id="recipe_type" data-placeholder="Choose Category" class="chosen-select-no-single">
+					{% for recipe_type in ['All', 'Breakfast', 'Lunch', 'Beverages', 'Appetizers', 'Soups', 'Salads', 'Beef', 'Poultry', 'Pork', 'Seafood', 'Vegetarian', 'Vegetables', 'Desserts', 'Canning', 'Breads', 'Holidays'] %}
+						{% if recipe.type == recipe_type %}
+							<!-- Have the recipe type for the recipe be displayed as the selected value -->
+							<option value="{{recipe_type}}" selected>{{recipe_type}}</option>
+						{% else %}
+							<option value="{{recipe_type}}">{{recipe_type}}</option>
+						{% endif %}
+					{% endfor %}
+				</select>
+			</div>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Recipe Short Description -->
+			<h4>Recipe Short Description</h4>
+			<textarea
+					id="recipe_desc"
+					class="WYSIWYG"
+					name="summary" cols="40" rows="3" spellcheck="true">{{recipe.short_description}}
+			</textarea>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Recipe Picture -->
+			<h4>Upload Recipe Picture</h4>
+
+			<!--
+			The recipe photo is optional. The file name is displayed only when the user selects a new image to be
+			updated for the recipe via the Upload button
+			-->
+			<ul  class="recipe-gallery">
+				<li id="upload_picture_filename">No picture uploaded yet</li>
+			</ul>
+
+			<label class="upload-btn">
+			    <input type="file" />
+			    <i class="fa fa-upload"></i> Upload
+			</label>
+
+
+			<div class="clearfxix"></div>
+			<div class="margin-top-15"></div>
+
+
+			<!-- Ingredient List -->
+			<fieldset class="addrecipe-cont" name="ingredients">
+				<h4>Ingredient List:</h4>
+
+				<table id="ingredients-sort">
+					<!--
+					Display the list of all ingredients associated with the recipe. Each recipe ingredient is displayed
+					in its own row inside a table
+					-->
+					{% for recipe_ingredient in recipe.ingredients %}
+					<tr class="ingredients-cont ing">
+						<td class="icon"><i class="fa fa-arrows"></i></td>
+						<td>
+							<input name="ingredient_name" tabindex="{{loop.index}}" type="text"
+								   placeholder="Name of ingredient" value="{{recipe_ingredient}}"/>
+						</td>
+						<td class="action"><a title="Delete" class="delete" href="#"><i class="fa fa-remove"></i></a> </td>
+					</tr>
+					{% endfor %}
+
+				</table>
+
+				<!-- Although this is a hyperlink it is presented to the user as a button to add an ingredient -->
+				<a href="#" class="button color add_ingredient">Add new ingredient</a>
+			</fieldset>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Preparation Instructions -->
+			<h4>Preparation Instructions</h4>
+
+			<fieldset class="addrecipe-cont" name="instructions">
+				<h4>Instructions List:</h4>
+
+				<table id="instructions-sort">
+					<!--
+					Display list of instructions for the recipe. Each instruction is displayed on its own row inside the
+					recipe instruction table
+					-->
+					{% for recipe_instruction in recipe.instructions %}
+					<tr class="ingredients-cont ing">
+						<td class="icon"><i class="fa fa-arrows"></i></td>
+						<td>
+							<input name="instruction_desc" tabindex="7" type="text" placeholder="Recipe instruction"
+								   value="{{recipe_instruction}}" />
+						</td>
+						<td class="action"><a title="Delete" class="delete" href="#"><i class="fa fa-remove"></i></a> </td>
+					</tr>
+					{% endfor %}
+				</table>
+
+				<a href="#" class="button color add_ingredient">Add new instruction</a>
+			</fieldset>
+
+
+			<div class="margin-top-25 clearfix"></div>
+
+			<!-- Additional Cooking Information -->
+			<h4>Additional Cooking Information</h4>
+
+			<fieldset class="additional-info">
+				<table>
+				<tr class="ingredients-cont">
+					<td class="label"><label for="prep_time">Preparation Time</label></td>
+					<td><input id="prep_time" type="text" value="{{recipe.prep_time}}"/></td>
+				</tr>
+
+				<tr class="ingredients-cont">
+					<td class="label"><label for="cook_time">Cooking Time</label></td>
+					<td><input id="cook_time" type="text" value="{{recipe.cook_time}}"/></td>
+				</tr>
+				<tr class="ingredients-cont">
+					<td class="label"><label for="portions">Portions</label></td>
+					<td><input id="portions" type="text" value="{{recipe.portions}}"/></td>
+				</tr>
+				</table>
+			</fieldset>
+
+
+			<div class="margin-top-25"></div>
+
+
+			<!-- Nutrition Facts -->
+			<h4>Nutrition Facts</h4>
+
+			<fieldset class="additional-info">
+				<table>
+
+				<tr class="ingredients-cont">
+					<td class="label"><label for="calories">Calories</label></td>
+					<td><input id="calories" type="text" value="{{recipe.calories}}"/></td>
+
+				</tr>
+				</table>
+			</fieldset>
+
+			<div class="margin-top-30"></div>
+			<a href="" id="submit_recipe_btn" class="button color big">Submit Updated Cooking Directions</a>
+		</div>
+	</div>
+</div>
+<!-- Container / End -->
+
+{% endblock pagecontent %}
+
+{% block extra_javascript %}
+<!-- WYSIWYG Editor -->
+<script src="/static/scripts/jquery.sceditor.bbcode.min.js"></script>
+<script src="/static/scripts/jquery.sceditor.js"></script>
+
+<!--
+ Recipe Edit RESTFul. This was added from the initial site template to enable the submission of the recipe to the
+ defined recipe submit RESTFul API Flask endpoint
+ -->
+<script src="/static/scripts/edit_submit_rest.js"></script>
+{% endblock extra_javascript %}
