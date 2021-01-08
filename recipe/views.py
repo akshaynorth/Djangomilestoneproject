@@ -169,7 +169,12 @@ def edit_recipe(request, recipe_id):
             return render(
                 request,
                 'edit-recipe.html',
-                context=dict(recipe=recipe_dict)
+                context=dict(
+                    recipe=recipe_dict,
+                    recipe_type_list=['All', 'Breakfast', 'Lunch', 'Beverages', 'Appetizers', 'Soups', 'Salads', 'Beef',
+                                      'Poultry', 'Pork', 'Seafood', 'Vegetarian', 'Vegetables', 'Desserts', 'Canning',
+                                      'Breads', 'Holidays']
+                )
             )
         else:
             raise ValueError('Unsupported HTTP method for edit recipe: {}'.format(request.method))
