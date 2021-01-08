@@ -15,10 +15,10 @@ logger = logging.getLogger(__name__)
 
 
 @csrf_protect
-def create(requests):
+def create(request):
     try:
-        if requests.method == 'POST':
-            form_data = requests.POST
+        if request.method == 'POST':
+            form_data = request.POST
             recipe = Recipe.objects.create(
                 creation_time=datetime.datetime.now(),
                 name=form_data.get('name', ''),
@@ -30,8 +30,8 @@ def create(requests):
                 portions=form_data.get('portions', ''),
             )
 
-            if requests.FILES.get('file', None):
-                uploaded_file = requests.FILES.get('file')
+            if request.FILES.get('file', None):
+                uploaded_file = request.FILES.get('file')
 
                 # Upload file in 1 MB chunks
                 image_buffer = bytearray()
@@ -69,10 +69,10 @@ def create(requests):
 
 
 @csrf_protect
-def search_recipe(requests):
+def search_recipe(request):
     try:
-        if requests.method == 'POST':
-            form_data = requests.POST
+        if request.method == 'POST':
+            form_data = request.POST
 
             query_dict = dict()
 
@@ -112,6 +112,7 @@ def search_recipe(requests):
                 recipes = Recipe.objects.filter(**query_dict)
 
             return render(
+                request,
                 'pages/submit-recipe.html',
                 context=dict(recipe_list=recipes)
             )
