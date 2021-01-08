@@ -245,5 +245,20 @@ def submit_edit_recipe(request, recipe_id):
     raise Http404('An unexpected error encountered in submit edit recipe action')
 
 
-def delete_recipe(requests, recipe_id):
-    return None
+@csrf_protect
+def delete_recipe(request, recipe_id):
+    try:
+        if request.method == 'POST':
+            Recipe.objects.get(id=recipe_id).delete()
+
+            return JsonResponse(dict())
+        else:
+            raise ValueError('Request method not supported for delete recipe: {}'.format(request.method))
+
+    except Exception as e:
+        logger.exception('Could not delete recipe')
+        raise Http404()
+
+    logger.error('The delete recipe view does not return a value')
+
+    raise Http404('An unexpected error encountered in delete recipe action')
