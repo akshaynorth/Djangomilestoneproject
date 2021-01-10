@@ -116,7 +116,7 @@ def search_recipe(request):
                 else:
                     for ingredient in ingredient_list:
                         if ingredient_query_args:
-                            ingredient_query_args = ingredient_query_args[0] & Q(ingredient_icontains=ingredient)
+                            ingredient_query_args = (ingredient_query_args[0] & Q(ingredient_icontains=ingredient), )
 
                         else:
                             ingredient_query_args = (
