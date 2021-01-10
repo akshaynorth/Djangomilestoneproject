@@ -24,7 +24,7 @@ the following steps:
 9. On the Heroku dashboard, go to the *Connect to GitHub* section and type the GitHub repository name then
    click the **Search** button
 
-10. On the repository information show right below the **Search** button, click on the **Connect** buton
+10. On the repository information show right below the **Search** button, click on the **Connect** button
 
 11. On the *Automated Deploy* section select the *master* branch as the **Choose a branch to deploy** field selection
 
@@ -53,6 +53,14 @@ To deploy the add-on follow these steps:
 6. The **JawsDB MySQL** service appears in the Add-ons section, click on the open icon of the service to open JawsDB
    MySQL console
    
-7. On the **JawsDB MySQL** console, take note of the following field values: Host, Username, Password and Database
+7. On the **JawsDB MySQL** console, take note of the following field values: Connection String, Host, Username, Password
+   and Database
 
-8. Use the values obtained for the `DATABASES` dictionary in the `settings.py` for the Django project
+8. On the Heroku dashboard, navigate to the *Settings* tab, then scroll down to the *Config Vars* section
+
+9. Click on **Reveal Config Vars**
+
+10. On the *Key* field enter`DATABASE_URL`
+
+11. On the *Value* field enter the database url obtained from the **JawsDB MySQL** console *Connection String*, then 
+    click on the **Add** button
