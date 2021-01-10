@@ -203,8 +203,8 @@
 
 				<!-- Thumbnail -->
 				<div class="thumbnail-holder">
-					<a href="/recipe/view/{recipe._id}">
-						<img src="/recipe/image/{recipe._id}" alt=""/>
+					<a href="/recipe/view/{recipe.id}">
+						<img src="/recipe/image/{recipe.id}" alt=""/>
 						<div class="hover-cover"></div>
 						<div class="hover-icon">View Recipe</div>
 					</a>
@@ -212,7 +212,7 @@
 
 				<!-- Content -->
 				<div class="recipe-box-content">
-					<h3><a href="/recipe/view/{recipe._id}">{{recipe.name}}</a></h3>
+					<h3><a href="/recipe/view/{recipe.id}">{{recipe.name}}</a></h3>
 
 					<div class="recipe-meta"><i class="fa fa-clock-o"></i>{{recipe.prep_time}}</div>
 
