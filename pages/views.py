@@ -4,11 +4,6 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 
 
-def index(requests):
-    return render(requests,
-                  'index.html')
-
-
 def recipe1(requests):
     return render(requests,
                   'recipe-page-1.html')

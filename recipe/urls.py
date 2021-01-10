@@ -4,6 +4,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('', views.index, name='index'),
+    path('index.html', views.index, name='home'),
     path('create', views.create, name='create'),
     path('search', views.search_recipe, name='search_recipe'),
     path('image/<int:recipe_id>', views.download_recipe_image, name='download_recipe_image'),

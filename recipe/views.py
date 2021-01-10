@@ -15,6 +15,24 @@ from .models import Recipe, RecipeIngredient, RecipeInstruction
 logger = logging.getLogger(__name__)
 
 
+def index(request):
+    recipes = []
+    try:
+        if request.method == 'GET':
+            # Limit the most recently added recipes up to 10
+            if Recipe.objects.first():
+                recipes = list(Recipe.objects.all().order_by('creation_time')[:10])
+        else:
+            raise ValueError('HTTP method not supported for home pages: {}'.format(request.method))
+    except Exception as e:
+        logger.exception('Could not render home page')
+        Http404('Could not render home page: {}'.format(str(e)))
+
+    return render(request,
+                  'index.html',
+                  recipe_list=recipes)
+
+
 @csrf_protect
 def create(request):
     try:
