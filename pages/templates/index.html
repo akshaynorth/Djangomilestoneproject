@@ -194,7 +194,7 @@
 			<!--
 				This section was altered from the initial template to render the most recently added recipes to the
 				MongoDB database. The recipe image is obtained from an endpoint dedicated to obtain recipe images.
-				The recipe details can be viewed by clicking on a recipe thumbnail. Proceed to click on tnhe link
+				The recipe details can be viewed by clicking on a recipe thumbnail. Proceed to click on the link
 				of the recipe image and a new page is displayed with that recipe details.
 			-->
 			{% for recipe in recipe_list %}
@@ -203,8 +203,8 @@
 
 				<!-- Thumbnail -->
 				<div class="thumbnail-holder">
-					<a href="/recipe/view/{recipe.id}">
-						<img src="/recipe/image/{recipe.id}" alt=""/>
+					<a href="/recipe/view/{{recipe.id}}">
+						<img src="/recipe/image/{{recipe.id}}" alt=""/>
 						<div class="hover-cover"></div>
 						<div class="hover-icon">View Recipe</div>
 					</a>
@@ -212,7 +212,7 @@
 
 				<!-- Content -->
 				<div class="recipe-box-content">
-					<h3><a href="/recipe/view/{recipe.id}">{{recipe.name}}</a></h3>
+					<h3><a href="/recipe/view/{{recipe.id}}">{{recipe.name}}</a></h3>
 
 					<div class="recipe-meta"><i class="fa fa-clock-o"></i>{{recipe.prep_time}}</div>
 
