@@ -30,7 +30,8 @@ def index(request):
 
     return render(request,
                   'index.html',
-                  recipe_list=recipes)
+                  context=dict(recipe_list=recipes)
+                  )
 
 
 @csrf_protect
