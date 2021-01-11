@@ -130,6 +130,8 @@ def search_recipe(request):
                     # ingredients found is assumed to be equal to the number of searched ingredients. This
                     # assumption presumes each ingredient is stored in a separate row within the recipe ingredient
                     # table.
+                    print('ingredient query: {}'.format(ingredient_query_args))
+
                     recipes_with_ings_qs = Recipe.objects.filter(
                         *ingredient_query_args
                     ).annotate(
