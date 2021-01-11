@@ -105,6 +105,9 @@ def search_recipe(request):
                 )
 
             ingredient_list = form_data.get('ingredient_list', None)
+
+            print('ingredient list: {}'.format(ingredient_list))
+
             ingredient_query_args = None
 
             if ingredient_list:
