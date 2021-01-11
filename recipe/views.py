@@ -124,6 +124,7 @@ def search_recipe(request):
                                 Q(ingredient__description__icontains=ingredient),
                             )
 
+            logger.debug('ingredient_query = '.format(ingredient_query_args))
             if ingredient_query_args:
                 recipes = Recipe.objects.filter(
                     *ingredient_query_args,
