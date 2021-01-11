@@ -146,6 +146,14 @@ def search_recipe(request):
                         query_dict.update(
                             dict(id__in=recipes_with_ings_qs)
                         )
+                    else:
+                        # Add a bogus ID that will result in no recipes found as no recipes were found matching all the
+                        # ingredients
+                        query_dict.update(
+                            dict(id__in=[-1])
+                        )
+
+            print('final query: {}'.format(query_dict))
 
             recipes = Recipe.objects.filter(**query_dict)
 
