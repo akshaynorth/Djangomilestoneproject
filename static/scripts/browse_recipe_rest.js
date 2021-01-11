@@ -30,7 +30,7 @@
                 // Add both the ingredient search type, (all or any of the ingredients provided)
                 form_data.append('ingredient_search_type', ingredient_search_type)
                 // Add the ingredient to be searched for as a list object to the request
-                form_data.append('ingredient_list', JSON.stringify(ingredient_list.split(',')))
+                form_data.append('ingredient_list', JSON.stringify(ingredient_list))
             }
 
             // Send a POST request to the server to the search endpoint
