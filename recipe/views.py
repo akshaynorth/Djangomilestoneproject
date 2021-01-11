@@ -13,6 +13,7 @@ from django.db.models import Q
 from .models import Recipe, RecipeIngredient, RecipeInstruction
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 
 def index(request):
