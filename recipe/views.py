@@ -112,46 +112,47 @@ def search_recipe(request):
 
             if ingredient_list:
                 ingredient_search_type = form_data.get('ingredient_search_type', None)
+
+                for ingredient in ingredient_list:
+                    if ingredient_query_args:
+                        ingredient_query_args = (ingredient_query_args[0] |
+                                                 Q(ingredient__description__icontains=ingredient), )
+
+                    else:
+                        ingredient_query_args = (
+                            Q(ingredient__description__icontains=ingredient),
+                        )
+
+                # Finding recipes that contain all the ingredients passed in the search was
+                # challenging with Django ORM. The closest solution was to find the ingredients matching
+                # the ingredient text search and counting the number of ingredients being a match. The count of
+                # ingredients found is assumed to be equal to the number of searched ingredients. This
+                # assumption presumes each ingredient is stored in a separate row within the recipe ingredient
+                # table.
+                print('ingredient query: {}'.format(ingredient_query_args))
+
                 if ingredient_search_type and ingredient_search_type.upper() != 'ALL':
+                    ingredient_list_len = 1
+                else:
+                    ingredient_list_len = len(ingredient_list)
+
+                recipes_with_ings_qs = Recipe.objects.filter(
+                    *ingredient_query_args
+                ).annotate(
+                    num_ingredient=Count('ingredient')
+                ).filter(num_ingredient__gte=ingredient_list_len)
+
+                # Add the recipes found with the ingredients to the filter
+                if recipes_with_ings_qs:
                     query_dict.update(
-                        dict(ingredient__description__in=ingredient_list)
+                        dict(id__in=recipes_with_ings_qs)
                     )
                 else:
-                    for ingredient in ingredient_list:
-                        if ingredient_query_args:
-                            ingredient_query_args = (ingredient_query_args[0] |
-                                                     Q(ingredient__description__icontains=ingredient), )
-
-                        else:
-                            ingredient_query_args = (
-                                Q(ingredient__description__icontains=ingredient),
-                            )
-
-                    # Finding recipes that contain all the ingredients passed in the search was
-                    # challenging with Django ORM. The closest solution was to find the ingredients matching
-                    # the ingredient text search and counting the number of ingredients being a match. The count of
-                    # ingredients found is assumed to be equal to the number of searched ingredients. This
-                    # assumption presumes each ingredient is stored in a separate row within the recipe ingredient
-                    # table.
-                    print('ingredient query: {}'.format(ingredient_query_args))
-
-                    recipes_with_ings_qs = Recipe.objects.filter(
-                        *ingredient_query_args
-                    ).annotate(
-                        num_ingredient=Count('ingredient')
-                    ).filter(num_ingredient__gte=len(ingredient_list))
-
-                    # Add the recipes found with the ingredients to the filter
-                    if recipes_with_ings_qs:
-                        query_dict.update(
-                            dict(id__in=recipes_with_ings_qs)
-                        )
-                    else:
-                        # Add a bogus ID that will result in no recipes found as no recipes were found matching all the
-                        # ingredients
-                        query_dict.update(
-                            dict(id__in=[-1])
-                        )
+                    # Add a bogus ID that will result in no recipes found as no recipes were found matching all the
+                    # ingredients
+                    query_dict.update(
+                        dict(id__in=[-1])
+                    )
 
             print('final query: {}'.format(query_dict))
 
