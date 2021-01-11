@@ -111,16 +111,17 @@ def search_recipe(request):
                 ingredient_search_type = form_data.get('ingredient_search_type', None)
                 if ingredient_search_type and ingredient_search_type.upper() != 'ALL':
                     query_dict.update(
-                        dict(ingredient__in=ingredient_list)
+                        dict(ingredient__description__in=ingredient_list)
                     )
                 else:
                     for ingredient in ingredient_list:
                         if ingredient_query_args:
-                            ingredient_query_args = (ingredient_query_args[0] & Q(ingredient__icontains=ingredient), )
+                            ingredient_query_args = (ingredient_query_args[0] &
+                                                     Q(ingredient__description__icontains=ingredient), )
 
                         else:
                             ingredient_query_args = (
-                                Q(ingredient__icontains=ingredient),
+                                Q(ingredient__description__icontains=ingredient),
                             )
 
             if ingredient_query_args:
