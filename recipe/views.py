@@ -9,11 +9,10 @@ import io
 
 from django.http import JsonResponse, Http404, FileResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
-from django.db.models import Q
+from django.db.models import Q, Count
 from .models import Recipe, RecipeIngredient, RecipeInstruction
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
 
 
 def index(request):
@@ -117,7 +116,7 @@ def search_recipe(request):
                 else:
                     for ingredient in ingredient_list:
                         if ingredient_query_args:
-                            ingredient_query_args = (ingredient_query_args[0] &
+                            ingredient_query_args = (ingredient_query_args[0] |
                                                      Q(ingredient__description__icontains=ingredient), )
 
                         else:
@@ -125,14 +124,25 @@ def search_recipe(request):
                                 Q(ingredient__description__icontains=ingredient),
                             )
 
-            logger.debug('ingredient_query = '.format(ingredient_query_args))
-            if ingredient_query_args:
-                recipes = Recipe.objects.filter(
-                    *ingredient_query_args,
-                    **query_dict
-                )
-            else:
-                recipes = Recipe.objects.filter(**query_dict)
+                    # Finding recipes that contain all the ingredients passed in the search was
+                    # challenging with Django ORM. The closest solution was to find the ingredients matching
+                    # the ingredient text search and counting the number of ingredients being a match. The count of
+                    # ingredients found is assumed to be equal to the number of searched ingredients. This
+                    # assumption presumes each ingredient is stored in a separate row within the recipe ingredient
+                    # table.
+                    recipes_with_ings_qs = Recipe.objects.filter(
+                        *ingredient_query_args
+                    ).annotate(
+                        num_ingredient=Count('ingredient')
+                    ).filter(num_ingredient__gte=len(ingredient_list))
+
+                    # Add the recipes found with the ingredients to the filter
+                    if recipes_with_ings_qs:
+                        query_dict.update(
+                            dict(id__in=recipes_with_ings_qs)
+                        )
+
+            recipes = Recipe.objects.filter(**query_dict)
 
             return render(
                 request,
