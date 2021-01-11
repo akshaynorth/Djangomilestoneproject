@@ -104,7 +104,7 @@ def search_recipe(request):
                     )
                 )
 
-            ingredient_list = form_data.get('ingredient_list', None)
+            ingredient_list = json.loads(form_data.get('ingredient_list', '[]'))
 
             print('ingredient list: {}'.format(ingredient_list))
 
