@@ -129,7 +129,6 @@ def search_recipe(request):
                 # ingredients found is assumed to be equal to the number of searched ingredients. This
                 # assumption presumes each ingredient is stored in a separate row within the recipe ingredient
                 # table.
-                print('ingredient query: {}'.format(ingredient_query_args))
 
                 if ingredient_search_type and ingredient_search_type.upper() != 'ALL':
                     ingredient_list_len = 1
@@ -153,8 +152,6 @@ def search_recipe(request):
                     query_dict.update(
                         dict(id__in=[-1])
                     )
-
-            print('final query: {}'.format(query_dict))
 
             recipes = Recipe.objects.filter(**query_dict)
 
