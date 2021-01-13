@@ -106,8 +106,6 @@ def search_recipe(request):
 
             ingredient_list = json.loads(form_data.get('ingredient_list', '[]'))
 
-            print('ingredient list: {}'.format(ingredient_list))
-
             ingredient_query_args = None
 
             if ingredient_list:

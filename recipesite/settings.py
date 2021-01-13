@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pages',
-    'recipe'
+    'recipe',
+    'login_app'
 ]
 
 MIDDLEWARE = [
@@ -142,5 +143,7 @@ STATICFILES_DIRS = (
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
-del DATABASES['default']['OPTIONS']['sslmode']
+if 'default' in DATABASES and 'OPTIONS' in DATABASES['default'] and 'sslmode' in DATABASES['default']['OPTIONS']:
+    del DATABASES['default']['OPTIONS']['sslmode']
 
+LOGIN_URL = '/login_app/login'

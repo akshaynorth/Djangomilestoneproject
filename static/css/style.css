@@ -34,6 +34,7 @@
 9. Shop
 10. Magnific Popup
 11. Media Queries
+12. Errors
 
 
 /* ------------------------------------------------------------------- */
@@ -6301,3 +6302,10 @@ ol.directions > li:before {
 	#reset a.button:hover { background-color: #a0a0a0 !important; }
 	
 	@media only screen and (max-width: 1024px) { #style-switcher { display: none; } }
+
+/* ------------------------------------------------------------------- */
+/* Errors
+---------------------------------------------------------------------- */
+span.error {
+    color: red;
+}

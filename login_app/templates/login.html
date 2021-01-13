@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block precontent %}
+    <section id="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <!-- Headline -->
+                <h2>Login</h2>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block pagecontent %}
+
+
+<div class="container">
+<!--			<span class="line"></span>-->
+        <div class="clearfix"></div>
+        <h4>Authenticate to the ComeShop site</h4>
+
+        <div class="submit-recipe-form">
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <fieldset class="additional-info">
+                    <table>
+                        <tbody>
+                            <tr class="ingredients-cont">
+                                <td class="label"><label for="{{login_form.username.id_for_label}}">User Name:</label></td>
+                                <td>
+                                    <input id="{{ login_form.username.id_for_label }}" class="search-field" type="text"
+                                           name="{{login_form.username.html_name}}"
+                                           minlength="{{ login_form.username.field.min_length }}"
+                                           maxlength="{{ login_form.username.field.max_length }}"
+                                           placeholder="Enter your username" value="">
+                                    {% for error in login_form.username.errors %}
+                                    <span class="error">{{error}}</span><br />
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            <tr class="ingredients-cont">
+                                <td class=""label><label for="{{login_form.password.id_for_label}}">Password:</label></td>
+                                <td>
+                                     <input id="{{login_form.password.id_for_label}}" class="search-field"
+                                            type="password" name="{{ login_form.password.html_name }}" value="">
+                                    {% for error in login_form.password.errors %}
+                                    <span class="error">{{error}}</span><br />
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <input type="submit" name="submit_btn" id="submit_btn" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
