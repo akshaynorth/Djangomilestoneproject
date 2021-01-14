@@ -27,7 +27,7 @@ def user_login(request):
         if login_form.is_valid():
             # Obtained details for authentication from:
             #   https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.login
-            user = authenticate(request, login_form.username, login_form.password)
+            user = authenticate(request, login_form.cleaned_data['username'], login_form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
 
