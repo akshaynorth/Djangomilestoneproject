@@ -72,6 +72,8 @@ def user_register(request):
                 email=register_form.cleaned_data['email'],
                 password=register_form.cleaned_data['password']
             )
+
+            return HttpResponseRedirect(reverse('index'))
         else:
             return render(
                 request,
