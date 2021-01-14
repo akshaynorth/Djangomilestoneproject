@@ -1,3 +1,5 @@
+import logging
+
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 
@@ -8,6 +10,8 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 from .forms import LoginForm, RegisterForm
+
+logger = logging.getLogger(__name__)
 
 
 def user_login_form(request):
@@ -27,11 +31,16 @@ def user_login(request):
         if login_form.is_valid():
             # Obtained details for authentication from:
             #   https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.login
-            user = authenticate(request, login_form.cleaned_data['username'], login_form.cleaned_data['password'])
-            if user is not None:
-                login(request, user)
+            try:
 
-                return HttpResponseRedirect(reverse('index'))
+                user = authenticate(request, login_form.cleaned_data['username'], login_form.cleaned_data['password'])
+                if user is not None:
+                    login(request, user)
+
+            except:
+                logger.exception('Could not authenticate user')
+
+            return HttpResponseRedirect(reverse('index'))
 
     else:
         login_form = LoginForm()
