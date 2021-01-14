@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block precontent %}
+    <section id="titlebar">
+        <div class="container">
+            <div class="sixteen columns">
+                <!-- Headline -->
+                <h2>Register</h2>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block pagecontent %}
+
+
+<div class="container">
+<!--			<span class="line"></span>-->
+        <div class="clearfix"></div>
+        <h4>Signup to the ComeShop site</h4>
+
+        <div class="submit-recipe-form">
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                <fieldset class="additional-info">
+                    <table>
+                        <tbody>
+                            <tr class="ingredients-cont">
+                                <td class="label">
+                                    <label for="{{register_form.username.id_for_label}}">User Name:</label>
+                                </td>
+                                <td>
+                                    <input id="{{ register_form.username.id_for_label }}" class="search-field"
+                                           type="text" name="{{ register_form.username.html_name }}"
+                                           minlength="{{ register_form.username.field.min_length }}"
+                                           maxlength="{{ register_form.username.field.max_length }}"
+                                           placeholder="Enter your username" value="">
+                                    {% for error in register_form.username.errors %}
+                                    <span class="error">{{error}}</span><br />
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            <tr class="ingredients-cont">
+                                <td class=""label>
+                                    <label for="{{register_form.password.id_for_label}}">Password:</label>
+                                </td>
+                                <td>
+                                     <input id="{{register_form.password.id_for_label}}" class="search-field"
+                                            type="password" name="{{register_form.password.html_name}}" value="">
+                                    {% for error in register_form.password.errors %}
+                                    <span class="error">{{error}}</span><br />
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            <tr class="ingredients-cont">
+                                <td class=""label>
+                                    <label for="{{register_form.email.id_for_label}}">Email:</label>
+                                </td>
+                                <td>
+                                     <input id="{{register_form.email.id_for_label}}" class="search-field"
+                                            type="email" name="{{register_form.email.html_name}}" value="">
+                                    {% for error in register_form.email.errors %}
+                                    <span class="error">{{error}}</span><br />
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <input type="submit" name="submit_btn" id="submit_btn" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

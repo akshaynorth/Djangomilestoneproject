@@ -60,7 +60,7 @@ def create(request):
 
                 recipe.picture = image_buffer
 
-                recipe.save()
+            recipe.save()
 
             for ingredient in json.loads(form_data.get('ingredients', '[]')):
                 RecipeIngredient.objects.create(

@@ -8,5 +8,13 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
+        fields = ('username', 'password')
+        model = User
+
+
+class RegisterForm(LoginForm):
+    email = forms.EmailField(widget=forms.EmailInput)
+
+    class Meta:
         fields = ('username', 'password', 'email')
         model = User
