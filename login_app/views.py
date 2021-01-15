@@ -45,7 +45,7 @@ def user_login(request):
             except:
                 logger.exception('Could not authenticate user')
 
-            login_form.add_error('username', 'Could not authenticate user: '.format(
+            login_form.add_error('username', 'Could not authenticate user: {}'.format(
                 login_form.cleaned_data['username'])
             )
 
