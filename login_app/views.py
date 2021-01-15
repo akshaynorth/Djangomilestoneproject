@@ -32,7 +32,11 @@ def user_login(request):
             # Obtained details for authentication from:
             #   https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.login
             try:
-                user = authenticate(login_form.cleaned_data['username'], login_form.cleaned_data['password'])
+                user = authenticate(
+                    username=login_form.cleaned_data['username'],
+                    password=login_form.cleaned_data['password']
+                )
+
                 if user is not None:
                     login(request, user)
 
