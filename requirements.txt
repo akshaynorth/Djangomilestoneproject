@@ -2,6 +2,3 @@ gunicorn
 pipenv
 mysqlclient
 django-heroku
-
-# A requirement as specified in the Stripe documentation to integrate with Stripe payments
-stripe>=2.48.0,<3.0

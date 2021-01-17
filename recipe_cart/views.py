@@ -6,6 +6,14 @@ from . import cart
 
 
 @login_required()
+def shop_page(request):
+    return render(
+        request,
+        'shop.html'
+    )
+
+
+@login_required()
 def add_to_cart(request, item_id):
 
     context_dict = dict()
