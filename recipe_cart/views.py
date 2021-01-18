@@ -15,7 +15,6 @@ def shop_page(request):
 
 @login_required()
 def add_to_cart(request, item_id):
-
     context_dict = dict()
     if request.method == 'POST':
         session_cart = request.session.get('cart', None)
@@ -34,7 +33,6 @@ def add_to_cart(request, item_id):
 
 @login_required()
 def delete_from_cart(request, item_id):
-
     context_dict = dict()
 
     if request.method == 'POST':
