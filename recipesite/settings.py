@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages',
     'recipe',
-    'login_app'
+    'login_app',
+    'recipe_cart',
 ]
 
 MIDDLEWARE = [
