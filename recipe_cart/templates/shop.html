@@ -48,132 +48,28 @@
 		<div class="clearfix"></div>
 
 
-		<!-- Product #1 -->
-		<div class="four shop columns">
-			<figure class="product">
-
-				<div class="mediaholder">
-					<a href="product-page.html">
-						<img alt="" src="images/shop_item_01.jpg"/>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i></a>
-				</div>
-
-				<a href="product-page.html">
-					<section>
-						<span class="product-category">Spices</span>
-						<h5>Cardamom Pods</h5>
-						<span class="product-price">$2.99</span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
-		<!-- Product #2 -->
-		<div class="four shop columns">
-			<figure class="product">
-
-				<div class="mediaholder">
-					<a href="product-page.html">
-						<img alt="" src="images/shop_item_02.jpg"/>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i></a>
-				</div>
-
-				<a href="product-page.html">
-					<section>
-						<span class="product-category">Spices</span>
-						<h5>Mixed Herbs</h5>
-						<span class="product-price">$2.99</span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
-		<!-- Product #3 -->
-		<div class="four shop columns">
-			<figure class="product">
-
-				<div class="mediaholder">
-					<a href="product-page.html">
-						<img alt="" src="images/shop_item_03.jpg"/>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i></a>
-				</div>
-
-				<a href="product-page.html">
-					<section>
-						<span class="product-category">Spices</span>
-						<h5>Chilli Powder</h5>
-						<span class="product-price">$2.99</span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
-		<!-- Product #4 -->
-		<div class="four shop columns">
-			<figure class="product">
-
-				<div class="mediaholder">
-					<a href="product-page.html">
-						<img alt="" src="images/shop_item_04.jpg"/>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i></a>
-				</div>
-
-				<a href="product-page.html">
-					<section>
-						<span class="product-category">Spices</span>
-						<h5>Black Peppercorns</h5>
-						<span class="product-price">$2.99</span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
-		<!-- Product #5 -->
-		<div class="four shop columns">
-			<figure class="product">
-
-				<div class="mediaholder">
-					<a href="product-page.html">
-						<img alt="" src="images/shop_item_05.jpg"/>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i></a>
-				</div>
-
-				<a href="product-page.html">
-					<section>
-						<span class="product-category">Spices</span>
-						<h5>Cumin Seeds</h5>
-						<span class="product-price">$2.99</span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
-		<!-- Product #6 -->
-		<div class="four shop columns">
-			<figure class="product">
-
-				<div class="mediaholder">
-					<a href="product-page.html">
-						<img alt="" src="images/shop_item_06.jpg"/>
-					</a>
-					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i></a>
-				</div>
-
-				<a href="product-page.html">
-					<section>
-						<span class="product-category">Spices</span>
-						<h5>Garlic Granules</h5>
-						<span class="product-price">$2.99</span>
-					</section>
-				</a>
-			</figure>
-		</div>
-
+		{% for recipe in recipes %}
+ 		<!-- Product #1 -->
+ 		<div class="four shop columns">
+ 			<figure class="product">
+ 				<div class="mediaholder">
+ 					<a href="product-page.html">
+						<img alt="" src="/recipe/image/{{recipe.id}}"/>
+ 					</a>
+ 					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i></a>
+ 				</div>
+ 
+ 				<a href="product-page.html">
+ 					<section>
+						<span class="product-category">{{recipe.type}}</span>
+						<h5>{{recipe.description}}</h5>
+ 						<span class="product-price">$2.99</span>
+ 					</section>
+ 				</a>
+ 			</figure>
+ 		</div>
+		{% endfor %}
+ 
 		<div class="clearfix"></div>
 		<div class="margin-top-40"></div>
 
@@ -221,25 +117,29 @@
 			<div class="clearfix"></div>
 			
 			<div class="widget_shopping_cart_content">
+				{% if recipe_cart %}
 				<ul class="product_list_widget">
-					
+					{% for cart_item in recipe_cart.cart_items %}
 					<li>
-						<a href="#" class="image"><img src="images/shop_item_02a.jpg" alt=""></a>
+						<a href="#" class="image"><img src="/recipe/image/{{cart_item.item_id}}" alt=""></a>
 						<div class="product_title">
-							<a href="#">Mixed Herbs</a>
-							<span class="quantity">1 × <span class="amount">$2.99</span></span>	
+							<a href="#">{{cart_item.description}}</a>
+							<span class="quantity">
+								{{cart_item.quantity}} × <span class="amount">${{cart_item.price|floatformat:2}}</span>
+							</span>
 						</div>
 					</li>
-
+					{% endfor %}
 				</ul>
 
 				<p class="total"><strong>Subtotal:</strong>
-				<span class="amount">$2.99</span></p>
+				<span class="amount">${{recipe_cart.total|floatformat:2}}</span></p>
 
 				<span class="buttons">
 					<a href="#" class="button">View Cart</a>
 					<a href="#" class="button color">Checkout</a>
 				</span>
+				{% endif %}
 			</div>
 		</div>
 

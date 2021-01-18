@@ -1,15 +1,46 @@
+
+import logging
 from django.shortcuts import render
 
 from django.contrib.auth.decorators import login_required
 
+from recipe.models import Recipe
+
 from . import cart
+
+logger = logging.getLogger(__name__)
 
 
 @login_required()
 def shop_page(request):
+
+    session_cart = None
+    try:
+        recipes = Recipe.objects.all()
+
+        session_cart_dict = request.session.get('cart', None)
+
+        if session_cart_dict:
+            session_cart = cart.RecipeCart(cart_dict=session_cart_dict)
+
+        session_cart = cart.RecipeCart()
+
+        cart_item = cart.RecipeCartItem()
+        cart_item.quantity = 2
+        cart_item.price = 2.50
+        cart_item.description = 'A sample recipe in cart'
+
+        session_cart.add_item(cart_item)
+
+        # request.session['cart'] = session_cart.as_dict()
+
+    except Exception:
+        logger.exception('Could not find recipes')
+
     return render(
         request,
-        'shop.html'
+        'shop.html',
+        context=dict(recipes=recipes, recipe_cart=session_cart)
     )
 
 
