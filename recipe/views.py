@@ -206,6 +206,7 @@ def edit_recipe(request, recipe_id):
                 'cook_time': recipe.cook_time,
                 'calories': recipe.calories,
                 'portions': recipe.portions,
+                'price': recipe.price,
                 'short_description': recipe.short_description,
                 'ingredients': list(recipe.ingredients.values_list('description', flat=True)),
                 'instructions': list(recipe.instructions.values_list('description', flat=True)),
@@ -280,6 +281,7 @@ def submit_edit_recipe(request, recipe_id):
             recipe.cook_time = form_data.get('cook_time', recipe.cook_time)
             recipe.calories = form_data.get('calories', recipe.calories)
             recipe.portions = form_data.get('portions', recipe.portions)
+            recipe.price = form_data.get('price', recipe.price)
 
             if request.FILES.get('files', None):
                 uploaded_file = request.FILES.get('file')
