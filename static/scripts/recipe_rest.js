@@ -99,6 +99,12 @@
                 return;
             }
 
+            let price = $('#recipe_price').val().trim()
+            if (price.length == 0) {
+                alert('Provide a price for the recipe')
+                return
+            }
+
             // Obtain the filename that was provided by the user for the recipe photo.
 	        let form_data = new FormData()
 	        if ($('input[type="file"]')[0].files.length > 0) {
@@ -115,6 +121,7 @@
 	        form_data.append('cook_time', cook_time)
 	        form_data.append('calories', calories)
 	        form_data.append('portions', portions)
+	        form_data.append('price', price)
 	        form_data.append('ingredients', JSON.stringify(ingredient_list))
 	        form_data.append('instructions', JSON.stringify(instruction_list))
 

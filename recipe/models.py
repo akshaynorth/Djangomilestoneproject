@@ -19,6 +19,8 @@ class Recipe(models.Model):
 
     portions = models.CharField(max_length=80)
 
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+
 
 class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(Recipe,

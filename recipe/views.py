@@ -48,6 +48,8 @@ def create(request):
                 cook_time=form_data.get('cook_time', ''),
                 calories=form_data.get('calories', ''),
                 portions=form_data.get('portions', ''),
+                # Let the absence of a price fail the create
+                price=form_data.get('price')
             )
 
             if request.FILES.get('file', None):
