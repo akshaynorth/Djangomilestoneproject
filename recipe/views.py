@@ -157,6 +157,11 @@ def search_recipe(request):
                         dict(id__in=[-1])
                     )
 
+            # Restrict search results to recipes the user owns
+            query_dict.update(
+                user=request.user
+            )
+
             recipes = Recipe.objects.filter(**query_dict)
 
             return render(
