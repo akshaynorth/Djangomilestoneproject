@@ -7,6 +7,7 @@ import logging
 import datetime
 import io
 
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, Http404, FileResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.db.models import Q, Count
@@ -34,6 +35,7 @@ def index(request):
                   )
 
 
+@login_required()
 @csrf_protect
 def create(request):
     try:
@@ -90,6 +92,7 @@ def create(request):
     )
 
 
+@login_required()
 @csrf_protect
 def search_recipe(request):
     try:
@@ -170,6 +173,7 @@ def search_recipe(request):
     raise Http404('Unexpected error has occurred while searching for recipe')
 
 
+@login_required()
 @csrf_exempt
 def download_recipe_image(request, recipe_id):
     try:
@@ -192,6 +196,7 @@ def download_recipe_image(request, recipe_id):
     raise Http404('Unexpected error has occurred')
 
 
+@login_required()
 @csrf_protect
 def edit_recipe(request, recipe_id):
     try:
@@ -231,6 +236,7 @@ def edit_recipe(request, recipe_id):
     raise Http404('An unexpected error has occurred')
 
 
+@login_required()
 @csrf_protect
 def view_recipe(request, recipe_id):
     try:
@@ -266,6 +272,7 @@ def view_recipe(request, recipe_id):
     raise Http404('An unexpected error has occurred in viewing recipe')
 
 
+@login_required()
 @csrf_protect
 def submit_edit_recipe(request, recipe_id):
     try:
@@ -322,6 +329,7 @@ def submit_edit_recipe(request, recipe_id):
     raise Http404('An unexpected error encountered in submit edit recipe action')
 
 
+@login_required()
 @csrf_protect
 def delete_recipe(request, recipe_id):
     try:

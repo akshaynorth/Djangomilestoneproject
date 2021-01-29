@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 # Create your views here.
@@ -29,12 +30,14 @@ def recipe5(requests):
                   'recipe-page-5.html')
 
 
+@login_required()
 @csrf_protect
 def submit_recipe(requests):
     return render(requests,
                   'submit-recipe.html')
 
 
+@login_required()
 @csrf_protect
 def search(requests):
     return render(requests,
