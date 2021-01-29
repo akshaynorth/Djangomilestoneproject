@@ -147,4 +147,4 @@ django_heroku.settings(locals())
 if 'default' in DATABASES and 'OPTIONS' in DATABASES['default'] and 'sslmode' in DATABASES['default']['OPTIONS']:
     del DATABASES['default']['OPTIONS']['sslmode']
 
-LOGIN_URL = '/login_app/login_form/'
+LOGIN_URL = '/login/login_form/'
