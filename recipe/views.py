@@ -51,7 +51,8 @@ def create(request):
                 calories=form_data.get('calories', ''),
                 portions=form_data.get('portions', ''),
                 # Let the absence of a price fail the create
-                price=form_data.get('price')
+                price=form_data.get('price'),
+                user=request.user
             )
 
             if request.FILES.get('file', None):

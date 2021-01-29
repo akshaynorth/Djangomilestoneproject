@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.contrib.auth.models import User
+
 
 class Recipe(models.Model):
     creation_time = models.DateTimeField()
@@ -20,6 +22,8 @@ class Recipe(models.Model):
     portions = models.CharField(max_length=80)
 
     price = models.DecimalField(max_digits=5, decimal_places=2)
+
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
 
 class RecipeIngredient(models.Model):
