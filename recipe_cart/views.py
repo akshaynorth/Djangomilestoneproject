@@ -3,6 +3,7 @@ import logging
 from django.shortcuts import render
 
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 from recipe.models import Recipe
 
@@ -16,7 +17,7 @@ def shop_page(request):
 
     session_cart = None
     try:
-        recipes = Recipe.objects.all()
+        recipes = Recipe.objects.filter(~Q(user=request.user))
 
         session_cart_dict = request.session.get('cart', None)
 
