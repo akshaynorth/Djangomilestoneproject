@@ -1,5 +1,6 @@
 
 import logging
+import json
 from django.shortcuts import render
 
 from django.contrib.auth.decorators import login_required
@@ -19,12 +20,13 @@ def shop_page(request):
     try:
         recipes = Recipe.objects.filter(~Q(user=request.user))
 
-        session_cart_dict = request.session.get('cart', None)
+        session_cart_json = request.session.get('cart', None)
 
-        if session_cart_dict:
-            session_cart = cart.RecipeCart(cart_dict=session_cart_dict)
+        if session_cart_json:
 
-        session_cart = cart.RecipeCart()
+            session_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
+        else:
+            session_cart = cart.RecipeCart()
 
         cart_item = cart.RecipeCartItem()
         cart_item.quantity = 2
@@ -33,7 +35,7 @@ def shop_page(request):
 
         session_cart.add_item(cart_item)
 
-        # request.session['cart'] = session_cart.as_dict()
+        request.session['cart'] = json.dumps(session_cart.as_dict())
 
     except Exception:
         logger.exception('Could not find recipes')
