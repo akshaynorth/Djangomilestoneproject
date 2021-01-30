@@ -37,6 +37,12 @@ class RecipeCart:
             self.total = 0.0
 
     def add_item(self, cart_item):
+
+        for added_cart_item in self.cart_items:
+            if added_cart_item.item_id == cart_item.item_id:
+                # Do not add duplicate items to the cart
+                return
+
         self.cart_items.append(cart_item)
 
         self.num_items = self.num_items + 1

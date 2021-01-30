@@ -48,32 +48,59 @@ def shop_page(request):
 
 
 @login_required()
-def add_to_cart(request, item_id):
+def add_to_cart(request, recipe_id):
     context_dict = dict()
-    if request.method == 'POST':
-        session_cart = request.session.get('cart', None)
-        if session_cart is None:
-            session_cart = cart.RecipeCart()
 
-        # Get the product information from the database
+    session_cart_json = request.session.get('cart', None)
+    if session_cart_json:
+        recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
 
-        # Add the product item to the session
-        context_dict.update(
-            dict(cart=session_cart)
-        )
     else:
-        pass
+        recipe_cart = cart.RecipeCart()
+
+    if request.method == 'POST':
+        # Get the product information from the database
+        recipe = Recipe.objects.filter(
+            ~Q(request.user),
+            id=recipe_id
+        ).first()
+
+        if recipe:
+            cart_item = cart.RecipeCartItem()
+
+            # Avoid charging more than once for the same recipe
+            cart_item.quantity = 1
+            cart_item.item_id = recipe_id
+            cart_item.price = recipe.price
+            cart_item.description = recipe.name
+
+            recipe_cart.add(cart_item)
+            request.session['cart'] = json.dumps(recipe_cart.as_dict())
+
+    # Add the product item to the session
+    context_dict.update(
+        dict(
+            recipes=Recipe.objects.filter(~Q(user=request.user)),
+            recipe_cart=recipe_cart
+        )
+    )
+
+    return render(
+        request,
+        'shop.html',
+        context=context_dict
+    )
 
 
 @login_required()
-def delete_from_cart(request, item_id):
+def delete_from_cart(request, recipe_id):
     context_dict = dict()
 
     if request.method == 'POST':
         session_cart = request.session.get('cart', None)
 
         if session_cart is not None:
-            session_cart.delete_item(item_id)
+            session_cart.delete_item(recipe_id)
 
         # Update the session with the deletion of the item
         context_dict.update(dict(cart=session_cart))
