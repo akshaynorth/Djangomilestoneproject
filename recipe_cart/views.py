@@ -51,32 +51,37 @@ def shop_page(request):
 def add_to_cart(request, recipe_id):
     context_dict = dict()
 
-    session_cart_json = request.session.get('cart', None)
-    if session_cart_json:
-        recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
+    recipe_cart = cart.RecipeCart()
 
-    else:
-        recipe_cart = cart.RecipeCart()
+    try:
+        session_cart_json = request.session.get('cart', None)
+        if session_cart_json:
+            recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
 
-    if request.method == 'POST':
-        # Get the product information from the database
-        recipe = Recipe.objects.filter(
-            ~Q(request.user),
-            id=recipe_id
-        ).first()
+        else:
+            recipe_cart = cart.RecipeCart()
 
-        if recipe:
-            cart_item = cart.RecipeCartItem()
+        if request.method == 'POST':
+            # Get the product information from the database
+            recipe = Recipe.objects.filter(
+                ~Q(request.user),
+                id=recipe_id
+            ).first()
 
-            # Avoid charging more than once for the same recipe
-            cart_item.quantity = 1
-            cart_item.item_id = recipe_id
-            cart_item.price = recipe.price
-            cart_item.description = recipe.name
+            if recipe:
+                cart_item = cart.RecipeCartItem()
 
-            recipe_cart.add(cart_item)
+                # Avoid charging more than once for the same recipe
+                cart_item.quantity = 1
+                cart_item.item_id = recipe_id
+                cart_item.price = recipe.price
+                cart_item.description = recipe.name
 
-    request.session['cart'] = json.dumps(recipe_cart.as_dict())
+                recipe_cart.add(cart_item)
+
+        request.session['cart'] = json.dumps(recipe_cart.as_dict())
+    except:
+        logger.exception('Could not add recipe')
 
     # Add the product item to the session
     context_dict.update(

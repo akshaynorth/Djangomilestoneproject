@@ -17,7 +17,11 @@
                 processData: false,
                 contentType: false,
                 cache: false,
-                success: function() {
+                success: function(response) {
+                    // Redraw the return HTML to update user view
+                    let newDoc = document.open("text/html", "replace")
+                    newDoc.write(response)
+                    newDoc.close()
                     console.log('Recipe added to cart successfully');
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
