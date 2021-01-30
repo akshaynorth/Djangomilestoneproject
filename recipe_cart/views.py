@@ -75,7 +75,8 @@ def add_to_cart(request, recipe_id):
             cart_item.description = recipe.name
 
             recipe_cart.add(cart_item)
-            request.session['cart'] = json.dumps(recipe_cart.as_dict())
+
+    request.session['cart'] = json.dumps(recipe_cart.as_dict())
 
     # Add the product item to the session
     context_dict.update(
