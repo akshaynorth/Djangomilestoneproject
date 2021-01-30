@@ -56,7 +56,9 @@
  					<a href="product-page.html">
 						<img alt="" src="/recipe/image/{{recipe.id}}"/>
  					</a>
- 					<a href="/recipe_cart/add/{{recipe.id}}" class="product-button"><i class="fa fa-shopping-cart"></i></a>
+ 					<a href="/recipe_cart/add/{{recipe.id}}" class="product-button" id="add_to_cart">
+						<i class="fa fa-shopping-cart"></i>
+					</a>
  				</div>
  
  				<a href="product-page.html">
@@ -165,3 +167,7 @@
 <!-- Container / End -->
 
 {% endblock pagecontent %}
+
+{% block extra_javascript %}
+<script src="/static/scripts/cart_crud.js"></script>
+{% endblock extra_javascript %}
