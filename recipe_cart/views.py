@@ -64,7 +64,7 @@ def add_to_cart(request, recipe_id):
         if request.method == 'POST':
             # Get the product information from the database
             recipe = Recipe.objects.filter(
-                ~Q(request.user),
+                ~Q(user=request.user),
                 id=recipe_id
             ).first()
 
