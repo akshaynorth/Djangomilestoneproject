@@ -56,14 +56,14 @@
  					<a href="product-page.html">
 						<img alt="" src="/recipe/image/{{recipe.id}}"/>
  					</a>
- 					<a href="#" class="product-button"><i class="fa fa-shopping-cart"></i></a>
+ 					<a href="{% url add_to_cart %}" class="product-button"><i class="fa fa-shopping-cart"></i></a>
  				</div>
  
  				<a href="product-page.html">
  					<section>
 						<span class="product-category">{{recipe.type}}</span>
 						<h5>{{recipe.description}}</h5>
- 						<span class="product-price">$2.99</span>
+ 						<span class="product-price">${{recipe.price}}</span>
  					</section>
  				</a>
  			</figure>
