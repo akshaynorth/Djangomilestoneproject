@@ -12,7 +12,7 @@
             {
                 type: 'POST',
                 headers: {'X-CSRFToken': getCookie('csrftoken')},
-                url: $(add_to_cart_link_obj).attr('href')
+                url: $(add_to_cart_link_obj).attr('href'),
                 data: {},
                 processData: false,
                 contentType: false,
