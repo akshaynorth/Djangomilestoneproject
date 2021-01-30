@@ -77,7 +77,7 @@ def add_to_cart(request, recipe_id):
                 cart_item.price = recipe.price
                 cart_item.description = recipe.name
 
-                recipe_cart.add(cart_item)
+                recipe_cart.add_item(cart_item)
 
         request.session['cart'] = json.dumps(recipe_cart.as_dict())
     except:
