@@ -64,7 +64,7 @@ def create_checkout_session(request):
 
             if session_cart_json:
                 line_items_list = []
-                recipe_cart = json.loads(session_cart_json)
+                recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
 
                 for cart_item in recipe_cart.cart_items:
                     line_items_list.append(
