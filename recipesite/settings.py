@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'recipe',
     'login_app',
     'recipe_cart',
+    'recipe_pay',
 ]
 
 MIDDLEWARE = [
