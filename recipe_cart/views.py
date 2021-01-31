@@ -28,13 +28,6 @@ def shop_page(request):
         else:
             session_cart = cart.RecipeCart()
 
-        cart_item = cart.RecipeCartItem()
-        cart_item.quantity = 2
-        cart_item.price = 2.50
-        cart_item.description = 'A sample recipe in cart'
-
-        session_cart.add_item(cart_item)
-
         request.session['cart'] = json.dumps(session_cart.as_dict())
 
     except Exception:
