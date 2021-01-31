@@ -11,9 +11,9 @@
 
       var checkoutButton = $('#checkout-button');
 
-      checkoutButton.click(function() {
-        // Create a new Checkout Session using the server-side endpoint you
-        // created in step 3.
+      checkoutButton.click(function(e) {
+        e.preventDefault()
+
         fetch('/create-checkout-session', {
           method: 'POST',
         })
