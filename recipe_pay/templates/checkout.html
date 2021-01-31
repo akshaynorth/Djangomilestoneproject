@@ -20,11 +20,49 @@
 
 {% block pagecontent %}
 <div class="container">
+    <div class="widget">
+        <h4 class="headline">Cart</h4>
+        <span class="line margin-bottom-30"></span>
+        <div class="clearfix"></div>
+
+        <div class="widget_shopping_cart_content">
+            {% if recipe_cart and recipe_cart.num_items > 0 %}
+            <ul class="product_list_widget">
+                {% for cart_item in recipe_cart.cart_items %}
+                <li>
+                    <a href="#" class="image"><img src="/recipe/image/{{cart_item.item_id}}" alt=""></a>
+                    <div class="product_title">
+                        <a href="/recipe_cart/delete/{{cart_item.item_id}}" id="delete_from_cart_{{loop.index}}">
+                            {{cart_item.description}}
+                            <img alt="Delete recipe icon" src="/static/images/trash.svg"
+                                 style="float: right; width: 15%; height: auto;">
+                        </a>
+                        <span class="quantity">
+                        {{cart_item.quantity}} × <span class="amount">${{cart_item.price|floatformat:2}}</span>
+                    </span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <p class="total"><strong>Subtotal:</strong>
+                <span class="amount">${{recipe_cart.total|floatformat:2}}</span></p>
+
+            <span class="buttons">
+            <a href="{% url 'order_review' %}" class="button color" id="order_review">Checkout</a>
+        </span>
+            {% else %}
+            <p>No items in cart</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% comment %}
     {% if recipe_cart and recipe_cart.num_items > 0 %}
     <table style="width: 100%; border: black; border-block-style:double">
         <tbody>
         {% for cart_item in recipe_cart.cart_items %}
-        <tr>
+        <tr style="border: black; border-top-style: dotted;">
             <td>{{cart_item.description}}</td>
             <td>
                 <span class="quantity">
@@ -35,7 +73,7 @@
         {% endfor %}
 
         <tr>
-            <td align="right"><strong>Subtotal:</strong></td>
+            <td align="right" style="padding: 10px;"><strong>Subtotal:</strong></td>
             <td><span class="amount">${{recipe_cart.total|floatformat:2}}</span></td>
         </tr>
          </tbody>
@@ -44,6 +82,7 @@
     <p>No items in cart</p>
     {% endif %}
 
+    {% endcomment %}
     <span class="buttons">
         <button type="button" id="checkout-button">Checkout</button>
     </span>
