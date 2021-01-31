@@ -16,6 +16,7 @@
 
         fetch('/recipe_pay/create_checkout_session', {
           method: 'POST',
+          headers: {'X-CSRFToken': getCookie('csrftoken')}
         })
         .then(function(response) {
           return response.json();
