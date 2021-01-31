@@ -118,7 +118,7 @@
 			<div class="clearfix"></div>
 			
 			<div class="widget_shopping_cart_content">
-				{% if recipe_cart %}
+				{% if recipe_cart and recipe_cart.num_items > 0 %}
 				<ul class="product_list_widget">
 					{% for cart_item in recipe_cart.cart_items %}
 					<li>
