@@ -115,6 +115,7 @@ def delete_from_cart(request, recipe_id):
                 recipe_cart.delete_item(recipe_id)
 
         request.session['cart'] = json.dumps(recipe_cart.as_dict())
+        print('delete: recipe_cart: {}'.format(request.session['cart']))
     except:
         logger.exception('Could not delete from cart')
 
