@@ -40,7 +40,6 @@ def order_review(request):
     )
 
 
-@login_required()
 def payment_success(request):
     return render(
         request,
@@ -48,7 +47,6 @@ def payment_success(request):
     )
 
 
-@login_required()
 def payment_cancel(request):
     return render(
         request,
@@ -85,8 +83,8 @@ def create_checkout_session(request):
                       payment_method_types=['card'],
                       line_items=line_items_list,
                       mode='payment',
-                      success_url=reverse('pay_success'),
-                      cancel_url=reverse('pay_cancel'),
+                      success_url=request.build_absolute_uri(reverse('pay_success')),
+                      cancel_url=request.build_absolute_uri(reverse('pay_cancel')),
                     )
 
                     return JsonResponse(dict(id=session.id))
