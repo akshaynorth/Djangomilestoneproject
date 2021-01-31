@@ -40,6 +40,7 @@ class RecipeCart:
 
     def add_item(self, cart_item):
 
+        cart_item.item_id = str(cart_item.item_id)
         for added_cart_item in self.cart_items:
             if added_cart_item.item_id == cart_item.item_id:
                 # Do not add duplicate items to the cart
@@ -51,8 +52,9 @@ class RecipeCart:
         self.total = self.total + float(cart_item.price) * cart_item.quantity
 
     def delete_item(self, item_id):
+        item_id_str = str(item_id)
         for cart_item in self.cart_items:
-            if cart_item.item_id == item_id:
+            if cart_item.item_id == item_id_str:
                 self.cart_items.remove(cart_item)
                 self.num_items = self.num_items - 1 if self.num_items > 0 else 0
 
