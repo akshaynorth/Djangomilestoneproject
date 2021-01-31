@@ -48,7 +48,11 @@
 
             <span class="buttons">
             <a href="{% url 'order_review' %}" class="button color" id="order_review">Checkout</a>
-        </span>
+            </span>
+
+            <span class="buttons">
+                <button type="button" class="button color" id="checkout-button">Checkout</button>
+            </span>
             {% else %}
             <p>No items in cart</p>
             {% endif %}
@@ -81,9 +85,6 @@
     {% endif %}
 
     {% endcomment %}
-    <span class="buttons">
-        <button type="button" id="checkout-button">Checkout</button>
-    </span>
 
 </div>
 

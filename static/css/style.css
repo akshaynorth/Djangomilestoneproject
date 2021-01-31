@@ -1350,7 +1350,7 @@ input[type="submit"] {
 	padding: 10px 14px;
 }
 
-button.button.color, a.button.color, input[type="button"], input[type="submit"] { background-color: #808080; }
+a.button.color, input[type="button"], input[type="submit"] { background-color: #808080; }
 a.button.light { background-color: #f6f6f6; color: #909090; }
 
 input[type="button"]:hover,
