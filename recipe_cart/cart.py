@@ -10,6 +10,7 @@ class RecipeCartItem:
 
     def as_dict(self):
         return {
+            'item_id': self.item_id,
             'description': self.description,
             'price': float(self.price),
             'quantity': self.quantity
