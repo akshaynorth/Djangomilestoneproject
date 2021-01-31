@@ -5,11 +5,11 @@
       // The script from the Stripe site must be included before the execution of this code from
       // https://js.stripe.com/v3/"
       // Modified to use JQuery and integrate with the recipe site custom-built pages
-      var stripe = Stripe(
+      let stripe = Stripe(
         'pk_test_51IFbK8IN8KUsEgP5iLWoeK93WTkY3xtWhZ4QHp6GG1Tj7bjmQBMh07q348VBCFxjNP8irfdrJ96554p1QzGsdEVw00lMdHdIq0'
       );
 
-      var checkoutButton = $('#checkout-button');
+      let checkoutButton = $('#checkout-button');
 
       checkoutButton.click(function(e) {
         e.preventDefault()
