@@ -33,22 +33,11 @@
 
 	<!-- Products -->
 	<div class="twelve columns left-sidebar-class">
-
-		<!-- Ordering -->
-		<div class="ordering">
-			<select class="chosen-select-no-single">
-				<option value="menu_order" >Default Sorting</option>
-				<option value="popularity" >Sort by Popularity</option>
-				<option value="rating" >Sort by Average Rating</option>
-				<option value="date">Sort by Newness</option>
-				<option value="price" >Sort by Price: Low to High</option>
-				<option value="price-desc" >Sort by Price: High to Low</option>
-			</select>
-		</div>
 		<div class="clearfix"></div>
 
 
 		{% for recipe in recipes %}
+ 		<!-- Product #1 -->
  		<!-- Product #1 -->
  		<div class="four shop columns">
  			<figure class="product">
@@ -75,42 +64,12 @@
 		<div class="clearfix"></div>
 		<div class="margin-top-40"></div>
 
-		<!-- Pagination -->
-		<div class="pagination-container masonry">
-			<nav class="pagination">
-				<ul>
-					<li><a href="#" class="current-page">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-				</ul>
-			</nav>
-
-			<nav class="pagination-next-prev">
-				<ul>
-					<li><a href="#" class="prev"></a></li>
-					<li><a href="#" class="next"></a></li>
-				</ul>
-			</nav>
-		</div>
-
 	</div>
 
 
 	<!-- Sidebar
 	================================================== -->
 	<div class="four columns">
-
-		<!-- Search Form -->
-		<div class="widget search-form">
-			<nav class="search">
-				<form action="#" method="get">
-					<button><i class="fa fa-search"></i></button>
-					<input class="search-field" type="text" placeholder="Search for products" value=""/>
-				</form>
-			</nav>
-			<div class="clearfix"></div>
-		</div>
-
 		<!-- Cart -->
 		<div class="widget">
 			<h4 class="headline">Cart</h4>
@@ -141,7 +100,6 @@
 				<span class="amount">${{recipe_cart.total|floatformat:2}}</span></p>
 
 				<span class="buttons">
-					<a href="#" class="button">View Cart</a>
 					<a href="#" class="button color">Checkout</a>
 				</span>
 				{% else %}
