@@ -100,7 +100,7 @@
 				<span class="amount">${{recipe_cart.total|floatformat:2}}</span></p>
 
 				<span class="buttons">
-					<a href="#" class="button color">Checkout</a>
+					<a href="{% url 'order_review' %}" class="button color" id="order_review">Checkout</a>
 				</span>
 				{% else %}
 				<p>No items in cart</p>

@@ -1,14 +1,39 @@
 import stripe
 
+import json
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 
+from recipe_cart import cart
 
 # Create your views here.
 
 stripe.api_key = ''
+
+
+@login_required()
+def order_review(request):
+    context_dict = dict()
+
+    session_cart_json = request.session.get('cart', None)
+    if session_cart_json:
+        recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
+
+    else:
+        recipe_cart = cart.RecipeCart()
+
+    context_dict.update(
+        dict(recipe_cart=recipe_cart)
+    )
+
+    return render(
+        request,
+        'checkout.html',
+        context=context_dict,
+    )
 
 
 @login_required()
@@ -30,12 +55,13 @@ def payment_cancel(request):
 @login_required()
 def create_checkout_session(request):
     if request.method == 'POST':
-        session_cart = request.session.get('cart', None)
+        session_cart_json = request.session.get('cart', None)
 
-        if session_cart:
+        if session_cart_json:
             line_items_list = []
+            recipe_cart = json.loads(session_cart_json)
 
-            for cart_item in session_cart.cart_items.values():
+            for cart_item in recipe_cart.cart_items:
                 line_items_list.append(
                     {
                         'price_data': {
