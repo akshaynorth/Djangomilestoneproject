@@ -1,5 +1,5 @@
 (function($){
-    $(document).ready(
+    $(document).ready(function() {
 
       // Code initially obtained from Stripe documentation at: https://stripe.com/docs/payments/accept-a-payment
       // The script from the Stripe site must be included before the execution of this code from
@@ -35,4 +35,5 @@
           console.error('Error:', error);
         });
       })
+  })
 })(this.jQuery);
