@@ -4684,12 +4684,17 @@ ul.product_list_widget li .product_title {
 	margin-left: 80px;
 }
 
-ul.product_list_widget li .product_title.order_review {
+ul.product_list_widget li .product_title.review {
     margin-left: 80px;
     font-size: 20px;
 }
 
-ul.product_list_widget li .product_title a {
+ul.product_list_widget li .product_title.review a {
+    font-size: 20px;
+}
+
+ul.product_list_widget li .product_title a,
+ul.product_list_widget li .product_tile.review a {
 	display: block;
 	width: 100%;
 }
