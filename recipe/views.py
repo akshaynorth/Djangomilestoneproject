@@ -17,10 +17,24 @@ logger = logging.getLogger(__name__)
 
 
 def index(request):
+    """Renders the site home page
+
+    Parameters
+    ----------
+    request: django.http.HttpRequest
+        Django HTTP request object with request information submitted by web browser client
+
+    Returns
+    -------
+    django.http.HttpResponse
+        The rendered HTML page in a Django HttpResponse object. This will be the home page of the site.
+    """
     recipes = []
     try:
         if request.method == 'GET':
             # Limit the most recently added recipes up to 10
+            # Present the user with a list of recipes that have been recently added to give an indication of
+            # activity
             if Recipe.objects.first():
                 recipes = list(Recipe.objects.all().order_by('creation_time')[:10])
         else:
@@ -38,9 +52,23 @@ def index(request):
 @login_required()
 @csrf_protect
 def create(request):
+    """Create a new recipe in the backend
+
+    Parameters
+    ----------
+    request: django.http.HttpRequest
+        Django HTTP request object with request information submitted by web browser client
+
+    Returns
+    -------
+    django.http.HttpResponse
+        The rendered HTML page in a Django HttpResponse object.
+    """
     try:
         if request.method == 'POST':
             form_data = request.POST
+
+            # Create a new recipe in the backend. Use the submitted create recipe form data
             recipe = Recipe.objects.create(
                 creation_time=datetime.datetime.now(),
                 name=form_data.get('name', ''),
@@ -55,6 +83,8 @@ def create(request):
                 user=request.user
             )
 
+            # The recipe picture is optional. If provided, obtain all the image data and store it as recipe
+            # picture
             if request.FILES.get('file', None):
                 uploaded_file = request.FILES.get('file')
 
@@ -67,21 +97,25 @@ def create(request):
 
             recipe.save()
 
+            # Add the ingredients provided via the request
             for ingredient in json.loads(form_data.get('ingredients', '[]')):
                 RecipeIngredient.objects.create(
                     description=ingredient,
                     recipe=recipe
                 )
 
+            # Add the instructions provided via the request
             for instruction in json.loads(form_data.get('instructions', '[]')):
                 RecipeInstruction.objects.create(
                     description=instruction,
                     recipe=recipe
                 )
         else:
-            raise ValueError('Invalid HTTP method GET for recipe create')
+            # Do not allow someone to submit an non-POST request to create recipes
+            raise ValueError('Invalid HTTP method for recipe create')
 
     except Exception as e:
+        # When an error occurs return a user an HTTP 404 error page
         logger.exception('Could not create recipe')
         return JsonResponse(
             dict(error=str(e)),
@@ -96,6 +130,29 @@ def create(request):
 @login_required()
 @csrf_protect
 def search_recipe(request):
+    """Serve the search for the recipe
+
+    Parameters
+    ----------
+    request: django.http.HttpRequest
+        Django HTTP request object with request information submitted by web browser client
+
+    Notes
+    -----
+        Some fields in the search form are optional. The search needs to be further restricted the more values are
+        provided by a user. A user should type in a category and if none is found, it is assumed a search for all
+        available recipes. The search recipe result set is to be edited by the user (e.g. Edit, Delete). For this
+        reason only the recipes the user has registered are shown.
+
+        The search for text within the ingredients and instructions is a substring search. As there is a need for a
+        variable and unpredictable set of query parameters, this function relies on *args and **kwargs that can be
+        passed to the Django ORM.
+
+    Returns
+    -------
+    django.http.HttpResponse
+        The rendered HTML page in a Django HttpResponse object.
+    """
     try:
         if request.method == 'POST':
             form_data = request.POST
@@ -103,6 +160,8 @@ def search_recipe(request):
             query_dict = dict()
 
             recipe_type = form_data.get('type', None)
+            # When the user selects a recipe category, restrict the search for that recipe type by adding it
+            # to the Django ORM filter function call parameter list
             if recipe_type and recipe_type.upper() != 'ALL':
                 query_dict.update(
                     dict(
@@ -173,6 +232,7 @@ def search_recipe(request):
         else:
             raise ValueError('Only HTTP POST supported for search recipes')
     except Exception as e:
+        # When an error occurs send the user an HTTP 404 error page
         logger.exception('Could not complete search for recipe')
         raise Http404('Could not search recipe: {}'.format(str(e)))
 
@@ -182,6 +242,21 @@ def search_recipe(request):
 @login_required()
 @csrf_exempt
 def download_recipe_image(request, recipe_id):
+    """Download the image of a recipe
+
+    Parameters
+    ----------
+    request: django.http.HttpRequest
+        Django HTTP request object with request information submitted by web browser client
+
+    recipe_id: int
+        The backend id of the recipe to download a picture form
+
+    Returns
+    -------
+    django.http.HttpResponse
+        The rendered HTML page in a Django HttpResponse object.
+    """
     try:
         if request.method == 'GET':
             # Obtain the image from the database
@@ -189,6 +264,7 @@ def download_recipe_image(request, recipe_id):
 
             image_data = recipe.picture
 
+            # Send a file response with the binary data to the web client
             return FileResponse(
                 io.BytesIO(image_data)
             )
@@ -196,6 +272,8 @@ def download_recipe_image(request, recipe_id):
             raise ValueError('HTTP method POST not supported for image download')
 
     except Exception as e:
+        # When an error occurs, send the user an HTTP 404 errors. In this case, image GET operation will result in no
+        # image displayed
         logger.exception('Could not download recipe image')
         raise Http404('Could not download image for recipe: {}'.format(e))
 
@@ -205,8 +283,24 @@ def download_recipe_image(request, recipe_id):
 @login_required()
 @csrf_protect
 def edit_recipe(request, recipe_id):
+    """Render the edit recipe page
+
+    Parameters
+    ----------
+    request: django.http.HttpRequest
+        Django HTTP request object with request information submitted by web browser client
+
+    recipe_id: int
+        The backend id of the recipe to edit
+
+    Returns
+    -------
+    django.http.HttpResponse
+        The rendered HTML page in a Django HttpResponse object.
+    """
     try:
         if request.method == 'GET':
+            # Obtain the recipe backend information based on the recipe id
             recipe = Recipe.objects.get(id=recipe_id)
 
             recipe_dict = {
@@ -222,6 +316,11 @@ def edit_recipe(request, recipe_id):
                 'ingredients': list(recipe.ingredients.values_list('description', flat=True)),
                 'instructions': list(recipe.instructions.values_list('description', flat=True)),
             }
+
+            # The recipe type is not stored on the database but is required for the selection of the category
+            # pass the recipe types to satisfy the distinction of recipe categories
+            # The recipe object is provided to allow the form to display the pre-filled values of the recipe stored in
+            # the backend
             return render(
                 request,
                 'edit-recipe.html',
@@ -235,6 +334,7 @@ def edit_recipe(request, recipe_id):
         else:
             raise ValueError('Unsupported HTTP method for edit recipe: {}'.format(request.method))
     except Exception as e:
+        # When an error occurs, send the user an HTTP 404 error
         logger.exception('Could not retrieve recipe information')
         raise Http404('Could not retrieve recipe information: {}'.format(str(e)))
 
@@ -245,8 +345,24 @@ def edit_recipe(request, recipe_id):
 @login_required()
 @csrf_protect
 def view_recipe(request, recipe_id):
+    """Render read-only recipe view
+
+    Parameters
+    ----------
+    request: django.http.HttpRequest
+        Django HTTP request object with request information submitted by web browser client
+
+    recipe_id: int
+        The backend id of the recipe to view
+
+    Returns
+    -------
+    django.http.HttpResponse
+        The rendered HTML page in a Django HttpResponse object.
+    """
     try:
         if request.method == 'GET':
+            # Obtain the recipe from the backend based on the recipe id
             recipe = Recipe.objects.get(id=recipe_id)
 
             recipe_dict = {
@@ -271,6 +387,7 @@ def view_recipe(request, recipe_id):
         else:
             raise ValueError('Unsupported HTTP method for edit recipe: {}'.format(request.method))
     except Exception as e:
+        # When an error occurs send the user an HTTP 404 error
         logger.exception('Could not retrieve recipe information')
         raise Http404('Could not retrieve recipe information: {}'.format(str(e)))
 
@@ -281,8 +398,24 @@ def view_recipe(request, recipe_id):
 @login_required()
 @csrf_protect
 def submit_edit_recipe(request, recipe_id):
+    """Stores edited recipe information
+
+    Parameters
+    ----------
+    request: django.http.HttpRequest
+        Django HTTP request object with request information submitted by web browser client
+
+    recipe_id: int
+        The backend id of the recipe to view
+
+    Returns
+    -------
+    django.http.HttpResponse
+        The rendered HTML page in a Django HttpResponse object.
+    """
     try:
         if request.method == 'POST':
+            # Obtain the recipe from the backend based on the recipe id
             recipe = Recipe.objects.get(id=recipe_id)
 
             form_data = request.POST
@@ -296,6 +429,7 @@ def submit_edit_recipe(request, recipe_id):
             recipe.portions = form_data.get('portions', recipe.portions)
             recipe.price = form_data.get('price', recipe.price)
 
+            # If a new picture is provided, then obtain its binary information
             if request.FILES.get('files', None):
                 uploaded_file = request.FILES.get('file')
 
@@ -305,6 +439,8 @@ def submit_edit_recipe(request, recipe_id):
 
                 recipe.picture = image_buffer
 
+            # Recreate the ingredients and instruction such that the result is a match of the ones edited by the
+            # user
             recipe.ingredients.all().delete()
             recipe.instructions.all().delete()
 
@@ -328,6 +464,7 @@ def submit_edit_recipe(request, recipe_id):
             raise ValueError('Request method not supported for submit edit recipe: {}'.format(request.method))
 
     except Exception as e:
+        # When an error occurs, send an HTTP 404 error to the user
         logger.exception('Could not submit edits to recipe: {}'.format(str(e)))
         raise Http404('Could not submit edit to recipe')
 
@@ -338,8 +475,25 @@ def submit_edit_recipe(request, recipe_id):
 @login_required()
 @csrf_protect
 def delete_recipe(request, recipe_id):
+    """Deletes a recipe from the backend
+
+    Parameters
+    ----------
+    request: django.http.HttpRequest
+        Django HTTP request object with request information submitted by web browser client
+
+    recipe_id: int
+        The backend id of the recipe to view
+
+    Returns
+    -------
+    django.http.HttpResponse
+        The rendered HTML page in a Django HttpResponse object.
+    """
     try:
         if request.method == 'POST':
+            # Delete the recipe in the backend based on the provided recipe id
+            # When a non-existent recipe id is provided, this call will fail and the user will be sent an error
             Recipe.objects.get(id=recipe_id).delete()
 
             return JsonResponse(dict())
@@ -347,6 +501,7 @@ def delete_recipe(request, recipe_id):
             raise ValueError('Request method not supported for delete recipe: {}'.format(request.method))
 
     except Exception as e:
+        # When an error occurs, send the user an HTTP 404 error
         logger.exception('Could not delete recipe')
         raise Http404()
 

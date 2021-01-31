@@ -15,19 +15,40 @@ logger = logging.getLogger(__name__)
 
 @login_required()
 def shop_page(request):
+    """Render the shopping page
+
+    Parameters
+    ----------
+    request: django.http.HttpRequest
+        Django HTTP request object with request information submitted by web browser client
+
+    Notes
+    -----
+        Users are only presented with the recipes other users have registered. This is to avoid a user buying their
+        own uploaded recipes.
+
+        To purchase recipes, users are required to be registered and logged in.
+
+    Returns
+    -------
+    django.http.HttpResponse
+        The rendered HTML page in a Django HttpResponse object.
+    """
 
     session_cart = None
     try:
+        # Obtain the list of recipes uploaded by other users
         recipes = Recipe.objects.filter(~Q(user=request.user))
 
+        # Obtain the recipe cart from the session. Create it if it does not exist
         session_cart_json = request.session.get('cart', None)
-
         if session_cart_json:
-
             session_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
         else:
             session_cart = cart.RecipeCart()
 
+        # Store the cart object in the session. Serialize as a JSON string as the HTTP session only accepts built-in
+        # data types
         request.session['cart'] = json.dumps(session_cart.as_dict())
 
     except Exception:
@@ -42,6 +63,26 @@ def shop_page(request):
 
 @login_required()
 def add_to_cart(request, recipe_id):
+    """Add a recipe to the cart
+
+    Parameters
+    ----------
+    request: django.http.HttpRequest
+        Django HTTP request object with request information submitted by web browser client
+
+    recipe_id: int
+        The id of the recipe to add to the cart
+
+    Notes
+    -----
+        This function maintains the existence of the recipe cart in the HTTP session. When the requested recipe
+        does not exist or belongs to the logged in user, it is not added to the cart.
+
+    Returns
+    -------
+    django.http.HttpResponse
+        The rendered HTML page in a Django HttpResponse object. The user is redirected to the shopping page.
+    """
     context_dict = dict()
 
     try:
@@ -53,12 +94,14 @@ def add_to_cart(request, recipe_id):
             recipe_cart = cart.RecipeCart()
 
         if request.method == 'POST':
-            # Get the product information from the database
+            # Get the product information from the database for the provided user and ensure that it does not belong to
+            # the logged in user
             recipe = Recipe.objects.filter(
                 ~Q(user=request.user),
                 id=recipe_id
             ).first()
 
+            # Proceed to add the recipe to the cart if a recipe was found
             if recipe:
                 cart_item = cart.RecipeCartItem()
 
@@ -92,6 +135,21 @@ def add_to_cart(request, recipe_id):
 
 @login_required()
 def delete_from_cart(request, recipe_id):
+    """Delete a recipe from the cart
+
+    Parameters
+    ----------
+    request: django.http.HttpRequest
+        Django HTTP request object with request information submitted by web browser client
+
+    recipe_id: int
+        The id of the recipe to delete
+
+    Returns
+    -------
+    django.http.HttpResponse
+        The rendered HTML page in a Django HttpResponse object. The user is redirected to the shopping page
+    """
     context_dict = dict()
 
     try:

@@ -65,12 +65,13 @@
 
 	    }
 
-        // Attach the submit recipe function to the submit recipe button
+        // Attach the add to cart buttons
         $('[id^=add_to_cart]').click(function (e) {
             e.preventDefault()
             add_recipe_to_cart(this)
         })
 
+        // Attach to the delete from cart buttons
         $('[id^=delete_from_cart]').click(function (e) {
             e.preventDefault()
             delete_recipe_from_cart(this)

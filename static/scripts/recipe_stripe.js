@@ -5,6 +5,8 @@
       // The script from the Stripe site must be included before the execution of this code from
       // https://js.stripe.com/v3/"
       // Modified to use JQuery and integrate with the recipe site custom-built pages
+
+      // Publicly accessible key provided by the Stripe dashboard. This has to be modified for each new stripe account
       let stripe = Stripe(
         'pk_test_51IFbK8IN8KUsEgP5iLWoeK93WTkY3xtWhZ4QHp6GG1Tj7bjmQBMh07q348VBCFxjNP8irfdrJ96554p1QzGsdEVw00lMdHdIq0'
       );

@@ -100,3 +100,12 @@ To setup the Stripe payment follow these steps:
 8. On the *Key* field enter`STRIPE_API_KEY`
 
 9. On the *Value* field paste the secret key from Stripe copied to the clipboard, then click on the **Add** button
+
+10. Open the following file to provide the Stripe API public key: `static/scripts/recipe_stripe.js`
+
+11. On the Stripe dashboard obtain the public API access key. Navigate to  `https://dashboard.stripe.com/test/apikey`
+    then on the publishable API key click on the key to copy it to the clipboard.
+    
+12. Paste the public key to the parameter of the `Stripe()` object in `static/scripts/recipe_stripe.js`
+
+13. Redeploy the application to the Heroku platform. (e.g. commit, push to Git and deploy application in Heroku)
