@@ -88,6 +88,9 @@ def create_checkout_session(request):
                       cancel_url=request.build_absolute_uri(reverse('pay_cancel')),
                     )
 
+                    # Clear out the cart as user is proceeding to payment
+                    request.session['cart'] = cart.RecipeCart()
+
                     return JsonResponse(dict(id=session.id))
 
     except:
