@@ -25,6 +25,7 @@ class RecipeCart:
 
             for cart_item in cart_dict.get('cart_items', []):
                 recipe_item = RecipeCartItem()
+                recipe_item.item_id = cart_item.get('item_id')
                 recipe_item.description = cart_item.get('description')
                 recipe_item.price = cart_item.get('price')
                 recipe_item.quantity = cart_item.get('quantity')
@@ -57,6 +58,8 @@ class RecipeCart:
 
     def as_dict(self):
         return {
+            {
+            'item_id': self.item_id,
             'num_items': self.num_items,
             'cart_items': [cart_item.as_dict() for cart_item in self.cart_items],
             'total': self.total

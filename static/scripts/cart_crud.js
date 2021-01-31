@@ -58,7 +58,7 @@
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log('Recipe creation failed: ' + errorThrown + ' textStatus = ' + textStatus)
-                    alert('Could not add recipe to cart. Try again later.')
+                    alert('Could not delete recipe from cart. Try again later.')
                 }
             }
             )

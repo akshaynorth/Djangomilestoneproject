@@ -65,7 +65,7 @@
  					<section>
 						<span class="product-category">{{recipe.type}}</span>
 						<h5>{{recipe.description}}</h5>
- 						<span class="product-price">${{recipe.price}}</span>
+ 						<span class="product-price">${{recipe.price|floatformat:2}}</span>
  					</section>
  				</a>
  			</figure>

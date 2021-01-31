@@ -51,32 +51,36 @@ def shop_page(request):
 def add_to_cart(request, recipe_id):
     context_dict = dict()
 
-    session_cart_json = request.session.get('cart', None)
-    if session_cart_json:
-        recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
+    try:
+        session_cart_json = request.session.get('cart', None)
+        if session_cart_json:
+            recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
 
-    else:
-        recipe_cart = cart.RecipeCart()
+        else:
+            recipe_cart = cart.RecipeCart()
 
-    if request.method == 'POST':
-        # Get the product information from the database
-        recipe = Recipe.objects.filter(
-            ~Q(user=request.user),
-            id=recipe_id
-        ).first()
+        if request.method == 'POST':
+            # Get the product information from the database
+            recipe = Recipe.objects.filter(
+                ~Q(user=request.user),
+                id=recipe_id
+            ).first()
 
-        if recipe:
-            cart_item = cart.RecipeCartItem()
+            if recipe:
+                cart_item = cart.RecipeCartItem()
 
-            # Avoid charging more than once for the same recipe
-            cart_item.quantity = 1
-            cart_item.item_id = recipe_id
-            cart_item.price = recipe.price
-            cart_item.description = recipe.name
+                # Avoid charging more than once for the same recipe
+                cart_item.quantity = 1
+                cart_item.item_id = recipe_id
+                cart_item.price = recipe.price
+                cart_item.description = recipe.name
 
-            recipe_cart.add_item(cart_item)
+                recipe_cart.add_item(cart_item)
 
-    request.session['cart'] = json.dumps(recipe_cart.as_dict())
+        request.session['cart'] = json.dumps(recipe_cart.as_dict())
+
+    except:
+        logger.exception('Could not add recipe to cart')
 
     # Add the product item to the session
     context_dict.update(
@@ -97,35 +101,38 @@ def add_to_cart(request, recipe_id):
 def delete_from_cart(request, recipe_id):
     context_dict = dict()
 
-    session_cart_json = request.session.get('cart', None)
-    if session_cart_json:
-        recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
+    try:
+        session_cart_json = request.session.get('cart', None)
+        if session_cart_json:
+            recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
 
-    else:
-        recipe_cart = cart.RecipeCart()
+        else:
+            recipe_cart = cart.RecipeCart()
 
-    if request.method == 'POST':
-        # Get the product information from the database
-        recipe = Recipe.objects.filter(
-            ~Q(user=request.user),
-            id=recipe_id
-        ).first()
+        if request.method == 'POST':
+            # Get the product information from the database
+            recipe = Recipe.objects.filter(
+                ~Q(user=request.user),
+                id=recipe_id
+            ).first()
 
-        if recipe:
-            recipe_cart.delete_item(recipe_id)
+            if recipe:
+                recipe_cart.delete_item(recipe_id)
 
         request.session['cart'] = json.dumps(recipe_cart.as_dict())
+    except:
+        logger.exception('Could not delete from cart')
 
-        # Add the product item to the session
-        context_dict.update(
-            dict(
-                recipes=Recipe.objects.filter(~Q(user=request.user)),
-                recipe_cart=recipe_cart
-            )
+    # Add the product item to the session
+    context_dict.update(
+        dict(
+            recipes=Recipe.objects.filter(~Q(user=request.user)),
+            recipe_cart=recipe_cart
         )
+    )
 
-        return render(
-            request,
-            'shop.html',
-            context=context_dict
-        )
+    return render(
+        request,
+        'shop.html',
+        context=context_dict
+    )
