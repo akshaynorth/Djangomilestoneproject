@@ -32,7 +32,7 @@ class RecipeCart:
                 recipe_item.quantity = cart_item.get('quantity')
                 self.cart_items.append(recipe_item)
 
-                self.total = self.total + recipe_item.price * recipe_item.quantity
+                self.total = self.total + float(recipe_item.price) * recipe_item.quantity
         else:
             self.num_items = 0
             self.cart_items = []
@@ -48,13 +48,17 @@ class RecipeCart:
         self.cart_items.append(cart_item)
 
         self.num_items = self.num_items + 1
-        self.total = self.total + cart_item.price * cart_item.quantity
+        self.total = self.total + float(cart_item.price) * cart_item.quantity
 
     def delete_item(self, item_id):
         for cart_item in self.cart_items:
             if cart_item.item_id == item_id:
                 self.cart_items.remove(cart_item)
                 self.num_items = self.num_items - 1 if self.num_items > 0 else 0
+
+                self.total = self.total - float(cart_item.price) * cart_item.quantity
+                if self.total < 0.0:
+                    self.total = 0.0
                 break
 
     def as_dict(self):
