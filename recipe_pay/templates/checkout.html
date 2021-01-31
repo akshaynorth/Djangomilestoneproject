@@ -31,11 +31,9 @@
                 {% for cart_item in recipe_cart.cart_items %}
                 <li>
                     <a href="#" class="image"><img src="/recipe/image/{{cart_item.item_id}}" alt=""></a>
-                    <div class="product_title">
+                    <div class="review_product_title">
                         <a href="/recipe_cart/delete/{{cart_item.item_id}}" id="delete_from_cart_{{loop.index}}">
                             {{cart_item.description}}
-                            <img alt="Delete recipe icon" src="/static/images/trash.svg"
-                                 style="float: right; width: 15%; height: auto;">
                         </a>
                         <span class="quantity">
                         {{cart_item.quantity}} × <span class="amount">${{cart_item.price|floatformat:2}}</span>
