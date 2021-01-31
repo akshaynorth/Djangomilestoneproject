@@ -32,6 +32,14 @@ the following steps:
 
 13. Click on the **Enable Automatic Deploys** button
 
+14. Navigate to the *Settings* tab, then scroll down to the *Config Vars* section
+
+15. Click on **Reveal Config Vars**
+
+16. On the *Key* field enter`DJANGO_SECRET_KEY`
+
+17. On the *Value* field enter secret key, then click on the **Add** button
+
 # MySQL relational database deployment
 
 The Heroku platform provides *Add-ons* that allow the application consumption of third-party services. The 
@@ -64,3 +72,31 @@ To deploy the add-on follow these steps:
 
 11. On the *Value* field enter the database url obtained from the **JawsDB MySQL** console *Connection String*, then 
     click on the **Add** button
+    
+# Stripe integration deployment
+
+The Stripe payment integration requires both configuration on the Stripe console, and the Heroku platform to store 
+and protect API secret keys.
+
+To setup the Stripe payment follow these steps:
+
+1. Go to www.stripe.com on your web browser
+
+2. Click on the Sign-up link
+
+3. Enter your preferred credentials for username and password
+
+4. Provide your personal information: name, address and bank account information. It is important to note that
+   the required API secret keys needed to integrate with the service will not be available until all the information
+   is provided
+   
+5. Navigate to https://dashboard.stripe.com/test/apikeys, click on the `Reveal test key`. Notice that for production
+   this key will be different. As this site is for testing purposes, click on this button to reveal the test key.
+   
+6. Click on the secret key to copy it to the clipboard
+   
+7. Open the Heroku console and navigate to the *Settings* tab, then scroll down to the *Config Vars* section
+
+8. On the *Key* field enter`STRIPE_API_KEY`
+
+9. On the *Value* field paste the secret key from Stripe copied to the clipboard, then click on the **Add** button

@@ -70,8 +70,6 @@ def add_to_cart(request, recipe_id):
 
                 recipe_cart.add_item(cart_item)
 
-        print('add: Recipe total: {}'.format(str(recipe_cart.total)))
-        logger.debug('add: Recipe total: {}'.format(str(recipe_cart.total)))
         request.session['cart'] = json.dumps(recipe_cart.as_dict())
 
     except:
@@ -115,7 +113,6 @@ def delete_from_cart(request, recipe_id):
                 recipe_cart.delete_item(recipe_id)
 
         request.session['cart'] = json.dumps(recipe_cart.as_dict())
-        print('delete: recipe_cart: {}'.format(request.session['cart']))
     except:
         logger.exception('Could not delete from cart')
 
