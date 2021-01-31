@@ -70,6 +70,7 @@ def add_to_cart(request, recipe_id):
 
                 recipe_cart.add_item(cart_item)
 
+        logger.debug('add: Recipe total: {}'.format(str(recipe_cart.total)))
         request.session['cart'] = json.dumps(recipe_cart.as_dict())
 
     except:
