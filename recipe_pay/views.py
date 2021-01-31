@@ -74,7 +74,7 @@ def create_checkout_session(request):
                                 'product_data': {
                                     'name': cart_item.description,
                                 },
-                                'unit_amount': cart_item.price,
+                                'unit_amount': int(cart_item.price * 100),
                             },
                             'quantity': cart_item.quantity
                         }
