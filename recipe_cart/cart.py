@@ -11,7 +11,7 @@ class RecipeCartItem:
     def as_dict(self):
         return {
             'description': self.description,
-            'price': self.price,
+            'price': float(self.price),
             'quantity': self.quantity
         }
 
@@ -65,5 +65,5 @@ class RecipeCart:
         return {
             'num_items': self.num_items,
             'cart_items': [cart_item.as_dict() for cart_item in self.cart_items],
-            'total': self.total
+            'total': float(self.total)
         }
