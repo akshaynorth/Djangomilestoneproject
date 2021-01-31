@@ -58,7 +58,6 @@ class RecipeCart:
 
     def as_dict(self):
         return {
-            {
             'item_id': self.item_id,
             'num_items': self.num_items,
             'cart_items': [cart_item.as_dict() for cart_item in self.cart_items],
