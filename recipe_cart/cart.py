@@ -23,6 +23,7 @@ class RecipeCart:
             self.num_items = cart_dict.get('num_items')
             self.cart_items = []
 
+            self.total = float(0.0)
             for cart_item in cart_dict.get('cart_items', []):
                 recipe_item = RecipeCartItem()
                 recipe_item.item_id = cart_item.get('item_id')
@@ -31,7 +32,7 @@ class RecipeCart:
                 recipe_item.quantity = cart_item.get('quantity')
                 self.cart_items.append(recipe_item)
 
-            self.total = cart_dict.get('total')
+                self.total = self.total + recipe_item.price * recipe_item.quantity
         else:
             self.num_items = 0
             self.cart_items = []
