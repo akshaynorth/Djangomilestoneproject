@@ -7,12 +7,13 @@ import logging
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse
 from django.urls import reverse
 
 from recipe_cart import cart
 
 
+# Obtain Stripe Secret API Key from the environment
 stripe.api_key = os.environ.get('STRIPE_API_KEY', '')
 
 
@@ -89,7 +90,7 @@ def create_checkout_session(request):
                     )
 
                     # Clear out the cart as user is proceeding to payment
-                    request.session['cart'] = cart.RecipeCart()
+                    request.session['cart'] = json.dumps(cart.RecipeCart().as_dict())
 
                     return JsonResponse(dict(id=session.id))
 
