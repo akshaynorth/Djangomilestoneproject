@@ -56,7 +56,7 @@
  					<a href="product-page.html">
 						<img alt="" src="/recipe/image/{{recipe.id}}"/>
  					</a>
- 					<a href="/recipe_cart/add/{{recipe.id}}" class="product-button" id="add_to_cart">
+ 					<a href="/recipe_cart/add/{{recipe.id}}" class="product-button" id="add_to_cart_{{loop.index}}">
 						<i class="fa fa-shopping-cart"></i>
 					</a>
  				</div>
@@ -111,7 +111,6 @@
 			<div class="clearfix"></div>
 		</div>
 
-
 		<!-- Cart -->
 		<div class="widget">
 			<h4 class="headline">Cart</h4>
@@ -125,7 +124,11 @@
 					<li>
 						<a href="#" class="image"><img src="/recipe/image/{{cart_item.item_id}}" alt=""></a>
 						<div class="product_title">
-							<a href="#">{{cart_item.description}}</a>
+							<a href="/recipe_cart/delete/{{cart_item.item_id}}" id="delete_from_cart_{{loop.index}}">
+								{{cart_item.description}}
+								<img alt="Delete recipe icon" src="/static/images/trash.svg"
+									 style="float: right; width: 15%; height: auto;">
+							</a>
 							<span class="quantity">
 								{{cart_item.quantity}} × <span class="amount">${{cart_item.price|floatformat:2}}</span>
 							</span>
