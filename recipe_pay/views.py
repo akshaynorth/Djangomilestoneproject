@@ -2,6 +2,7 @@ import stripe
 
 import json
 import os
+import math
 import logging
 
 from django.contrib.auth.decorators import login_required
@@ -72,7 +73,7 @@ def create_checkout_session(request):
                                 'product_data': {
                                     'name': cart_item.description,
                                 },
-                                'unit_amount': int(cart_item.price * 100),
+                                'unit_amount': math.ceil(cart_item.price * 100),
                             },
                             'quantity': cart_item.quantity
                         }
