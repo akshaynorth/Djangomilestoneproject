@@ -14,7 +14,7 @@
       checkoutButton.click(function(e) {
         e.preventDefault()
 
-        fetch('/create-checkout-session/', {
+        fetch('/recipe_pay/create_checkout_session', {
           method: 'POST',
         })
         .then(function(response) {
