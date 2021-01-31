@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 
 urlpatterns = [
     path('', include('recipe.urls')),
@@ -23,5 +23,6 @@ urlpatterns = [
     path('recipe/', include('recipe.urls')),
     path('recipe_cart/', include('recipe_cart.urls')),
     path('recipe_pay/', include('recipe_pay.urls')),
+    re_path('^create-checkout-session', include('recipe_pay.urls')),
     path('admin/', admin.site.urls)
 ]
