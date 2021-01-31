@@ -14,7 +14,7 @@
       checkoutButton.click(function(e) {
         e.preventDefault()
 
-        fetch('/recipe_pay/create_checkout_session', {
+        fetch('/create-checkout-session', {
           method: 'POST',
           headers: {'X-CSRFToken': getCookie('csrftoken')}
         })
