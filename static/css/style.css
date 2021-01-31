@@ -1321,7 +1321,7 @@ display: none;
 /* Buttons
 ------------------------------------- */
 
-button,
+button.button,
 input[type="button"],
 input[type="submit"],
 a.button {
@@ -4684,7 +4684,7 @@ ul.product_list_widget li .product_title {
 	margin-left: 80px;
 }
 
-ul.product_list_widget li .review_product_title {
+ul.product_list_widget li .product_title.order_review {
     margin-left: 80px;
     font-size: 20px;
 }
