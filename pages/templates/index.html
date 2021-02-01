@@ -201,18 +201,19 @@
 			<!-- Recipe #{{loop.index}} -->
 			<div class="four recipe-box columns">
 
+				<!-- Do not let unauthenticated users view recipes -->
 				<!-- Thumbnail -->
 				<div class="thumbnail-holder">
-					<a href="/recipe/view/{{recipe.id}}">
+					<a href="#">
 						<img src="/recipe/image/{{recipe.id}}" alt=""/>
 						<div class="hover-cover"></div>
-						<div class="hover-icon">View Recipe</div>
+						<div class="hover-icon">Purchase to View</div>
 					</a>
 				</div>
 
 				<!-- Content -->
 				<div class="recipe-box-content">
-					<h3><a href="/recipe/view/{{recipe.id}}">{{recipe.name}}</a></h3>
+					<h3>{{recipe.name}}</h3>
 
 					<div class="recipe-meta"><i class="fa fa-clock-o"></i>{{recipe.prep_time}}</div>
 

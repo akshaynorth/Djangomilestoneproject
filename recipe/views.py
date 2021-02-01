@@ -355,6 +355,11 @@ def view_recipe(request, recipe_id):
     recipe_id: int
         The backend id of the recipe to view
 
+    Notes
+    -----
+        This view is to render recipes to the user that have access to see for the purpose of reviewing user-uploaded
+        recipe information. This is not meant for all users to see recipes they have not uploaded without purchase.
+
     Returns
     -------
     django.http.HttpResponse
@@ -362,8 +367,12 @@ def view_recipe(request, recipe_id):
     """
     try:
         if request.method == 'GET':
-            # Obtain the recipe from the backend based on the recipe id
-            recipe = Recipe.objects.get(id=recipe_id)
+            # Obtain the recipe from the backend based on the recipe id. Only allow the user to read recipes they have
+            # uploaded
+            recipe = Recipe.objects.get(
+                user=request.user,
+                id=recipe_id
+            )
 
             recipe_dict = {
                 'id': recipe.id,
