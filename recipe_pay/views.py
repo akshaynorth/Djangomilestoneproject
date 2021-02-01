@@ -209,14 +209,18 @@ def create_checkout_session(request):
                     )
 
                 if line_items_list:
+                    success_url = request.build_absolute_uri(reverse('pay_success'))
+                    if success_url.endswith('/'):
+                        success_url = success_url[:-1]
+
+                    success_url = success_url + '?session_id={CHECKOUT_SESSION_ID}'
+
                     session = stripe.checkout.Session.create(
                       payment_method_types=['card'],
                       line_items=line_items_list,
                       mode='payment',
                       # success_url has to be absolute as required by Stripe
-                      success_url='{}?session_id={CHECKOUT_SESSION_ID}'.format(
-                          request.build_absolute_uri(reverse('pay_success'))
-                      ),
+                      success_url=success_url,
                       # cancel_url has to be absolute as required by Stripe
                       cancel_url=request.build_absolute_uri(reverse('pay_cancel')),
                     )
