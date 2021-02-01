@@ -77,60 +77,64 @@ def payment_success(request):
         The rendered HTML page in a Django HttpResponse object.
     """
 
-    if request.method == 'GET' and request.user.is_authenticated:
-        # Obtained code from Stripe for checkout session retrieval: See:
-        # https://stripe.com/docs/payments/checkout/custom-success-page
-        session = stripe.checkout.Session.retrieve(request.args.get('session_id'))
-        customer = stripe.Customer.retrieve(session.customer)
+    try:
+        if request.method == 'GET' and request.user.is_authenticated:
+            # Obtained code from Stripe for checkout session retrieval: See:
+            # https://stripe.com/docs/payments/checkout/custom-success-page
+            session = stripe.checkout.Session.retrieve(request.args.get('session_id'))
+            customer = stripe.Customer.retrieve(session.customer)
 
-        if not customer.name:
-            # If the customer name can not be retrieved, interpret it as an attempt to hijack the Stripe session
-            # and raise an error
-            raise ValueError('Could not obtain customer name from Stripe payment')
+            if not customer.name:
+                # If the customer name can not be retrieved, interpret it as an attempt to hijack the Stripe session
+                # and raise an error
+                raise ValueError('Could not obtain customer name from Stripe payment')
 
-        # The user has paid an is authenticated. Proceed to add the ordered recipes to its profile of ordered lists
-        # Get the recipes in the cart
-        session_cart_json = request.session.get('cart', None)
+            # The user has paid an is authenticated. Proceed to add the ordered recipes to its profile of ordered lists
+            # Get the recipes in the cart
+            session_cart_json = request.session.get('cart', None)
 
-        if session_cart_json is None:
-            # User has paid and authenticated but no shopping cart, no recipes to add to ordered list.
-            # this condition is a candidate to a refund and should never occur.
-            raise Http404()
+            if session_cart_json is None:
+                # User has paid and authenticated but no shopping cart, no recipes to add to ordered list.
+                # this condition is a candidate to a refund and should never occur.
+                raise Http404()
 
-        recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
+            recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
 
-        for cart_item in recipe_cart.cart_items:
+            for cart_item in recipe_cart.cart_items:
 
-            recipe = Recipe.objects.get(id=int(cart_item.item_id))
+                recipe = Recipe.objects.get(id=int(cart_item.item_id))
 
-            ordered_recipe = OrderedRecipe.objects.create(
-                creation_time=datetime.datetime.now(),
-                name=recipe.name,
-                type=recipe.type,
-                short_description=recipe.short_description,
-                prep_time=recipe.prep_time,
-                cook_time=recipe.cook_time,
-                calories=recipe.calories,
-                portions=recipe.portions,
-                user=request.user
+                ordered_recipe = OrderedRecipe.objects.create(
+                    creation_time=datetime.datetime.now(),
+                    name=recipe.name,
+                    type=recipe.type,
+                    short_description=recipe.short_description,
+                    prep_time=recipe.prep_time,
+                    cook_time=recipe.cook_time,
+                    calories=recipe.calories,
+                    portions=recipe.portions,
+                    user=request.user
+                )
+
+                for ingredient in recipe.ingredients.all():
+                    OrderedRecipeIngredient.create(
+                        recipe=ordered_recipe,
+                        description=ingredient.description
+                    )
+
+                for instruction in recipe.instructions.all():
+                    OrderedRecipeInstruction.create(
+                        recipe=ordered_recipe,
+                        description=instruction.description
+                    )
+
+            # Clear the session cart now that all ordered recipes were purchased and stored
+            request.session['cart'] = json.dumps(cart.RecipeCart().as_dict())
+        else:
+            raise ValueError(
+                'Invalid request method, only GET is supported for payment success, received: {}'.format(request.method)
             )
-
-            for ingredient in recipe.ingredients.all():
-                OrderedRecipeIngredient.create(
-                    recipe=ordered_recipe,
-                    description=ingredient.description
-                )
-
-            for instruction in recipe.instructions.all():
-                OrderedRecipeInstruction.create(
-                    recipe=ordered_recipe,
-                    description=instruction.description
-                )
-
-        # Clear the session cart now that all ordered recipes were purchased and stored
-        request.session['cart'] = json.dumps(cart.RecipeCart().as_dict())
-
-    else:
+    except:
         logger.exception('Could not complete payment success activities')
         raise Http404()
 
