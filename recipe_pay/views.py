@@ -81,7 +81,7 @@ def payment_success(request):
         if request.method == 'GET' and request.user.is_authenticated:
             # Obtained code from Stripe for checkout session retrieval: See:
             # https://stripe.com/docs/payments/checkout/custom-success-page
-            session = stripe.checkout.Session.retrieve(request.args.get('session_id'))
+            session = stripe.checkout.Session.retrieve(request.GET.get('session_id'))
             customer = stripe.Customer.retrieve(session.customer)
 
             if not customer.name:
