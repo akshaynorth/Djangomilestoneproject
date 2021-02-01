@@ -110,6 +110,7 @@ def payment_success(request):
                     creation_time=datetime.datetime.now(),
                     name=recipe.name,
                     type=recipe.type,
+                    picture=recipe.picture,
                     short_description=recipe.short_description,
                     prep_time=recipe.prep_time,
                     cook_time=recipe.cook_time,
