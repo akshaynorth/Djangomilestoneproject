@@ -87,11 +87,8 @@ def payment_success(request):
             if not session:
                 # If the customer name can not be retrieved, interpret it as an attempt to hijack the Stripe session
                 # and raise an error
-                raise ValueError('Could not obtain customer name from Stripe payment: {},'
-                                 'session_id = {}, customer = {}'.format(customer.name,
-                                                                         request.GET.get('session_id'),
-                                                                         customer.__dict__
-                                                                         )
+                raise ValueError('Could not obtain session from Stripe payment: '
+                                 'session_id = {}'.format(request.GET.get('session_id'))
                                  )
 
             # The user has paid an is authenticated. Proceed to add the ordered recipes to its profile of ordered lists
@@ -122,13 +119,13 @@ def payment_success(request):
                 )
 
                 for ingredient in recipe.ingredients.all():
-                    OrderedRecipeIngredient.create(
+                    OrderedRecipeIngredient.objects.create(
                         recipe=ordered_recipe,
                         description=ingredient.description
                     )
 
                 for instruction in recipe.instructions.all():
-                    OrderedRecipeInstruction.create(
+                    OrderedRecipeInstruction.objects.create(
                         recipe=ordered_recipe,
                         description=instruction.description
                     )
