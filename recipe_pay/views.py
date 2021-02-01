@@ -84,7 +84,7 @@ def payment_success(request):
             session = stripe.checkout.Session.retrieve(request.GET.get('session_id'))
             customer = stripe.Customer.retrieve(session.customer)
 
-            if not customer.name:
+            if not session:
                 # If the customer name can not be retrieved, interpret it as an attempt to hijack the Stripe session
                 # and raise an error
                 raise ValueError('Could not obtain customer name from Stripe payment: {},'
