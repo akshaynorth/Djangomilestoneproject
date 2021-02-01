@@ -23,6 +23,7 @@ urlpatterns = [
     path('recipe/', include('recipe.urls')),
     path('recipe_cart/', include('recipe_cart.urls')),
     path('recipe_pay/', include('recipe_pay.urls')),
+    path('recipe_orders/', include('recipe_orders.urls')),
     re_path(r'^create-checkout-session$', include('recipe_pay.urls')),
     path('admin/', admin.site.urls)
 ]

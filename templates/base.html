@@ -57,6 +57,7 @@
 			<li><a href="/pages/submit-recipe.html">Generate Cooking Directions</a></li>
 			{% if user.is_authenticated %}
 			<li><a href="/recipe_cart/shop">Shop</a></li>
+			<li><a href="{% url 'show_ordered_recipes' %}">Orders</a></li>
 			<li><a href="{% url 'logout' %}">Logout: {{user.username}}</a></li>
 			{% else %}
 			<li><a href="{% url 'login_form' %}">Log-in</a></li>
