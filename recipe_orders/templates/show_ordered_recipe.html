@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block precontent %}
+<div class="recipeBackground">
+	<img src="/static/images/recipeBackground.jpg" alt="" />
+</div>
+{% endblock precontent %}
+
+{% block pagecontent %}
+<div class="container" itemscope itemtype="http://schema.org/Recipe">
+	<!--
+	Display the contents of the recipe details. This page did not exist in the initial site template to display the
+	details for recipes. Individual recipe detail pages were hardcoded and did not provide the capability to display the
+	details of recipes for newly added recipes on the database
+	-->
+	<!-- Recipe -->
+	<div class="twelve columns">
+	<div class="alignment">
+
+		<!-- Header -->
+		<section class="recipe-header">
+			<div class="title-alignment">
+				<h2>{{recipe.name}}</h2>
+			</div>
+		</section>
+		
+
+		<!-- Slider -->
+		<div class="recipeSlider rsDefault">
+		    <img itemprop="image" class="rsImg" src="/recipe_orders/image/{{recipe.id}}" alt="recipe image" />
+		</div>
+
+
+		<!-- Details -->
+		<section class="recipe-details" itemprop="nutrition">
+			<ul>
+				<li>Serves: <strong itemprop="recipeYield">{{recipe.portions}} people</strong></li>
+				<li>Prep Time: <strong itemprop="prepTime">{{recipe.prep_time}} minutes</strong></li>
+				<li>Cooking: <strong itemprop="cookTime">{{recipe.cook_time}} hours</strong></li>
+				<li>Calories: <strong itemprop="calories">{{recipe.calories}} cal</strong></li>
+			</ul>
+			<div class="clearfix"></div>
+		</section>
+
+
+		<!-- Text -->
+		<!-- Description obtained from https://cheflolaskitchen.com/jollof-rice/ -->
+		<p itemprop="description">{{recipe.short_description}}</p>
+
+
+		<!-- Ingredients -->
+		<h3>Ingredients</h3>
+		<!-- Ingredients obtained from http://www.nigerianlazychef.com/2016/12/atadindin-fried-rice-jollof-fried-ricelazychef-christmas/ -->
+		<ul class="ingredients">
+			<!--
+			Display the list of all the ingredients. Each ingredient can be selected although it is just a visual aid to
+			the user. The ingredient is strikethrough and no specific action altering any data occurs
+			-->
+			{% for ingredient in recipe.ingredients %}
+			<li>
+				<input id="check-{{loop.index}}" type="checkbox" name="check" value="check-{{loop.index}}">
+				<label itemprop="ingredients" for="check-{{loop.index}}">{{ingredient}}</label>
+			</li>
+			{% endfor %}
+		</ul>
+
+
+		<!-- Directions -->
+		<!-- Directions obtained from http://www.nigerianlazychef.com/2016/12/atadindin-fried-rice-jollof-fried-ricelazychef-christmas/ -->
+		<h3>Directions</h3>
+		<ol class="directions" itemprop="recipeInstructions">
+			<!--
+			Display the list of instructions to the users. The list is read-only.
+			-->
+			{% for instruction in recipe.instructions %}
+			<li>{{instruction}}</li>
+			{% endfor %}
+		</ol>
+
+		<div class="clearfix"></div>
+
+		<div class="margin-bottom-40"></div>
+
+		<span class="line margin-bottom-35"></span>
+		<div class="clearfix"></div>
+
+		<div class="margin-top-15"></div>
+			<div class="clearfix"></div>
+			<br>
+
+	</div>
+	</div>
+
+
+</div>
+{% endblock pagecontent %}
