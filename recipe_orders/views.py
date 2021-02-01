@@ -24,6 +24,7 @@ def show_ordered_recipes(request):
     #     raise Http404()
 
     return render(
+        request,
         'view_ordered_recipes.html',
         context=dict(recipes=recipes)
     )
