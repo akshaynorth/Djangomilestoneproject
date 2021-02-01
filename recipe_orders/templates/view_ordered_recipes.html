@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block precontent %}
+<!-- Titlebar
+================================================== -->
+<section id="titlebar">
+	<!-- Container -->
+	<div class="container">
+		<div class="eight columns">
+			<h2>Ordered Recipes</h2>
+		</div>
+	</div>
+	<!-- Container / End -->
+</section>
+{% endblock precontent %}
+
+{% block pagecontent %}
+{% csrf_token %}
+<div class="container">
+    <div class="widget">
+        <h4 class="headline">Recipes</h4>
+        <span class="line margin-bottom-30"></span>
+        <div class="clearfix"></div>
+
+        <div class="widget_shopping_cart_content">
+            {% if recipes %}
+            <ul class="product_list_widget">
+                {% for recipe in recipes %}
+                <li>
+                    <a href="/recipe/view/{{recipe.id}}" class="image">
+                        <img src="/recipe/image/{{recipe.id}}" alt="">
+                    </a>
+                    <div class="product_title review">
+                        <a href="#">
+                            {{cart_item.description}}
+                        </a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+
+            {% else %}
+            <p>No items ordered yet</p>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock pagecontent %}

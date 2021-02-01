@@ -4,14 +4,17 @@ import json
 import os
 import math
 import logging
+import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.urls import reverse
 
 from recipe_cart import cart
 
+from recipe.models import Recipe
+from recipe_orders.models import OrderedRecipe, OrderedRecipeIngredient, OrderedRecipeInstruction
 
 # Obtain Stripe Secret API Key from the environment
 stripe.api_key = os.environ.get('STRIPE_API_KEY', '')
@@ -73,6 +76,65 @@ def payment_success(request):
     django.http.HttpResponse
         The rendered HTML page in a Django HttpResponse object.
     """
+
+    if request.method == 'GET' and request.user.is_authenticated:
+        # Obtained code from Stripe for checkout session retrieval: See:
+        # https://stripe.com/docs/payments/checkout/custom-success-page
+        session = stripe.checkout.Session.retrieve(request.args.get('session_id'))
+        customer = stripe.Customer.retrieve(session.customer)
+
+        if not customer.name:
+            # If the customer name can not be retrieved, interpret it as an attempt to hijack the Stripe session
+            # and raise an error
+            raise ValueError('Could not obtain customer name from Stripe payment')
+
+        # The user has paid an is authenticated. Proceed to add the ordered recipes to its profile of ordered lists
+        # Get the recipes in the cart
+        session_cart_json = request.session.get('cart', None)
+
+        if session_cart_json is None:
+            # User has paid and authenticated but no shopping cart, no recipes to add to ordered list.
+            # this condition is a candidate to a refund and should never occur.
+            raise Http404()
+
+        recipe_cart = cart.RecipeCart(cart_dict=json.loads(session_cart_json))
+
+        for cart_item in recipe_cart.cart_items:
+
+            recipe = Recipe.objects.get(id=int(cart_item.item_id))
+
+            ordered_recipe = OrderedRecipe.objects.create(
+                creation_time=datetime.datetime.now(),
+                name=recipe.name,
+                type=recipe.type,
+                short_description=recipe.short_description,
+                prep_time=recipe.prep_time,
+                cook_time=recipe.cook_time,
+                calories=recipe.calories,
+                portions=recipe.portions,
+                price=recipe.price,
+                user=request.user
+            )
+
+            for ingredient in recipe.ingredients.all():
+                OrderedRecipeIngredient.create(
+                    recipe=ordered_recipe,
+                    description=ingredient.description
+                )
+
+            for instruction in recipe.instructions.all():
+                OrderedRecipeInstruction.create(
+                    recipe=ordered_recipe,
+                    description=instruction.description
+                )
+
+        # Clear the session cart now that all ordered recipes were purchased and stored
+        request.session['cart'] = json.dumps(cart.RecipeCart().as_dict())
+
+    else:
+        logger.exception('Could not complete payment success activities')
+        raise Http404()
+
     return render(
         request,
         'pay_success.html'
@@ -153,13 +215,12 @@ def create_checkout_session(request):
                       line_items=line_items_list,
                       mode='payment',
                       # success_url has to be absolute as required by Stripe
-                      success_url=request.build_absolute_uri(reverse('pay_success')),
+                      success_url='{}?session_id={CHECKOUT_SESSION_ID}'.format(
+                          request.build_absolute_uri(reverse('pay_success'))
+                      ),
                       # cancel_url has to be absolute as required by Stripe
                       cancel_url=request.build_absolute_uri(reverse('pay_cancel')),
                     )
-
-                    # Clear out the cart as user is proceeding to payment
-                    request.session['cart'] = json.dumps(cart.RecipeCart().as_dict())
 
                     return JsonResponse(dict(id=session.id))
 
