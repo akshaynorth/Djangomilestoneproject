@@ -26,11 +26,11 @@ class OrderedRecipeIngredient(models.Model):
     Notes
     -----
         To facilitate accessibility to the list of ingredients from the recipe model the Django related queries are
-        made available. (e.g. recipe.objects.filter(ingredient__description__icontains='sugar'))
+        made available. (e.g. recipe.objects.filter(ordered_ingredient__description__icontains='sugar'))
     """
     recipe = models.ForeignKey(OrderedRecipe,
-                               related_name='ingredients',
-                               related_query_name='ingredient',
+                               related_name='ordered_ingredients',
+                               related_query_name='ordered_ingredient',
                                on_delete=models.CASCADE)
     description = models.CharField(max_length=1024)
 
@@ -44,11 +44,11 @@ class OrderedRecipeInstruction(models.Model):
     Notes
     -----
         To ease the access to the list of instructions from the recipe model Django related queries are
-        made available. (e.g. recipe.objects.filter(instruction__description__icontains='mix'))
+        made available. (e.g. recipe.objects.filter(ordered_instruction__description__icontains='mix'))
     """
     recipe = models.ForeignKey(OrderedRecipe,
-                               related_name='instructions',
-                               related_query_name='instruction',
+                               related_name='ordered_instructions',
+                               related_query_name='ordered_instruction',
                                on_delete=models.CASCADE)
     description = models.CharField(max_length=1024)
 
