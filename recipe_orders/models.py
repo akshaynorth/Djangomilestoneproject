@@ -17,7 +17,7 @@ class OrderedRecipe(Recipe):
     pass
 
 
-class OrderedRecipeIngredient(RecipeIngredient):
+class OrderedRecipeIngredient(models.Model):
     """Ingredients associated with an ordered recipe.
 
     A recipe may contains multiple ingredients. Therefore the relationship between recipe and ingredient is a
@@ -35,7 +35,7 @@ class OrderedRecipeIngredient(RecipeIngredient):
     description = models.CharField(max_length=1024)
 
 
-class OrderedRecipeInstruction(RecipeInstruction):
+class OrderedRecipeInstruction(models.Model):
     """Instructions associated with an ordered recipe
 
     A recipe may have multiple instructions. Therefore the relationship between recipe and instructions is a
