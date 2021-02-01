@@ -87,7 +87,7 @@ def payment_success(request):
             if not customer.name:
                 # If the customer name can not be retrieved, interpret it as an attempt to hijack the Stripe session
                 # and raise an error
-                raise ValueError('Could not obtain customer name from Stripe payment')
+                raise ValueError('Could not obtain customer name from Stripe payment: {}'.format(customer.name))
 
             # The user has paid an is authenticated. Proceed to add the ordered recipes to its profile of ordered lists
             # Get the recipes in the cart
