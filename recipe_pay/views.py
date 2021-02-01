@@ -112,7 +112,6 @@ def payment_success(request):
                 cook_time=recipe.cook_time,
                 calories=recipe.calories,
                 portions=recipe.portions,
-                price=recipe.price,
                 user=request.user
             )
 

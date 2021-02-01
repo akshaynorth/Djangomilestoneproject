@@ -1,20 +1,41 @@
 from django.db import models
 
+from django.contrib.auth.models import User
 
-from recipe.models import Recipe, RecipeIngredient, RecipeInstruction
 
-
-class OrderedRecipe(Recipe):
+class OrderedRecipe(models.Model):
     """Hold recipe information for ordered recipes
 
     No recipes should be created using this model until they are purchased. Purchased recipes are to be kept on the
     database table separate from the uploaded recipes by a user.
-
-    A purchased recipe is almost identical to an uploaded recipe except for maybe the price which does not need to be
-    kept for the purpose of this application. To complete this implementation in an easier fashion, we are inheriting
-    the fields of the Recipe model.
     """
-    pass
+    creation_time = models.DateTimeField()
+    # The name of the recipe
+    name = models.CharField(max_length=255)
+
+    # Recipe category, (e.g. Lunch, Breakfast, etc.)
+    type = models.CharField(max_length=80)
+
+    # Optional recipe picture
+    picture = models.BinaryField()
+
+    # Recipe preparation time a string that should include the unit (e.g. 1 hr)
+    prep_time = models.CharField(max_length=80)
+
+    # Recipe description. A paragraph that describes the recipe as to call the attention of others wanting to make it
+    short_description = models.TextField(max_length=1024)
+
+    # The amount of cooking time for the recipe
+    cook_time = models.CharField(max_length=80)
+
+    # The amount of calories in the recipe
+    calories = models.CharField(max_length=80)
+
+    # The number of people that could be potentially fed with the recipe proportions
+    portions = models.CharField(max_length=80)
+
+    # Foreign key to the associated registered user for the recipe
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
 
 class OrderedRecipeIngredient(models.Model):
