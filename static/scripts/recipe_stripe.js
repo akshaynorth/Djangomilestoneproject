@@ -8,7 +8,7 @@
 
       // Publicly accessible key provided by the Stripe dashboard. This has to be modified for each new stripe account
       let stripe = Stripe(
-        'pk_test_51IFbK8IN8KUsEgP5iLWoeK93WTkY3xtWhZ4QHp6GG1Tj7bjmQBMh07q348VBCFxjNP8irfdrJ96554p1QzGsdEVw00lMdHdIq0'
+        'pk_test_51II4NQBC4shKo1aqBULTRTh7zFy6hfpNx7LpfpiPCb4TlbkiYehTn34C4iC3VW368NInGSC82NMHw88PeUz2Ge9j00w4wigfuq'
       );
 
       let checkoutButton = $('#checkout-button');
