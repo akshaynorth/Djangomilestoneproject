@@ -16,29 +16,31 @@ the following steps:
 
 6. On the *Connect to GitHub* section click on the **Connect to GitHub** button
 
-7. On the pop-up windows that shows up for authorization, click on the **Authorize Heroku**
+7. Tyoe the name of the repo "Djangomilestoneproject" - Click on search and then click connect
+
+8. On the pop-up windows that shows up for authorization, click on the **Authorize Heroku**
    button
 
-8. On the GitHub password prompt, type the GitHub account credential password
+9. On the GitHub password prompt, type the GitHub account credential password
 
-9. On the Heroku dashboard, go to the *Connect to GitHub* section and type the GitHub repository name then
-   click the **Search** button
+10. On the Heroku dashboard, go to the *Connect to GitHub* section and type the GitHub repository name then
+    click the **Search** button
 
-10. On the repository information show right below the **Search** button, click on the **Connect** button
+11. On the repository information show right below the **Search** button, click on the **Connect** button
 
-11. On the *Automated Deploy* section select the *master* branch as the **Choose a branch to deploy** field selection
+12. On the *Automatic Deploys* section select the *master* branch as the **Choose a branch to deploy** field selection
 
-12. Leave the *Wait for CI to pass before deploy* unchecked
+13. Leave the *Wait for CI to pass before deploy* unchecked
 
-13. Click on the **Enable Automatic Deploys** button
+14. Click on the **Enable Automatic Deploys** button
 
-14. Navigate to the *Settings* tab, then scroll down to the *Config Vars* section
+15. Navigate to the *Settings* tab, then scroll down to the *Config Vars* section
 
-15. Click on **Reveal Config Vars**
+16. Click on **Reveal Config Vars**
 
-16. On the *Key* field enter`DJANGO_SECRET_KEY`
+17. On the *Key* field enter`DJANGO_SECRET_KEY`
 
-17. On the *Value* field enter secret key, then click on the **Add** button
+18. On the *Value* field enter secret key, then click on the **Add** button
 
 # MySQL relational database deployment
 
@@ -97,15 +99,17 @@ To setup the Stripe payment follow these steps:
    
 7. Open the Heroku console and navigate to the *Settings* tab, then scroll down to the *Config Vars* section
 
-8. On the *Key* field enter`STRIPE_API_KEY`
+8. Click on the "Reveal Config Vars" button
 
-9. On the *Value* field paste the secret key from Stripe copied to the clipboard, then click on the **Add** button
+9. On the *Key* field enter`STRIPE_API_KEY`
 
-10. Open the following file to provide the Stripe API public key: `static/scripts/recipe_stripe.js`
+10. On the *Value* field paste the secret key from Stripe copied to the clipboard, then click on the **Add** button
 
-11. On the Stripe dashboard obtain the public API access key. Navigate to  `https://dashboard.stripe.com/test/apikey`
+11. Open the following file to provide the Stripe API public key: `static/scripts/recipe_stripe.js`
+
+12. On the Stripe dashboard obtain the public API access key. Navigate to  `https://dashboard.stripe.com/test/apikey`
     then on the publishable API key click on the key to copy it to the clipboard.
     
-12. Paste the public key to the parameter of the `Stripe()` object in `static/scripts/recipe_stripe.js`
+13. Paste the public key to the parameter of the `Stripe()` object in `static/scripts/recipe_stripe.js`
 
-13. Redeploy the application to the Heroku platform. (e.g. commit, push to Git and deploy application in Heroku)
+14. Redeploy the application to the Heroku platform. (e.g. commit, push to Git and deploy application in Heroku)
