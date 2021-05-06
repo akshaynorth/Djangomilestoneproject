@@ -10,7 +10,7 @@
 	<div class="container">
 
 		<div class="eight columns">
-			<h2>Browse Recipes</h2>
+			<h2>Search Recipes</h2>
 		</div>
 
 	</div>
@@ -49,7 +49,7 @@
 					</select>
 				</div>
 
-				<!-- Choose ingredients -->
+				<!-- Choose ingredients: The ingredients are optional, when no selection is made, reults are not filtered by ingredients -->
 				<div class="select included-ingredients">
 					<label>Select one or more ingredients that should be included in recipe</label>
 					<select id="ingredient_list" data-placeholder="Included Ingredients" class="chosen-select" multiple>
@@ -116,7 +116,7 @@
 					</select>
 				</div>
 
-				<!-- Choose -->
+				<!-- This function provides the web customer the option of filter per boolean expression below, mutually inclusive versus mutually exclusive -->
 				<div class="select">
 					<label>Recipe needs to have</label>
 					<select id="ingredient_search_type" data-placeholder="Choose Category" class="chosen-select">
@@ -126,7 +126,7 @@
 				</div>
 				
 				<div class="clearfix"></div>
-				<!-- Search Input -->
+				<!-- This function provides the web customer the ability to perform a search -->
 				<nav class="search-by-keyword">
 					<form action="#" method="get">
 						<button id="search_recipe_btn">
@@ -211,7 +211,7 @@
 
 {% block extra_javascript %}
 <!--
-Recipe Browse RESTFul. This JavaScript was added to enable the submission of search data to the server.
+Recipe Browse RESTFul. This JavaScript code was implemented to provide the web customer the option to submit data to be queried by the server.
 -->
 <script src="/static/scripts/browse_recipe_rest.js"></script>
 {% endblock extra_javascript %}
