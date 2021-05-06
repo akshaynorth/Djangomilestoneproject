@@ -3,7 +3,7 @@
 The application is deployed to the Heroku platform. To proceed with the deployment follow
 the following steps:
 
-1. Log-in to the Heroku console at: www.heroku.com
+1. Log-in to the Heroku console: www.heroku.com
 
 2. Click on the *Create new app* button
 
@@ -16,7 +16,7 @@ the following steps:
 
 6. On the *Connect to GitHub* section click on the **Connect to GitHub** button
 
-7. Tyoe the name of the repo "Djangomilestoneproject" - Click on search and then click connect
+7. Tyoe the name of the repo "Djangomilestoneproject" - click on search and then click connect
 
 8. On the pop-up windows that shows up for authorization, click on the **Authorize Heroku**
    button
@@ -113,3 +113,8 @@ To setup the Stripe payment follow these steps:
 13. Paste the public key to the parameter of the `Stripe()` object in `static/scripts/recipe_stripe.js`
 
 14. Redeploy the application to the Heroku platform. (e.g. commit, push to Git and deploy application in Heroku)
+
+# Attached Software Architecture Document and Use Case Specification 
+# 1.	Introduction
+The ComeChop Ecommerce Site (CES) Software Architecture Document (SAD) provides a comprehensive architectural overview of the CES, using a number of different architectural views to depict different aspects of the CES.  It takes the use cases as the guiding source to come up with an CES architecture that satisfies the business and final project requirements.  
+# 1.1	Purpose (Fill today)
