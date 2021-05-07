@@ -31,8 +31,8 @@
 {% csrf_token %}
 <div class="container">
 	<!--
-	This section was altered from the initial site template to have recipe fields populated with data. The data is
-	obtained from the database and is passed in the context via the recipe variable
+	This section was modified from the initial site template to have recipe fields populated with data. The data is
+	obtained from the database and is passed in the context through the recipe variable
 	-->
 	<div class="sixteen columns">
 		<div class="submit-recipe-form">
@@ -85,7 +85,7 @@
 
 			<!--
 			The recipe photo is optional. The file name is displayed only when the user selects a new image to be
-			updated for the recipe via the Upload button
+			updated for the recipe through the Upload button
 			-->
 			<ul  class="recipe-gallery">
 				<li id="upload_picture_filename">No picture uploaded yet</li>
@@ -107,7 +107,7 @@
 
 				<table id="ingredients-sort">
 					<!--
-					Display the list of all ingredients associated with the recipe. Each recipe ingredient is displayed
+					Display list of all ingredients associated with the recipe. Each recipe ingredient is displayed
 					in its own row inside a table
 					-->
 					{% for recipe_ingredient in recipe.ingredients %}
@@ -123,7 +123,7 @@
 
 				</table>
 
-				<!-- Although this is a hyperlink it is presented to the user as a button to add an ingredient -->
+				<!-- Whilst this is a hyperlink, it is presented to the web customer as a button to enable addition of an ingredient -->
 				<a href="#" class="button color add_ingredient">Add new ingredient</a>
 			</fieldset>
 
