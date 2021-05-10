@@ -44,7 +44,7 @@
 
 
 		<!-- Text -->
-		<!-- Description obtained from https://cheflolaskitchen.com/jollof-rice/ -->
+		<!-- The description was obtained from https://cheflolaskitchen.com/jollof-rice/ -->
 		<p itemprop="description">{{recipe.short_description}}</p>
 
 
@@ -53,7 +53,7 @@
 		<!-- Ingredients obtained from http://www.nigerianlazychef.com/2016/12/atadindin-fried-rice-jollof-fried-ricelazychef-christmas/ -->
 		<ul class="ingredients">
 			<!--
-			Display the list of all the ingredients. Each ingredient can be selected although it is just a visual aid to
+			This function displays the list of all the ingredients. Each ingredient can be selected although it is just a visual aid to
 			the user. The ingredient is strikethrough and no specific action altering any data occurs
 			-->
 			{% for ingredient in recipe.ingredients %}
@@ -66,11 +66,11 @@
 
 
 		<!-- Directions -->
-		<!-- Directions obtained from http://www.nigerianlazychef.com/2016/12/atadindin-fried-rice-jollof-fried-ricelazychef-christmas/ -->
+		<!-- These directions were obtained from http://www.nigerianlazychef.com/2016/12/atadindin-fried-rice-jollof-fried-ricelazychef-christmas/ -->
 		<h3>Directions</h3>
 		<ol class="directions" itemprop="recipeInstructions">
 			<!--
-			Display the list of instructions to the users. The list is read-only.
+			This function displays the list of instructions to the users. The list is read-only.
 			-->
 			{% for instruction in recipe.instructions %}
 			<li>{{instruction}}</li>
