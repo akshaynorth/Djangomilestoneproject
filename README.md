@@ -25,29 +25,36 @@ Project Requirements
   * Relational database (recommending MySQL or Postgres)
   * The MySQL relational database is the system of record for CES data. The data includes recipe information, recipe orders and user credentials. The MySQL    
     database will not hold any credit card or personal information. 
-  * Stripe payments: 
+  * Stripe payments: Sending and Receiving Data from Stripe Payment. The interface of Stripe is made available via a REST API. For security, the private key of the
+    credentials is stored in environment variables on the Heroku platform. The public key is embedded in the application and passed to the Stripe interface
+    invocation.
+
   * Additional libraries and APIs
-
-UX design
-In regard to UX design, I implemented the following:
-
 
 
 
 Find wireframe from link below:
+***Do remember the the Django full stack CES is a evloution from the Datacentric mileston project. Important to alss note, no authentication was expected for Datacentric project. The focus was on the data, rather than any business logic, hence this feature was not implemented.***
 
 WireframeImage
 
 User Stories
-Important Notes: No authentication was expected for this project. The focus is on the data, rather than any business logic, hence this feature was not implemented.
 
-As a viewer aged between 13 years above, I want to
 
-The ability to easily find and understand the controls for the application so that I can operate it easily.
-A large easy to press button and controls, so that regardless of the size of my finger I can use the application.
-The ability to choose from recipes uploaded by any user, so that I am about to replicate the cooking directions.
-Visual icons and images that I recognize, so that I understand the recipe and cooking directions.
-The ability to see author of the recipe.
+
+As a web customer, I want to:
+
+a)	Have the ability to easily find and understand the controls for the application so that I can operate it easily.
+b)	A large easy to press button and controls, so that regardless of the size of my finger I can use the application.
+c)	The ability to choose from recipes uploaded by any user, so that I am able to replicate the cooking directions.
+d)	Visual icons and images that I recognize, so that I understand the recipe and cooking directions.
+
+As a web customer in the capacity of a recipe author, I want to be able to:
+
+a)	Visually and operationally interface with an appealing site, so that I have a positive experience when using the site.
+b)	Create, read, update, delete (CRUD) recipe(s) and generate cooking directions. 
+c)	Search a recipe, but not easy for a child who is randomly pressing buttons to access, so that a profile is not deleted by accident.
+
 As an author of the recipe, I want
 
 A visually and operationally appealing site, so that I also have a positive experience when using the site.
@@ -57,7 +64,7 @@ To know who made the cooking directions and how a user can contact them (feature
 Sprint planning: There 4 sprints for a during a 8 weeks project • I reviewed aspiration, goals and visions for the project • I accounted for information or updates that may impact the plan • Recorded issues and concerns (record feedback and discoveries) • Computed velocity and proposed velocity for each sprint
 
 Suitability for purpose
-This website design is suitable and appropriate to the user's demands. Please perform user stories above and wireframes.
+This website design is suitable and appropriate to the users demands. Please perform user stories above and wireframes.
 
 Navigation
 This website design navigation links work correctly. The navigation bar was made sticky using CSS3 offering the options to stick to the top of the page as you scroll down. This sticky property worked in accordance to design when it was tested on both chrome and safari.
