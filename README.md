@@ -1,35 +1,170 @@
-Anthony Aneke's Code Institute Django Fullstack Development Milestone Project
+# Anthony Aneke's Code Institute Django Fullstack Development File Milestone Project
 
-Introduction
+## Introduction
 The final django milestone project is to build a full-stack site based around business logic used to control a centrally-owned dataset. The site is know as ComeShop Ecommerce Site (CES). As part of this project, I setup authentication mechanism and provide stripe paid access to the site's data and/or other activities based on the dataset, such as the purchase of the recipe.
 
-Value provided:
-* By implmenting an authentication mechanism on the site as well as payment for the recipes, web customers can advance their own goals. 
-* As site owner, I will be able to geenrate revenue from the sale of the recipes to the web customers. There is no way for the web customers to bypass the site's mechanisms and derive all of the value available to paid users without paying.
+## Value provided:
+By implementing an authentication mechanism on the site as well as payment for the recipes, web customers can advance their own goals. 
+As site owner, It will be able to generate revenue from the sale of the recipes to the web customers. There is no way for the web customers to bypass the site's mechanisms and derive all of the value available to paid users without paying.
 
 I created a culinary full stack site that allows users to share data with the community, and benefit from having convenient access to the data provided by other members.
 I have created a site that provides functionality, for any user. The site allows me the site owner to benefit from the collection of the dataset as a whole.
 
-Project Purpose
+## Project Purpose
 This full-stack culinary site was created for foodies in mind. The site allows users to manage a common dataset about a particular food domain where the user can generate food directions for their favorite cuisine for anyone who is interested in making that particular dish. The site is Unique, Viable in the real world and establishes a connection between the reader and the project to endear the reader to the project.
 
-Project Requirements
+## Project Requirements
 * Main Technologies
   * HTML, CSS, JavaScript, Python+Django
   * HTML: Used to implment web pages.
   * CSS:  Leveraged CSS and Bootstrap for Web and mobile first user experience.
-  * JavaScript: Used javascript and jQuery used to interaction of the webform i..e CREATE, READ, UPDATE, DELETE (CRUD) calls, input field validation, RESTful 
-    request (from the browser to the application server).
-
-
-  * Relational database (recommending MySQL or Postgres)
-  * The MySQL relational database is the system of record for CES data. The data includes recipe information, recipe orders and user credentials. The MySQL    
+  * JavaScript: Used javascript and jQuery used to interaction of the webform i..e CREATE, READ, UPDATE, DELETE (CRUD) calls,         input field validation,           RESTful request (from the browser to the application server).
+  * Relational database (recommending MySQL or Postgres): The MySQL relational database is the system of record for CES data. The     data includes recipe information, recipe orders and user credentials. The MySQL    
     database will not hold any credit card or personal information. 
-  * Stripe payments: Sending and Receiving Data from Stripe Payment. The interface of Stripe is made available via a REST API. For security, the private key of the
-    credentials is stored in environment variables on the Heroku platform. The public key is embedded in the application and passed to the Stripe interface
-    invocation.
+  * Stripe payments: Sending and Receiving Data from Stripe Payment. The interface of Stripe is made available via a REST API. For     security, the private key of     the credentials is stored in environment variables on the Heroku platform. The public key is embedded in the application and passed to the Stripe interface         invocation.
+  * Additional libraries and APIs: All libraries and API aforementioned above.
 
-  * Additional libraries and APIs
+## Mandatory Requirements
+1.	CES Django Full Stack website developed with a MYSQL backend by a relational database that allows the web customer to store and manipulate data records about a culinary domain.
+2.	Multiple Apps: The CES website has multiple apps. An app for each potentially reusable components. They are as follows: 
+* login
+* static pages
+* recipe (CRUD)
+* recipe_cart
+* recipe orders
+* recipe payment
+
+3.	Data Modeling: Refer to Section 7.6_ Entity Relationship Diagram in the Software Architecture Document.
+4.	User Authentication: The recipe card is persisted via Django sessions. Web customers of the CES have to log-in for recipe orders to get access to the cart. The recipe cart persist throughout the navigation of the CES as long as the user does not log off.
+5.	User Interaction: CES satisifies this requirement. 
+6.	Use of Stripe: The integration of Stripe was implemented to process Payment. The interface of Stripe is made available via a REST API. For security, the private key of the credentials is stored in environment variables on the Heroku platform. The public key is embedded in the application and passed to the Stripe interface invocation. The Stripe interface specification of callbacks allow the Stripe system to return control back to CES. Once the Stripe authentication is setup on the client via JavaScript, control is passed on to Stripe for the collection of payment information and its submission. Upon success, the Stripe registered callback is invoked returning control back to CES for the display of the payment success and/or confirmation page.
+7.	Structure and Navigation: This CES website design navigation links work correctly. The navigation bar was made sticky using CSS3 offering the options to stick to the top of the page as you scroll down. This sticky property worked in accordance to design when it was tested on both chrome and safari. 
+8.	Use of JavaScript: Used javascript and jQuery used to interaction of the webform i..e CREATE, READ, UPDATE, DELETE (CRUD) calls, input field validation, RESTful    request (from the browser to the application server).
+9.	Documentation: The readme file incorporates all the desired components of documentation along with competent formatting and use of markdown and it includes user stories and linked wireframes.
+10.	Information Architecture: This CES website meets the standard structural and behavioral design criteria and is presented in an organized routine. Please refer to project goals and user stories.
+11.	Version Control: Use Git & GitHub for version control was used. I incrementally and iteratively staged, committed, and pushed new or modified all changes during the implementation of this website/ Version control can make use of atomic commits and descriptive commit messages. To see iterative modifications and changes, see Git Hub.
+12.	Attribution: Reference are all below
+13.	Deployment: Deployment was implemented using Heroku. The deployment write-up can integrate the steps taken to deploy the CES with steps needed for local development.
+
+# Deployment Instructions
+
+The application is deployed to the Heroku platform. To proceed with the deployment follow
+the following steps:
+
+1. Log-in to the Heroku console: www.heroku.com
+
+2. Click on the *Create new app* button
+
+3. In the *App name* field type the name of the application. For this application type:
+   *fullstackane*
+   
+4. Click on the *Deploy* tab on the Heroku dashboard
+
+5. On the *Deployment method* section of the page, click the *GitHub - Connect to GitHub*
+
+6. On the *Connect to GitHub* section click on the **Connect to GitHub** button
+
+7. Tyoe the name of the repo "Djangomilestoneproject" - click on search and then click connect
+
+8. On the pop-up windows that shows up for authorization, click on the **Authorize Heroku**
+   button
+
+9. On the GitHub password prompt, type the GitHub account credential password
+
+10. On the Heroku dashboard, go to the *Connect to GitHub* section and type the GitHub repository name then
+    click the **Search** button
+
+11. On the repository information show right below the **Search** button, click on the **Connect** button
+
+12. On the *Automatic Deploys* section select the *master* branch as the **Choose a branch to deploy** field selection
+
+13. Leave the *Wait for CI to pass before deploy* unchecked
+
+14. Click on the **Enable Automatic Deploys** button
+
+15. Navigate to the *Settings* tab, then scroll down to the *Config Vars* section
+
+16. Click on **Reveal Config Vars**
+
+17. On the *Key* field enter`DJANGO_SECRET_KEY`
+
+18. On the *Value* field enter secret key, then click on the **Add** button
+
+# MySQL relational database deployment
+
+The Heroku platform provides *Add-ons* that allow the application consumption of third-party services. The 
+**JawsDB** add-on was used to deploy the application's MySQL relational database instance.
+
+To deploy the add-on follow these steps:
+
+1. On the Heroku dashboard click on the *Resources* tab
+
+2. In the *Add-ons* text field type *MySQL*
+
+3. From the list of suggested options on the text field select the **JawsDB MySQL** service
+
+4. On the popup window for the **JawsDB MySQL** service order form select the *Kitefin Shared - Free* for the 
+   *Plan name*
+
+5. Click on the **Submit Order Form**
+
+6. The **JawsDB MySQL** service appears in the Add-ons section, click on the open icon of the service to open JawsDB
+   MySQL console
+   
+7. On the **JawsDB MySQL** console, take note of the following field values: Connection String, Host, Username, Password
+   and Database
+
+8. On the Heroku dashboard, navigate to the *Settings* tab, then scroll down to the *Config Vars* section
+
+9. Click on **Reveal Config Vars**
+
+10. On the *Key* field enter`DATABASE_URL`
+
+11. On the *Value* field enter the database url obtained from the **JawsDB MySQL** console *Connection String*, then 
+    click on the **Add** button
+    
+# Stripe integration deployment
+
+The Stripe payment integration requires both configuration on the Stripe console, and the Heroku platform to store 
+and protect API secret keys.
+
+To setup the Stripe payment follow these steps:
+
+1. Go to www.stripe.com on your web browser
+
+2. Click on the Sign-up link
+
+3. Enter your preferred credentials for username and password
+
+4. Provide your personal information: name, address and bank account information. It is important to note that
+   the required API secret keys needed to integrate with the service will not be available until all the information
+   is provided
+   
+5. Navigate to https://dashboard.stripe.com/test/apikeys, click on the `Reveal test key`. Notice that for production
+   this key will be different. As this site is for testing purposes, click on this button to reveal the test key.
+   
+6. Click on the secret key to copy it to the clipboard
+   
+7. Open the Heroku console and navigate to the *Settings* tab, then scroll down to the *Config Vars* section
+
+8. Click on the "Reveal Config Vars" button
+
+9. On the *Key* field enter`STRIPE_API_KEY`
+
+10. On the *Value* field paste the secret key from Stripe copied to the clipboard, then click on the **Add** button
+
+11. Open the following file to provide the Stripe API public key: `static/scripts/recipe_stripe.js`
+
+12. On the Stripe dashboard obtain the public API access key. Navigate to  `https://dashboard.stripe.com/test/apikey`
+    then on the publishable API key click on the key to copy it to the clipboard.
+    
+13. Paste the public key to the parameter of the `Stripe()` object in `static/scripts/recipe_stripe.js`
+
+14. Redeploy the application to the Heroku platform. (e.g. commit, push to Git and deploy application in Heroku)
+
+
+15.	Security: Make sure to not include any passwords or secret keys in the project repository. Make sure to turn off the Django DEBUG mode, which could expose secrets.
+![image](https://user-images.githubusercontent.com/62273354/118380682-9b0b9b00-b5b1-11eb-8abe-9d61a541e034.png)
 
 
 
@@ -41,39 +176,6 @@ WireframeImage
 User Stories
 
 
-
-As a web customer, I want to:
-
-a)	Have the ability to easily find and understand the controls for the application so that I can operate it easily.
-b)	A large easy to press button and controls, so that regardless of the size of my finger I can use the application.
-c)	The ability to choose from recipes uploaded by any user, so that I am able to replicate the cooking directions.
-d)	Visual icons and images that I recognize, so that I understand the recipe and cooking directions.
-
-As a web customer in the capacity of a recipe author, I want to be able to:
-
-a)	Visually and operationally interface with an appealing site, so that I have a positive experience when using the site.
-b)	Create, read, update, delete (CRUD) recipe(s) and generate cooking directions. 
-c)	Search a recipe, but not easy for a child who is randomly pressing buttons to access, so that a profile is not deleted by accident.
-
-As an author of the recipe, I want
-
-A visually and operationally appealing site, so that I also have a positive experience when using the site.
-The ability to create, read, update, delete (CRUD) recipe and generate cooking directions. The prediction to update a record, the user has to perform a search for recipe category and ingredients.
-The option to search an author or a recipe, but not easy for a child who is randomly pressing buttons to access, so that a profile is not deleted by accident.
-To know who made the cooking directions and how a user can contact them (feature to contact author not implemented in this version for the application).
-Sprint planning: There 4 sprints for a during a 8 weeks project • I reviewed aspiration, goals and visions for the project • I accounted for information or updates that may impact the plan • Recorded issues and concerns (record feedback and discoveries) • Computed velocity and proposed velocity for each sprint
-
-Suitability for purpose
-This website design is suitable and appropriate to the users demands. Please perform user stories above and wireframes.
-
-Navigation
-This website design navigation links work correctly. The navigation bar was made sticky using CSS3 offering the options to stick to the top of the page as you scroll down. This sticky property worked in accordance to design when it was tested on both chrome and safari.
-
-Ease of use
-This website provides ease of use for its users/customers.
-
-Information Architecture
-This website meets the standard structural and behavioral design criteria and is presented in an organized routine. Please refer to project goals and user stories.
 
 Layout and Visual Impact:
 Responsive Design –I used CSS to enable automated adjustments of screen sizes for multiple devices. I tested the site response in multiple simulated devices (tablets and mobile) and the site responded by adjusting its layout to the simulated screen sizes. Navbar on tablet resolutions was implemented in a similar fashion to Desktop for swift navigation.
@@ -216,22 +318,6 @@ Deployment is working well on Heroku. The deployment write-up can integrate the 
 Deployment write-up
 The Heroku Platform as a Service offering was used to deploy the ComeChop application. To deploy the application on the Heroku platform follow these steps:
 
-Sign on the Heroku site located at: https://www.heroku.com
-On the dashboard click on the New button, then select Create new app
-On the application name type: datacentric
-Choose the region and set it to: United States
-Click on the Create App button
-On the dashboard, click on the datacentric application link
-Click on the Deploy tab
-Click on the GitHub deployment method
-Provide the GitHub repository URL and its credentials
-On the Automatic Deploys section, select automated deploy and set it to Automated deploys from master
-On the Heroku dashboard select the Settings tab
-Navigate to Config Vars and click on Reveal Config Vars
-Add a new variable named MONGODB_URI and set it to: mongodb+srv://<user:password>@cluster0.7wvuc.mongodb.net/datacentric_db?retryWrites=true&w=majority
-The MongoDB database URI is obtained from the MongoDB as a service offering site where user and password are the configured database username and password for the MongoDB programatic API access
-Code Template Credits
-For the development of this milestone project 1 a website template was employed. The template contains a set of HTML, CSS, JavaScript files that can be altered as needed. The code was downloaded from the following website:
 
 http://preview.themeforest.net/item/chow-recipes-food-html5-template/full_screen_preview/9711524?ref=phdev
 
@@ -276,146 +362,10 @@ Sweet and Nutty Moroccan Couscous [Online]. [Accessed 28 December 2020]. https:/
 
 Peri Peri African Chicken [Online]. [Accessed 28 December 2020]. https://www.allrecipes.com/recipe/72064/peri-peri-african-chicken/#nutrition
 
-About
-No description, website, or topics provided.
-Topics
-Resources
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Deployment Instructions
-
-The application is deployed to the Heroku platform. To proceed with the deployment follow
-the following steps:
-
-1. Log-in to the Heroku console: www.heroku.com
-
-2. Click on the *Create new app* button
-
-3. In the *App name* field type the name of the application. For this application type:
-   *fullstackane*
-   
-4. Click on the *Deploy* tab on the Heroku dashboard
-
-5. On the *Deployment method* section of the page, click the *GitHub - Connect to GitHub*
-
-6. On the *Connect to GitHub* section click on the **Connect to GitHub** button
-
-7. Tyoe the name of the repo "Djangomilestoneproject" - click on search and then click connect
-
-8. On the pop-up windows that shows up for authorization, click on the **Authorize Heroku**
-   button
-
-9. On the GitHub password prompt, type the GitHub account credential password
-
-10. On the Heroku dashboard, go to the *Connect to GitHub* section and type the GitHub repository name then
-    click the **Search** button
-
-11. On the repository information show right below the **Search** button, click on the **Connect** button
-
-12. On the *Automatic Deploys* section select the *master* branch as the **Choose a branch to deploy** field selection
-
-13. Leave the *Wait for CI to pass before deploy* unchecked
-
-14. Click on the **Enable Automatic Deploys** button
-
-15. Navigate to the *Settings* tab, then scroll down to the *Config Vars* section
-
-16. Click on **Reveal Config Vars**
-
-17. On the *Key* field enter`DJANGO_SECRET_KEY`
-
-18. On the *Value* field enter secret key, then click on the **Add** button
-
-# MySQL relational database deployment
-
-The Heroku platform provides *Add-ons* that allow the application consumption of third-party services. The 
-**JawsDB** add-on was used to deploy the application's MySQL relational database instance.
-
-To deploy the add-on follow these steps:
-
-1. On the Heroku dashboard click on the *Resources* tab
-
-2. In the *Add-ons* text field type *MySQL*
-
-3. From the list of suggested options on the text field select the **JawsDB MySQL** service
-
-4. On the popup window for the **JawsDB MySQL** service order form select the *Kitefin Shared - Free* for the 
-   *Plan name*
-
-5. Click on the **Submit Order Form**
-
-6. The **JawsDB MySQL** service appears in the Add-ons section, click on the open icon of the service to open JawsDB
-   MySQL console
-   
-7. On the **JawsDB MySQL** console, take note of the following field values: Connection String, Host, Username, Password
-   and Database
-
-8. On the Heroku dashboard, navigate to the *Settings* tab, then scroll down to the *Config Vars* section
-
-9. Click on **Reveal Config Vars**
-
-10. On the *Key* field enter`DATABASE_URL`
-
-11. On the *Value* field enter the database url obtained from the **JawsDB MySQL** console *Connection String*, then 
-    click on the **Add** button
-    
-# Stripe integration deployment
-
-The Stripe payment integration requires both configuration on the Stripe console, and the Heroku platform to store 
-and protect API secret keys.
-
-To setup the Stripe payment follow these steps:
-
-1. Go to www.stripe.com on your web browser
-
-2. Click on the Sign-up link
-
-3. Enter your preferred credentials for username and password
-
-4. Provide your personal information: name, address and bank account information. It is important to note that
-   the required API secret keys needed to integrate with the service will not be available until all the information
-   is provided
-   
-5. Navigate to https://dashboard.stripe.com/test/apikeys, click on the `Reveal test key`. Notice that for production
-   this key will be different. As this site is for testing purposes, click on this button to reveal the test key.
-   
-6. Click on the secret key to copy it to the clipboard
-   
-7. Open the Heroku console and navigate to the *Settings* tab, then scroll down to the *Config Vars* section
-
-8. Click on the "Reveal Config Vars" button
-
-9. On the *Key* field enter`STRIPE_API_KEY`
-
-10. On the *Value* field paste the secret key from Stripe copied to the clipboard, then click on the **Add** button
-
-11. Open the following file to provide the Stripe API public key: `static/scripts/recipe_stripe.js`
-
-12. On the Stripe dashboard obtain the public API access key. Navigate to  `https://dashboard.stripe.com/test/apikey`
-    then on the publishable API key click on the key to copy it to the clipboard.
-    
-13. Paste the public key to the parameter of the `Stripe()` object in `static/scripts/recipe_stripe.js`
-
-14. Redeploy the application to the Heroku platform. (e.g. commit, push to Git and deploy application in Heroku)
 
 # Attached Software Architecture Document and Use Case Specification 
 # 1.	Introduction
