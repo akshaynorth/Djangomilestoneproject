@@ -164,14 +164,14 @@ To setup the Stripe payment follow these steps:
 
 
 15.	Security: Make sure to not include any passwords or secret keys in the project repository. Make sure to turn off the Django DEBUG mode, which could expose secrets.
-![image](https://user-images.githubusercontent.com/62273354/118380682-9b0b9b00-b5b1-11eb-8abe-9d61a541e034.png)
-
 
 
 Find wireframe from link below:
 ***Do remember the the Django full stack CES is a evloution from the Datacentric mileston project. Important to alss note, no authentication was expected for Datacentric project. The focus was on the data, rather than any business logic, hence this feature was not implemented.***
 
-WireframeImage
+Find wireframe from link below:
+
+![WireframeImage](./wireframes/datacentric_wireframe.png)
 
 User Stories: Refer to Software Architecture Document 
 
