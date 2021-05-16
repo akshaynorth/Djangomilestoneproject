@@ -173,22 +173,15 @@ Find wireframe from link below:
 
 WireframeImage
 
-User Stories
+User Stories: Refer to Software Architecture Document 
 
-
-
-Layout and Visual Impact:
-Responsive Design –I used CSS to enable automated adjustments of screen sizes for multiple devices. I tested the site response in multiple simulated devices (tablets and mobile) and the site responded by adjusting its layout to the simulated screen sizes. Navbar on tablet resolutions was implemented in a similar fashion to Desktop for swift navigation.
+Layout and Visual Impact: Responsive Design – I used CSS to enable automated adjustments of screen sizes for multiple devices. I tested the site response in multiple simulated devices (tablets and mobile) and the site responded by adjusting its layout to the simulated screen sizes. Navbar on tablet resolutions was implemented in a similar fashion to Desktop for swift navigation.
 Image Presentation - This website renders images, true to form and not small or stretched in anyway and meets the standard structural and behavioral design criteria and is presented in an organized routine.
 Colour scheme and typography – The colour scheme on the website is consistent and does not hinder readability in any way. Primary action buttons have the same colour theme with the website.
-Software Development practices:
-Directory Structure and File Naming – I went through systematic approach to develop a naming convention. After establishing this, I created html files for each website page as well as naming the pages to correspond to the top menu bar drop down. File naming and Directory structure are consistent to as seen in professional web development.
-
-Version control
-Git was used for version control. I incrementally and iteratively staged, committed, and pushed new or modified all changes during the implementation of this website/ Version control can make use of atomic commits and descriptive commit messages. To see iterative modifications and changes, see Git Hub.
+Software Development practices: 
 
 Testing implementation
-I setup the Heroku platform to deploy the application and performed that served the webpages to be tested. I did static testing and visual inspection to make sure content was rendered as designed, I executed system testing to make sure user stories worked in accordance to design intent. I used online html validators from w3.org for source code testing. The testing write-up leveraged user stories and as expected there were defects found during the testing cycle. Used the following validator site: https://validator.w3.org/
+I setup the Heroku platform to deploy the application and utilized the user stores and user cases as my test cases for the CES website. I performed static testing and visual inspection to make sure content was rendered as designed, I executed system testing to make sure user stories worked in accordance to design intent. I used online html validators from w3.org for source code testing. The testing write-up leveraged user stories and as expected there were defects found during the testing cycle. Used the following validator site: https://validator.w3.org/
 
 Here are the test results:
 
