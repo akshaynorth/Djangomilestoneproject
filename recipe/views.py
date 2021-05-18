@@ -3,7 +3,8 @@ from django.shortcuts import render
 # Create your views here.
 
 import json
-import logging
+
+mport logging
 import datetime
 import io
 
@@ -439,7 +440,7 @@ def submit_edit_recipe(request, recipe_id):
             recipe.price = form_data.get('price', recipe.price)
 
             # If a new picture is provided, then obtain its binary information
-            if request.FILES.get('files', None):
+            if request.FILES.get('file', None):
                 uploaded_file = request.FILES.get('file')
 
                 image_buffer = bytearray()
