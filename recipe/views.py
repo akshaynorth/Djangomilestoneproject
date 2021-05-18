@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 import json
 
-mport logging
+import logging
 import datetime
 import io
 
