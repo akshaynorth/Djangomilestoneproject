@@ -171,7 +171,29 @@ Find wireframe from link below:
 
 Find wireframe from link below:
 
-![WireframeImage](./wireframes/datacentric_wireframe.png)
+![WireframeImage](./wireframe/djangoces_wireframe.png)
+
+
+## ComeChop Ordered recipes
+
+![WireframeImage](./wireframe/ComeChopOrderedrecipes_wireframe.png)
+
+
+## ComeChop order review
+
+![WireframeImage](./wireframe/ComeChoporderreview_wireframe.png)
+
+
+## ComeChop Login Wireframe
+
+![WireframeImage](./wireframe/ComeChopLogin_wireframe.png)
+
+
+## ComeChop cart Wireframe-
+
+![WireframeImage](./wireframe/ComeChopcart_wireframe.png)
+
+
 
 User Stories: Refer to Software Architecture Document 
 
