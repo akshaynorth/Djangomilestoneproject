@@ -207,27 +207,6 @@ I setup the Heroku platform to deploy the application and utilized the user stor
 
 Here are the test results:
 
-Jollof Rice details page
-Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.
-
-From line 95, column 3; to line 95, column 55
-
-ils --><section class="recipe-details" itemprop="nutrition">
-Grilled Tiger Prawns details page
-Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.
-
-From line 95, column 3; to line 95, column 55
-
-ils --><section class="recipe-details" itemprop="nutrition">
-Nigerian Egusi Soup details page
-Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.
-
-From line 95, column 3; to line 95, column 55
-
-ils --><section class="recipe-details" itemprop="nutrition">
-Edikanikong details page
-Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.
- 
 ## Login Page
 Error: No space between attributes.
 At line 114, column 45 `<td class=""label><label fo`
@@ -235,12 +214,6 @@ At line 114, column 45 `<td class=""label><label fo`
 Error: Attribute label not allowed on element td at this point.
 From line 113, column 58; to line 114, column 50
 `nts-cont"><td class=""label><label`
-
-Attributes for element td:
-Global attributes
-colspan — Number of columns that the cell is to span
-rowspan — Number of rows that the cell is to span
-headers — The header cells for this cell
 
 Error: Stray end tag div.
 From line 137, column 1; to line 137, column 6
@@ -254,52 +227,42 @@ Readme file
 The readme file incorporates all the desired components of documentation along with competent formatting and use of markdown and it includes user stories and linked wireframes.
 
 Reference
-805 Restaurant. [Online]. [Accessed 19 October 2020]. Available from: https://www.805restaurants.com/our-restaurants/hendon-central?view=menu
+805 Restaurant. [Online]. [Accessed 29 December 2020]. Available from: https://www.805restaurants.com/our-restaurants/hendon-central?view=menu
 
-Themefroest. [Online]. [Accessed 2 October 2020]. Available from: http://preview.themeforest.net/item/chow-recipes-food-html5-template/full_screen_preview/9711524?ref=phdev
+Themefroest. [Online]. [Accessed 12 January 2021]. Available from: http://preview.themeforest.net/item/chow-recipes-food-html5-template/full_screen_preview/9711524?ref=phdev
 
-Nigerian Lazy Chef. [Online]. [Accessed 30 October 2020]. Available from: http://www.nigerianlazychef.com/2016/12/atadindin-fried-rice-jollof-fried-ricelazychef-christmas/
+Nigerian Lazy Chef. [Online]. [Accessed 31 January 2021]. Available from: http://www.nigerianlazychef.com/2016/12/atadindin-fried-rice-jollof-fried-ricelazychef-christmas/
 
-Chef Ola. [Online]. [Accessed 31 October 2020]. Available from: https://cheflolaskitchen.com/jollof-rice/
+Chef Ola. [Online]. [Accessed 31 December 2020]. Available from: https://cheflolaskitchen.com/jollof-rice/
 
-Nigerian Lazy Chef. [Online]. [Accessed 31 October 2020]. Available from: http://www.nigerianlazychef.com/author/nma/
+Nigerian Lazy Chef. [Online]. [Accessed 24 Feburary 2021]. Available from: http://www.nigerianlazychef.com/author/nma/
 
-Grilled Tiger Prawns with Chilli and garlic sauce. [Online]. [Accessed 31 October 2020]. Available from: https://www.yummly.com/recipe/Grilled-Prawns-1658835?prm-v1 Description, ingredients and instructions. . [Online]. [Accessed 3 November 2020]. Available from: https://www.yummly.com/recipe/Grilled-Prawns-1658835?prm-v1#directions
+Grilled Tiger Prawns with Chilli and garlic sauce. [Online]. [Accessed 31 October 2020]. Available from: https://www.yummly.com/recipe/Grilled-Prawns-1658835?prm-v1 Description, ingredients and instructions. . [Online]. [Accessed 3 March 2021]. Available from: https://www.yummly.com/recipe/Grilled-Prawns-1658835?prm-v1#directions
 
 Paraibano Batista Image for Prawns and Chilli. [Online]. [Accessed 13 November 2020]. Available from: http://www.joaoalberto.com/2019/03/12/chef-paraibano-batista-e-destaque-no-festival-gastro-bom-de-mesa-desta-terca/
 
 Vejario Abril. [Online]. [Accessed 14 November 2020]. https://vejario.abril.com.br/blog/beira-mar/batista-o-braco-direito-do-chef-claude-troisgros-serve-seu-primeiro-menu-degustacao-autoral-no-restaurante-do-patrao/
 
-Preciouscore. [Online].[Accessed 17 November 2020]. Available from: https://www.preciouscore.com/egusi-soup/ Image, Description, Ingredients and Instructions obtained from: https://www.preciouscore.com/egusi-soup/
+Preciouscore. [Online].[Accessed 27 Febuary 2021]. Available from: https://www.preciouscore.com/egusi-soup/ Image, Description, Ingredients and Instructions obtained from: https://www.preciouscore.com/egusi-soup/
 
-EDIKANOKONG SOUP. [Online].[Accessed 21 November 2020]. Available from: https://foodempire.com.ng/product/edikanikong-soup/
+EDIKANOKONG SOUP. [Online].[Accessed 21 Febuary 2021]. Available from: https://foodempire.com.ng/product/edikanikong-soup/
 
-Foodempire. [Online]. [Accessed 22 November 2020]. Available from: https://foodempire.com.ng/product/edikanikong-soup/
+Foodempire. [Online]. [Accessed 22 Febuary 2021]. Available from: https://foodempire.com.ng/product/edikanikong-soup/
 
-Dooneyskitchen. [Online]. [Accessed 26 November 2020]. Available from: Ingredients and Instructions and author image from: http://dooneyskitchen.com/edikaikong-a-traditional-calabar-recipe/
+Dooneyskitchen. [Online]. [Accessed 26 Febuary 2021]. Available from: Ingredients and Instructions and author image from: http://dooneyskitchen.com/edikaikong-a-traditional-calabar-recipe/
 
-Monika Tilapia. [Online]. [Accessed 3 December 2020]. Available from: Image From: https://www.africanvibes.com/best-african-summer-grilled-fish-recipes/ Ingredients, description, Instructions [Online]. [Accessed 3 - 5 December 2020]. Available from: https://www.africanvibes.com/best-african-summer-grilled-fish-recipes/
+Monika Tilapia. [Online]. [Accessed 3 December 2020]. Available from: Image From: https://www.africanvibes.com/best-african-summer-grilled-fish-recipes/ Ingredients, description, Instructions [Online]. [Accessed 3 - 5 January 20201]. Available from: https://www.africanvibes.com/best-african-summer-grilled-fish-recipes/
 
 Chef Michael Smith. [Online]. [Accessed 26 December 2020]. Available from: https://www.cookthatbook.com/contact-us/interview-with-chef-michael-smith/
 
 West African-Style Peanut Stew with Chicken. [Online]. [Accessed 26 December 2020]. Available from: https://www.allrecipes.com/recipe/276720/west-african-style-peanut-stew-with-chicken//
 
-Moroccan Chicken with Saffron and Preserved Lemon Recipe Source. [Online]. [Accessed 27 December 2020]. https://www.allrecipes.com/recipe/246488/moroccan-chicken-with-saffron-and-preserved-lemon/
+Moroccan Chicken with Saffron and Preserved Lemon Recipe Source. [Online]. [Accessed 17 January2 2021]. https://www.allrecipes.com/recipe/246488/moroccan-chicken-with-saffron-and-preserved-lemon/
 
-Moroccan Chickpea Stew Recipe Source. [Online]. [Accessed 27 December 2020]. https://www.allrecipes.com/recipe/217947/moroccan-chickpea-stew/#nutrition
+Moroccan Chickpea Stew Recipe Source. [Online]. [Accessed 27 March 2021]. https://www.allrecipes.com/recipe/217947/moroccan-chickpea-stew/#nutrition
 
-Moroccan Lentil Soup Recipe Source [Online]. [Accessed 27 December 2020]. https://www.allrecipes.com/recipe/12960/moroccan-lentil-soup/#nutrition
+Moroccan Lentil Soup Recipe Source [Online]. [Accessed 27 March 2021]. https://www.allrecipes.com/recipe/12960/moroccan-lentil-soup/#nutrition
 
-Sweet and Nutty Moroccan Couscous [Online]. [Accessed 28 December 2020]. https://www.allrecipes.com/recipe/81551/sweet-and-nutty-moroccan-couscous/
+Sweet and Nutty Moroccan Couscous [Online]. [Accessed 28 March 2021]. https://www.allrecipes.com/recipe/81551/sweet-and-nutty-moroccan-couscous/
 
 Peri Peri African Chicken [Online]. [Accessed 28 December 2020]. https://www.allrecipes.com/recipe/72064/peri-peri-african-chicken/#nutrition
-
-
-
-
-
-
-# Attached Software Architecture Document and Use Case Specification 
-# 1.	Introduction
-The ComeChop Ecommerce Site (CES) Software Architecture Document (SAD) provides a comprehensive architectural overview of the CES, using a number of different architectural views to depict different aspects of the CES.  It takes the use cases as the guiding source to come up with an CES architecture that satisfies the business and final project requirements.  
-# 1.1	Purpose (Fill today)
