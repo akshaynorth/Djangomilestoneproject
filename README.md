@@ -227,53 +227,25 @@ From line 95, column 3; to line 95, column 55
 ils --><section class="recipe-details" itemprop="nutrition">
 Edikanikong details page
 Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.
+ 
+## Login Page
+Error: No space between attributes.
+At line 114, column 45 <td class=""label><label fo
 
-From line 95, column 3; to line 95, column 55
+Error: Attribute label not allowed on element td at this point.
+From line 113, column 58; to line 114, column 50
+nts-cont"><td class=""label><label
 
-ils --><section class="recipe-details" itemprop="nutrition">
-Monika Tilapia details page
-Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.
+Attributes for element td:
+Global attributes
+colspan — Number of columns that the cell is to span
+rowspan — Number of rows that the cell is to span
+headers — The header cells for this cell
 
-From line 95, column 3; to line 95, column 55
-
-ils --><section class="recipe-details" itemprop="nutrition">		
-Edit Recipe Page
-Error: Duplicate attribute id.
-
-At line 200, column 42
-
-40" rows="3" id="summary" spel
-
-Warning: The type attribute is unnecessary for JavaScript resources.
-
-From line 557, column 1; to line 557, column 83
-
-ditor --><script type="text/javascript" src="/static/scripts/jquery.sceditor.bbcode.min.js"></scri
-
-Warning: The type attribute is unnecessary for JavaScript resources.
-
-From line 558, column 1; to line 558, column 72
-
-</script><script type="text/javascript" src="/static/scripts/jquery.sceditor.js"></scri
-
-Warning: The type attribute is unnecessary for JavaScript resources.
-
-From line 564, column 1; to line 564, column 73
-
-oint --><script type="text/javascript" src="/static/scripts/edit_submit_rest.js"></scri
-
-Error: The value of the for attribute of the label element must be the ID of a non-hidden form control.
-
-From line 463, column 24; to line 463, column 38
-
-s="label"><label for="5">Calori
-Browse Recipe Page
-Error: Attribute ata-placeholder not allowed on element select at this point.
-
-From line 114, column 6; to line 114, column 104
-
-bel><select id="ingredient_list" ata-placeholder="Included Ingredients" class="chosen-select" multiple>					
-
+Error: Stray end tag div.
+From line 137, column 1; to line 137, column 6
+></div></div>↩<!-- 
+    
 Attributes for element select:
 Global attributes
 autocomplete — Hint for form autofill feature
