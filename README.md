@@ -230,11 +230,11 @@ Warning: Section lacks heading. Consider using h2-h6 elements to add identifying
  
 ## Login Page
 Error: No space between attributes.
-At line 114, column 45 <td class=""label><label fo
+At line 114, column 45 `<td class=""label><label fo`
 
 Error: Attribute label not allowed on element td at this point.
 From line 113, column 58; to line 114, column 50
-nts-cont"><td class=""label><label
+`nts-cont"><td class=""label><label`
 
 Attributes for element td:
 Global attributes
@@ -244,7 +244,7 @@ headers — The header cells for this cell
 
 Error: Stray end tag div.
 From line 137, column 1; to line 137, column 6
-></div></div>↩<!-- 
+`></div></div>↩<!--`
     
 Attributes for element select:
 Global attributes
