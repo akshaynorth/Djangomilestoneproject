@@ -245,68 +245,13 @@ headers — The header cells for this cell
 Error: Stray end tag div.
 From line 137, column 1; to line 137, column 6
 `></div></div>↩<!--`
-    
-Attributes for element select:
-Global attributes
-autocomplete — Hint for form autofill feature
-disabled — Whether the form control is disabled
-form — Associates the element with a form element
-multiple — Whether to allow multiple values
-name — Name of the element to use for form submission and in the form.elements API
-required — Whether the control is required for form submission
-size — Size of the control
-Warning: The type attribute is unnecessary for JavaScript resources.
-
-From line 286, column 1; to line 286, column 75
-
-rver.--><script type="text/javascript" src="/static/scripts/browse_recipe_rest.js"></scri
-Submit Recipe Page
-Error: Duplicate attribute id.
-
-At line 143, column 42
-
-40" rows="3" id="summary" spel
-
-Warning: The type attribute is unnecessary for JavaScript resources.
-
-From line 333, column 1; to line 333, column 83
-
-ditor --><script type="text/javascript" src="/static/scripts/jquery.sceditor.bbcode.min.js"></scri
-
-Warning: The type attribute is unnecessary for JavaScript resources.
-
-From line 334, column 1; to line 334, column 72
-
-</script><script type="text/javascript" src="/static/scripts/jquery.sceditor.js"></scri
-
-Warning: The type attribute is unnecessary for JavaScript resources.
-
-From line 337, column 1; to line 337, column 68
-
-STFul --><script type="text/javascript" src="/static/scripts/recipe_rest.js"></scri
-
-Error: The value of the for attribute of the label element must be the ID of a non-hidden form control.
-
-From line 240, column 24; to line 240, column 38
-
+  
 s="label"><label for="5">Calori
 Testing write-up
 I tested all the links to make sure there was no broken links. Visual inspection was executed for typos and a proper display of html elements. System Test was executing to make sure dropdown pages were rendered in accordance to design intent.
 
 Readme file
 The readme file incorporates all the desired components of documentation along with competent formatting and use of markdown and it includes user stories and linked wireframes.
-
-Data store integration
-The MongoDB database as a service offering from www.mongodb.com was used for this project. The offering includes a free tier that was used to deploy the no-SQL MongoDB database. For deployment, the mongodb.com online wizard was used to deploy the database to the AWS east region. A new user was created in addition to the administrator user for programmatic access. The URI for the service was then configured as an environment variable in Heroku that is in turn made available to the Python code that runs in the Heroku platform. The URI is then used to authenticate via the Python pymongo library to the remote MongoDB service. The developed application sends AJAX requests from the Web browser client to the deployed application in Heroku. These requests are mapped to Python function via the Flask route definitions. The developed Python then receives and contructs the rich queries and invokes the MongoDB interface provided by the pymongo Python library. The MongoDB service data store contains information about recipes stored as documents. These documents contain the information that is displayed on the site for recipe details and photo images.
-
-Deployment implementation
-Deployment is working well on Heroku. The deployment write-up can integrate the steps taken to deploy the web-app with steps needed for local development.
-
-Deployment write-up
-The Heroku Platform as a Service offering was used to deploy the ComeChop application. To deploy the application on the Heroku platform follow these steps:
-
-
-http://preview.themeforest.net/item/chow-recipes-food-html5-template/full_screen_preview/9711524?ref=phdev
 
 Reference
 805 Restaurant. [Online]. [Accessed 19 October 2020]. Available from: https://www.805restaurants.com/our-restaurants/hendon-central?view=menu
