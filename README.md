@@ -226,7 +226,8 @@ I tested all the links to make sure there was no broken links. Visual inspection
 Readme file
 The readme file incorporates all the desired components of documentation along with competent formatting and use of markdown and it includes user stories and linked wireframes.
 
-Reference
+## Reference
+ 
 805 Restaurant. [Online]. [Accessed 29 December 2020]. Available from: https://www.805restaurants.com/our-restaurants/hendon-central?view=menu
 
 Themefroest. [Online]. [Accessed 12 January 2021]. Available from: http://preview.themeforest.net/item/chow-recipes-food-html5-template/full_screen_preview/9711524?ref=phdev
